@@ -13,7 +13,7 @@ export const goals = [
 
 export const portalFeatures = [
   { label: '01 / YOUR DASHBOARD', icon: 'compass', title: 'See where you’re headed.', description: 'Keep track of purchased modules, upcoming workshops, assignments, deadlines, submitted work, feedback, and resources.' },
-  { label: '02 / FLEXIBLE ACCESS', icon: 'layers', title: 'Choose what you need.', description: 'Access individual modules or bundled options, with registration and payment managed through the platform.' },
+  { label: '02 / FLEXIBLE ACCESS', icon: 'layers', title: 'Choose what you need.', description: 'Register and pay for individual modules or a bundled package, all in one place.' },
   { label: '03 / SUBMIT & REFLECT', icon: 'pen', title: 'Practice, then get feedback.', description: 'Submit personal statements, application entries, CASPer practice responses, and application planning documents, then receive feedback in one place.' }
 ];
 
@@ -25,10 +25,10 @@ export const accessOptions = [
 ];
 
 export const communityItems = [
-  { icon: '↗', title: 'Applicant discussion groups', description: 'Share questions and perspectives' },
-  { icon: '◉', title: 'Group workshops & Q&A', description: 'Learn together, ask what matters' },
-  { icon: '✳', title: 'Dental student panels & mentor events', description: 'Hear different paths into dentistry' },
-  { icon: '↻', title: 'Peer accountability & cycle check-ins', description: 'Stay connected as you move forward' }
+  { title: 'Applicant discussion groups', description: 'Share questions and perspectives' },
+  { title: 'Group workshops & Q&A', description: 'Learn together, ask what matters' },
+  { title: 'Dental student panels & mentor events', description: 'Hear different paths into dentistry' },
+  { title: 'Peer accountability & cycle check-ins', description: 'Stay connected as you move forward' }
 ];
 
 export const studentOutcomes = [
@@ -42,4 +42,4 @@ export const studentOutcomes = [
   'A community of peers and mentors'
 ];
 
-export const pilotMetrics = ['Student satisfaction', 'Platform usability', 'Workshop effectiveness', 'Reviewer quality', 'Time per student', 'Pricing', 'Areas needing added support'];
+export const pilotFocus = ['Live and recorded workshops', 'CASPer practice with feedback', 'Personal statement and entry reviews', 'Final check-in sessions'];

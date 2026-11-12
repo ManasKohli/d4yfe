@@ -40,7 +40,7 @@
 
 .curriculum-tab span,
 .curriculum-module-label {
-  font-size: 10px;
+  font-size: 13px;
   font-weight: 700;
   letter-spacing: .13em;
   color: #a17462;
@@ -88,7 +88,7 @@
 }
 
 .curriculum-overview .framework-note {
-  font-size: 13px;
+  font-size: 15px;
   margin-top: 11px;
 }
 
@@ -105,7 +105,7 @@
   border: 1px solid #d6ddd4;
   border-radius: 999px;
   padding: 7px 12px;
-  font-size: 11px;
+  font-size: 14px;
   color: #476054;
   background: #f7f8f3;
 }
@@ -116,12 +116,12 @@
   padding: 17px 20px;
   margin-top: 22px;
   color: #52635a;
-  font-size: 13px;
+  font-size: 15px;
   line-height: 1.65;
 }
 
 .outcomes-box strong {
-  font-size: 13px;
+  font-size: 15px;
   color: #29463a;
 }
 
@@ -154,7 +154,7 @@
   color: #fff;
   border-radius: 999px;
   padding: 7px 12px;
-  font-size: 9px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: .1em;
 }
@@ -189,7 +189,7 @@
 
 .lesson-card p,
 .lesson-card li {
-  font-size: 13px;
+  font-size: 15px;
   line-height: 1.75;
   color: #66756b;
 }
@@ -245,14 +245,14 @@
 .concept-grid strong,
 .framework-grid strong,
 .comparison-grid strong {
-  font-size: 11px;
+  font-size: 14px;
   color: #335345;
 }
 
 .concept-grid p,
 .framework-grid p,
 .comparison-grid p {
-  font-size: 11px;
+  font-size: 14px;
   line-height: 1.6;
   margin: 5px 0 0;
   white-space: pre-line;
@@ -271,7 +271,7 @@
 }
 
 .comparison-grid p {
-  font-size: 12px;
+  font-size: 15px;
 }
 
 .application-support {
@@ -289,7 +289,7 @@
 }
 
 .support-heading span {
-  font-size: 10px;
+  font-size: 13px;
   font-weight: 700;
   letter-spacing: .13em;
   color: #a17462;
@@ -417,7 +417,7 @@
   }
 
   .curriculum-overview .framework-note {
-    font-size: 12px;
+    font-size: 15px;
   }
 
   .curriculum-tags {
@@ -427,17 +427,17 @@
 
   .curriculum-tags span,
   .lesson-chips span {
-    font-size: 10px;
+    font-size: 13px;
     padding: 6px 9px;
   }
 
   .outcomes-box {
-    font-size: 12px;
+    font-size: 15px;
     padding: 14px;
   }
 
   .outcomes-box strong {
-    font-size: 12px;
+    font-size: 15px;
   }
 
   .outcomes-box ul {
@@ -459,7 +459,7 @@
   }
 
   .day-heading>span {
-    font-size: 8px;
+    font-size: 11px;
     padding: 6px 9px;
     margin-top: 2px;
   }
@@ -483,7 +483,7 @@
 
   .lesson-card p,
   .lesson-card li {
-    font-size: 12px;
+    font-size: 15px;
     line-height: 1.7;
   }
 
@@ -501,11 +501,11 @@
   .concept-grid p,
   .framework-grid p,
   .comparison-grid p {
-    font-size: 11px;
+    font-size: 14px;
   }
 
   .comparison-grid p {
-    font-size: 12px;
+    font-size: 15px;
   }
 
   .application-support {
@@ -552,7 +552,7 @@
   }
 
   .application-support .module-details summary {
-    font-size: 11px;
+    font-size: 14px;
   }
 }
 
@@ -580,7 +580,7 @@
   background: #f7f8f3;
   border: 1px solid #d8ded5;
   box-shadow: none;
-  font-size: 13px;
+  font-size: 15px;
   line-height: 1.75;
 }
 
@@ -616,7 +616,7 @@
   .application-support .details-content {
     width: 100%;
     padding: 14px;
-    font-size: 12px;
+    font-size: 15px;
     line-height: 1.7;
   }
 
@@ -636,14 +636,14 @@
 }
 
 .reviewer-network>div>span {
-  font-size: 9px;
+  font-size: 12px;
   letter-spacing: .13em;
   font-weight: 700;
   color: #a17462;
 }
 
 .reviewer-network p {
-  font-size: 12px;
+  font-size: 15px;
   line-height: 1.7;
   color: #617168;
   margin: 9px 0 0;
@@ -671,7 +671,7 @@
 }
 
 .outcomes-list li {
-  font-size: 10px;
+  font-size: 13px;
   line-height: 1.45;
   color: #657168;
   padding-left: 12px;
@@ -695,7 +695,7 @@
   }
 
   .reviewer-network p {
-    font-size: 11px;
+    font-size: 14px;
   }
 
   .reviewer-network>p {
@@ -709,7 +709,7 @@
   }
 
   .outcomes-list li {
-    font-size: 9px;
+    font-size: 12px;
   }
 
   .outcomes-card {

@@ -25,7 +25,7 @@
   justify-content: space-between;
   gap: 8px;
   color: #a17462;
-  font-size: 9px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: .12em;
 }
@@ -38,7 +38,7 @@
 }
 
 .module-preview>p {
-  font-size: 13px;
+  font-size: 15px;
   line-height: 1.75;
   color: #68756d;
   margin: 0;
@@ -50,7 +50,7 @@
 }
 
 .module-preview .curriculum-tags span {
-  font-size: 9px;
+  font-size: 12px;
   padding: 6px 9px;
 }
 
@@ -62,7 +62,7 @@
   padding-top: 16px;
   border-top: 1px solid #e1e3dd;
   color: #315448;
-  font-size: 12px;
+  font-size: 15px;
   font-weight: 700;
 }
 
@@ -78,7 +78,7 @@
   margin-top: 25px;
   padding-top: 18px;
   border-top: 1px solid #cfd5cc;
-  font-size: 12px;
+  font-size: 15px;
   color: #65736a;
 }
 
@@ -97,7 +97,7 @@
 .breadcrumb-link {
   display: inline-flex;
   align-items: center;
-  font-size: 12px;
+  font-size: 15px;
   font-weight: 700;
   color: #52675c;
   margin-bottom: 28px;
@@ -135,7 +135,7 @@
 }
 
 .page-module-link span {
-  font-size: 9px;
+  font-size: 12px;
   letter-spacing: .13em;
   color: #a17462;
   font-weight: 700;
@@ -171,14 +171,14 @@
 }
 
 .module-pagination a span {
-  font-size: 8px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: .13em;
   color: #a17462;
 }
 
 .module-pagination a strong {
-  font-size: 12px;
+  font-size: 15px;
 }
 
 .module-pagination .next-module {
@@ -227,7 +227,7 @@
   background: #f7f8f3;
   border: 1px solid #d5dbd3;
   color: #315448;
-  font-size: 12px;
+  font-size: 15px;
   font-weight: 700;
 }
 
@@ -257,7 +257,7 @@
   }
 
   .preview-meta {
-    font-size: 8px;
+    font-size: 11px;
   }
 
   .page-module-link {
@@ -265,7 +265,7 @@
   }
 
   .page-module-link strong {
-    font-size: 12px;
+    font-size: 15px;
   }
 }
 
@@ -287,7 +287,7 @@
   }
 
   .module-preview>p {
-    font-size: 12px;
+    font-size: 15px;
   }
 
   .module-preview .curriculum-tags {
@@ -301,7 +301,7 @@
   .support-inline-link {
     align-items: flex-start;
     flex-direction: column;
-    font-size: 11px;
+    font-size: 14px;
   }
 
   .module-page {
@@ -336,7 +336,7 @@
   }
 
   .page-module-link strong {
-    font-size: 13px;
+    font-size: 15px;
   }
 
   .module-pagination {
@@ -348,7 +348,7 @@
   }
 
   .module-pagination a strong {
-    font-size: 10px;
+    font-size: 13px;
   }
 
   .support-page-intro {
@@ -362,7 +362,7 @@
   }
 
   .support-page-intro>p {
-    font-size: 13px;
+    font-size: 15px;
   }
 
   .support-page-intro+.pathway-section {
@@ -372,7 +372,7 @@
   .program-details-link {
     align-items: flex-start;
     line-height: 1.5;
-    font-size: 11px;
+    font-size: 14px;
   }
 
   .program-page-intro+.portal-section {

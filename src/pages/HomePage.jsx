@@ -31,18 +31,16 @@ function Hero() {
         <div className="art-orbit orbit-one"/><div className="art-orbit orbit-two"/>
         <div className="art-label label-top"><span className="label-dot coral"/>YOUR RESEARCH JOURNEY</div>
         <div className="art-card main-card">
-          <div className="card-top"><div className="mini-mark"><Icon name="tooth" size={17}/></div><span>RESEARCH, IN FOCUS</span><span className="card-menu">···</span></div>
+          <div className="card-top"><div className="mini-mark"><Icon name="tooth" size={17}/></div><span>RESEARCH, IN FOCUS</span></div>
           <div className="card-title">A question<br/><em>worth exploring.</em></div>
           <div className="progress-label"><span>LEARNING JOURNEY</span><span>01 / 03</span></div>
           <div className="progress-track"><span/></div>
           <div className="card-steps"><span className="step-active">Read</span><i/><span>Question</span><i/><span>Plan</span></div>
-          <div className="card-bottom"><span className="avatar-stack"><i> D</i><i>Y</i><i>+</i></span><span>Foundations for research</span><Icon name="arrow" size={16}/></div>
+          <div className="card-bottom"><span>Three modules</span></div>
         </div>
         <div className="floating-note"><span className="floating-icon"><Icon name="spark" size={17}/></span><span><strong>Learn by doing</strong><small>Questions, practice, reflection.</small></span></div>
-        <div className="art-stamp"><span>LEARN<br/>WITH PURPOSE</span><b>✳</b></div>
-        <div className="art-caption">A clear structure for learning research <span>↗</span></div>
+        <div className="art-caption">A clear structure for learning research</div>
       </div>
-      <div className="hero-bottom"><span>01 — A FOUNDATION FOR WHAT’S NEXT</span><span>SCROLL TO EXPLORE <b>↓</b></span></div>
     </section>
   );
 }

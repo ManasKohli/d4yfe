@@ -14,7 +14,7 @@ export default function ApplicationSupportPage() {
       <section className="support-page-intro section-wrap">
         <Eyebrow>DENTAL SCHOOL APPLICATION SUPPORT</Eyebrow>
         <h1>Guidance for each<br/><em>part of the process.</em></h1>
-        <p>Choose individual modules or a package that fits your needs. The program is designed to bring resources, workshops, practice, and feedback together.</p>
+        <p>Choose individual modules or a package that fits your needs. Each one brings together workshops, resources, practice, and feedback.</p>
       </section>
       <section className="pathway-section">
         <div className="section-wrap pathway-wrap">
@@ -24,13 +24,13 @@ export default function ApplicationSupportPage() {
           </Reveal>
           <div className="application-support">
             <div className="module-list">{applicationModules.map(module => <ApplicationModuleCard key={module.number} module={module}/>)}</div>
-            <div className="modules-footnote"><span>*</span> Individualized reviews and mentorship may be available as selected options. Final application check-ins are guidance, not admissions evaluations.</div>
+            <div className="modules-footnote"><span>*</span> Individual reviews and mentor sessions are available in selected packages. Final application check-ins offer guidance, not an admissions evaluation.</div>
             <div className="reviewer-network">
-              <div><span>MENTOR &amp; REVIEWER NETWORK</span><p>A future network could include current dental students, recent graduates, dentists, D4Y alumni, former board members, and other qualified application mentors.</p></div>
-              <p>Reviewers could be compensated per review or session, allowing individualized feedback to scale beyond the executive team.</p>
+              <div><span>MENTORS &amp; REVIEWERS</span><p>Feedback comes from people who have been through the process: current dental students, recent graduates, dentists, and D4Y alumni.</p></div>
+              <p>Working with more than one reviewer means you can get the perspective that fits your application.</p>
             </div>
           </div>
-          <Link to={paths.programDetails} className="program-details-link">Explore the digital platform, packages, community, goals, and pilot plan <Icon name="arrow" size={16}/></Link>
+          <Link to={paths.programDetails} className="program-details-link">See how the program works: packages, the student portal, and community <Icon name="arrow" size={16}/></Link>
         </div>
       </section>
     </>

@@ -5,10 +5,9 @@ import Icon from './Icon.jsx';
 import { paths } from '../routes.js';
 
 const navLinks = [
-  { label: 'Overview', to: paths.home },
-  { label: 'Modules', to: paths.modulesSection },
+  { label: 'Research program', to: paths.home },
   { label: 'Application support', to: paths.applicationSupport },
-  { label: 'Program details', to: paths.programDetails },
+  { label: 'How it works', to: paths.programDetails },
 ];
 
 export default function SiteHeader() {

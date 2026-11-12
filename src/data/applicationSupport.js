@@ -3,31 +3,66 @@ export const applicationModules = [
   {
     number: '01', title: 'Applicant strategy & prerequisites', tag: 'Build your plan',
     description: 'Understand the application landscape and turn your next steps into a plan that fits your goals.',
-    topics: ['Understand the dental school application timeline and deadlines', 'Identify schools that align with applicant goals; compare Canadian and/or American dental schools', 'Understand school-specific prerequisites and identify missing or incomplete requirements', 'Plan DAT, CASPer, application, and where applicable CDAT timelines; consider Australian and Irish pathways', 'Avoid common application mistakes and build a checklist', 'Recorded introductory workshop covering the application process from beginning to end', 'Personalized application planning assignment/checklist'],
+    topics: [
+      'The dental school application timeline and key deadlines',
+      'Choosing schools that fit your goals, including Canadian and American programs',
+      'School-specific prerequisites, and spotting anything missing or incomplete',
+      'Planning your DAT, CASPer, and application timelines, including CDAT-friendly schools in Australia and Ireland',
+      'Common application mistakes and how to avoid them',
+      'A recorded workshop that walks through the process from start to finish',
+      'A personalized application planning checklist',
+    ],
     icon: 'compass'
   },
   {
     number: '02', title: 'CASPer preparation', tag: 'Think with confidence',
     description: 'Build the reasoning and communication skills to approach unfamiliar scenarios with care.',
-    topics: ['What CASPer is, what skills it evaluates, and how to approach different question types', 'Time management, response structure, ethical and situational reasoning, and common mistakes', 'Strategies for unfamiliar scenarios, emphasizing critical thinking, communication, empathy, and decision-making rather than memorized formulas', 'Mock scenarios, timed questions, written-response practice, and video-response practice where applicable', 'Peer discussion, feedback, and sample high-quality approaches', 'Potential sponsorships with CASPer preparation organizations for resources, practice materials, or participant discounts'],
+    topics: [
+      'What CASPer is, the skills it measures, and the types of questions it asks',
+      'Time management and structuring clear responses',
+      'Ethical and situational reasoning, with a focus on judgment and empathy over memorized formulas',
+      'Timed mock scenarios with written and video responses',
+      'Feedback on your responses and examples of strong approaches',
+      'Peer discussion with other applicants',
+    ],
     icon: 'spark'
   },
   {
     number: '03', title: 'Personal Statement Lab', tag: 'Tell your story',
     description: 'Shape your experiences and motivations into a reflective, cohesive story about why dentistry.',
-    topics: ['Purpose of the personal statement and what admissions committees look for', 'Storytelling rather than listing accomplishments; reflection and connections to dentistry', 'Creating a strong introduction and cohesive narrative', 'Common mistakes, editing, and revision strategies', 'Peer discussion and general feedback from other applicants', 'Optional individualized review by current dental students, recent graduates, dentists, experienced D4Y members, admissions professionals, or other qualified reviewers', 'A reviewer network gives students different perspectives and supports scalable feedback'],
+    topics: [
+      'What admissions committees look for in a personal statement',
+      'Telling a story rather than listing accomplishments',
+      'Reflecting on your experiences and connecting them to dentistry',
+      'Writing a strong introduction and a cohesive narrative',
+      'Editing, revision strategies, and common mistakes',
+      'Peer feedback from other applicants',
+      'Optional individual review by a dental student, recent graduate, or dentist',
+    ],
     icon: 'pen'
   },
   {
     number: '04', title: 'Experiences & application entries', tag: 'Show your impact',
     description: 'Communicate what you did, what you learned, and why it matters within application limits.',
-    topics: ['Experiences may include research, volunteering, leadership, employment, community involvement, shadowing, awards, and clubs', 'Select and prioritize meaningful experiences; describe responsibilities effectively', 'Show impact beyond duties, demonstrate transferable skills, and connect experiences to personal growth', 'Avoid repetitive descriptions and work within character or word limits', 'Optional review assesses clarity, concision, reflection, specificity, impact, and consistency with the overall application narrative'],
+    topics: [
+      'Choosing and prioritizing your most meaningful experiences',
+      'Describing research, volunteering, leadership, work, shadowing, and awards effectively',
+      'Showing impact and transferable skills, not just listing duties',
+      'Connecting experiences to your personal growth',
+      'Avoiding repetition and writing within character limits',
+      'Optional review of your entries for clarity, specificity, and impact',
+    ],
     icon: 'layers'
   },
   {
     number: '05', title: 'Final application check-in', tag: 'Bring it together',
     description: 'Talk through your remaining questions with a dental student, dentist, or qualified D4Y mentor.',
-    topics: ['Book an individual session with a current dental student, dentist, or qualified D4Y mentor', 'Discuss overall application strategy, school selection, personal statement, experiences, CASPer, DAT, interview preparation, outstanding concerns, and general questions about the dental school journey', 'Positioned as a “Final Application Check,” not a guarantee of admission or admissions evaluation'],
+    topics: [
+      'A one-on-one session with a dental student, dentist, or D4Y mentor',
+      'Review your overall strategy, school list, personal statement, experiences, CASPer, and DAT',
+      'Interview preparation and any outstanding questions about your application',
+      'Guidance and a second perspective, not an admissions evaluation or guarantee',
+    ],
     icon: 'check'
   }
 ];

@@ -2,7 +2,7 @@ import { Link } from 'react-router';
 import Eyebrow from '../components/Eyebrow.jsx';
 import Icon from '../components/Icon.jsx';
 import Reveal from '../components/Reveal.jsx';
-import { accessOptions, communityItems, goals, pilotMetrics, portalFeatures, studentOutcomes } from '../data/programDetails.js';
+import { accessOptions, communityItems, goals, pilotFocus, portalFeatures, studentOutcomes } from '../data/programDetails.js';
 import useDocumentTitle from '../hooks/useDocumentTitle.js';
 import { paths } from '../routes.js';
 
@@ -15,7 +15,7 @@ function PortalSection() {
         <Reveal className="portal-heading">
           <Eyebrow>YOUR PROGRAM, IN ONE PLACE</Eyebrow>
           <h2>Keep your next steps<br/><em>close at hand.</em></h2>
-          <p>The digital platform is designed as a central student portal, bringing the resources and touchpoints of your pathway together.</p>
+          <p>A student portal brings your modules, workshops, assignments, and feedback together in one place.</p>
         </Reveal>
         <div className="portal-grid">
           {portalFeatures.map((feature, index) => (
@@ -25,13 +25,13 @@ function PortalSection() {
           ))}
         </div>
         <Reveal className="access-options">
-          <div className="access-head"><span>WAYS TO TAKE PART</span><p>Modular access keeps the program responsive to what each applicant needs.</p></div>
+          <div className="access-head"><span>WAYS TO TAKE PART</span><p>Take only the modules you need, or choose a package.</p></div>
           <div className="access-list">
             {accessOptions.map((option, index) => (
-              <div key={option.title}><b>{pad(index + 1)}</b><span><strong>{option.title}</strong><small>{option.description}</small></span><i>↗</i></div>
+              <div key={option.title}><b>{pad(index + 1)}</b><span><strong>{option.title}</strong><small>{option.description}</small></span></div>
             ))}
           </div>
-          <p className="pricing-note">Pricing would be set after researching comparable services, reviewer compensation, platform costs, and D4Y’s reinvestment goals.</p>
+          <p className="pricing-note">Pricing will be announced ahead of registration.</p>
         </Reveal>
       </div>
     </section>
@@ -45,16 +45,16 @@ function CommunitySection() {
         <Reveal className="community-copy">
           <Eyebrow tone="light">PEOPLE MAKE THE DIFFERENCE</Eyebrow>
           <h2>You don’t have to<br/>figure it out <em>alone.</em></h2>
-          <p>Applications may be personal, but the journey can be shared. D4Y’s community is designed to help applicants learn from one another and hear directly from people with dental school experience.</p>
+          <p>Applications are personal, but you don’t have to work on them in isolation. Learn alongside other applicants and hear directly from people with dental school experience.</p>
           <Link className="button button-light" to={paths.goalsSection}>What the program is working toward <Icon name="arrow" size={17}/></Link>
         </Reveal>
         <Reveal delay={120}>
           <div className="community-panel">
-            <div className="community-panel-head"><span>ROOM TO LEARN TOGETHER</span><span className="panel-spark">✳</span></div>
+            <div className="community-panel-head"><span>LEARNING TOGETHER</span></div>
             <div className="community-quote">“Going through the process with a community, not on your own.”</div>
             <div className="community-list">
               {communityItems.map(item => (
-                <div key={item.title}><span className="community-icon">{item.icon}</span><span><strong>{item.title}</strong><small>{item.description}</small></span></div>
+                <div key={item.title}><span><strong>{item.title}</strong><small>{item.description}</small></span></div>
               ))}
             </div>
           </div>
@@ -69,18 +69,17 @@ function GoalsSection() {
     <section className="goals-section section-wrap" id="goals">
       <Reveal className="goals-heading">
         <div><Eyebrow>WHAT WE’RE WORKING TOWARD</Eyebrow><h2>A stronger start<br/>to <em>what comes next.</em></h2></div>
-        <p>The Dental Pathway Program aims to make reliable application guidance more accessible, organized, and personal.</p>
+        <p>The Dental Pathway Program makes reliable application guidance more accessible, organized, and personal.</p>
       </Reveal>
       <div className="goals-layout">
         <Reveal className="outcomes-card">
           <div className="outcomes-label">STUDENTS LEAVE WITH</div>
           <div className="outcomes-big">Clearer<br/><em>next steps.</em></div>
           <ul className="outcomes-list">{studentOutcomes.map(outcome => <li key={outcome}>{outcome}</li>)}</ul>
-          <div className="outcomes-bottom"><span>CONFIDENCE IS BUILT ALONG THE WAY</span><span>✳</span></div>
         </Reveal>
         <div className="goals-list">
           {goals.map((goal, index) => (
-            <Reveal key={goal} delay={index * 35}><div className="goal-row"><span>{pad(index + 1)}</span><p>{goal}</p><b>↗</b></div></Reveal>
+            <Reveal key={goal} delay={index * 35}><div className="goal-row"><span>{pad(index + 1)}</span><p>{goal}</p></div></Reveal>
           ))}
         </div>
       </div>
@@ -92,12 +91,12 @@ function PilotSection() {
   return (
     <section className="pilot-section">
       <div className="section-wrap pilot-wrap">
-        <Reveal><Eyebrow tone="dark">BUILT TO KEEP GETTING BETTER</Eyebrow><h2>Start thoughtfully.<br/><em>Learn as we go.</em></h2></Reveal>
+        <Reveal><Eyebrow tone="dark">PILOT COHORT</Eyebrow><h2>Starting small,<br/><em>built to improve.</em></h2></Reveal>
         <Reveal delay={100}>
           <div className="pilot-content">
-            <p>A small pilot cohort can help D4Y understand what works best before a full launch. Student feedback would guide improvements to the platform, workshops, reviewer experience, and pricing.</p>
-            <div className="pilot-points">{pilotMetrics.map(metric => <span key={metric}>{metric}</span>)}</div>
-            <div className="pilot-note"><span>✳</span><p><strong>Suggested pilot reviewer group.</strong> Start with 1–2 dental student reviewers for personal statements and application entries, 1–2 CASPer facilitators for mock scenarios and feedback, and 1–2 dental student mentors for a final check-in or Q&amp;A.</p></div>
+            <p>The program launches with a small pilot cohort. Feedback from pilot students will shape the workshops, reviews, and platform before the full launch.</p>
+            <div className="pilot-points">{pilotFocus.map(item => <span key={item}>{item}</span>)}</div>
+            <div className="pilot-note"><p><strong>Interested in the pilot?</strong> Dates and registration details will be shared soon.</p></div>
           </div>
         </Reveal>
       </div>
@@ -112,7 +111,7 @@ export default function ProgramDetailsPage() {
       <section className="support-page-intro program-page-intro section-wrap">
         <Eyebrow>HOW THE PROGRAM WORKS</Eyebrow>
         <h1>Resources, feedback,<br/><em>and people in one place.</em></h1>
-        <p>Explore the proposed student portal, flexible program options, community, and pilot plan.</p>
+        <p>How the student portal, program options, community, and pilot cohort fit together.</p>
         <Link to={paths.applicationSupport} className="breadcrumb-link">← Application support modules</Link>
       </section>
       <PortalSection/>
