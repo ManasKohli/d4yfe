@@ -1,0 +1,48 @@
+/* Design tokens: color, shape, depth, motion, type. Every stylesheet reads from these. */
+
+:root {
+  /* Color */
+  --ink: #18352f;            /* primary text, near-black green */
+  --ink-2: #2f4a40;          /* strong secondary text, links */
+  --text-2: #5c6b64;         /* secondary text (AA on all surfaces) */
+  --text-3: #66736c;         /* tertiary text, fine print (AA) */
+  --muted: var(--text-3);
+  --heading-muted: #7f8b83;  /* second line of display headings (AA large) */
+  --accent-text: #8f5742;    /* small uppercase labels (AA) */
+  --coral: #d2775e;          /* decorative accent only: dots, rules */
+  --green: #1f4c43;          /* brand */
+  --green-hover: #2d6156;
+  --green-deep: #244f45;
+  --green-line: #4d6f64;
+  --on-green-muted: #bccbc0;
+  --paper: #f7f6f2;          /* page background */
+  --card: #fdfcf9;           /* cards and panels */
+  --surface-2: #f4f5f0;      /* nested surfaces inside cards */
+  --tint: #eef0ea;           /* tinted sections */
+  --tint-2: #e5eae2;         /* icon circles, illustration fills */
+  --tint-warm: #f3ede4;      /* warm illustration and note fills */
+  --line: #d9ded6;
+  --line-strong: #c5cdc3;
+  --line-warm: #dccbbf;
+
+  /* Shape and depth */
+  --radius: 4px;
+  --radius-pill: 999px;
+  --shadow-sm: 0 1px 2px rgba(24,53,47,.05), 0 4px 12px rgba(24,53,47,.06);
+  --shadow-md: 0 8px 24px rgba(24,53,47,.10);
+
+  /* Motion */
+  --duration: 160ms;
+  --ease: cubic-bezier(.2,0,0,1);
+
+  /* Type */
+  --serif: 'Manrope',sans-serif;
+  --sans: 'DM Sans',sans-serif;
+
+  font-family: var(--sans);
+  color: var(--ink);
+  background: var(--paper);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
