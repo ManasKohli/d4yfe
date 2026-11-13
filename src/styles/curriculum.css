@@ -1,7 +1,7 @@
 .curriculum-tabs {
   display: grid;
   grid-template-columns: repeat(3,minmax(0,1fr));
-  border-bottom: 1px solid #cfd5cc;
+  border-bottom: 1px solid var(--line);
   margin: 12px 0 0;
 }
 
@@ -18,22 +18,22 @@
   background: transparent;
   border: 0;
   border-top: 2px solid transparent;
-  color: #617269;
+  color: var(--text-2);
   cursor: pointer;
   transition: background .2s,color .2s,border .2s;
 }
 
 .curriculum-tab+.curriculum-tab {
-  border-left: 1px solid #d5dbd3;
+  border-left: 1px solid var(--line);
 }
 
 .curriculum-tab:hover {
-  background: #f5f6f1;
+  background: var(--surface-2);
   color: var(--ink);
 }
 
 .curriculum-tab.active {
-  background: #f8f8f3;
+  background: var(--surface-2);
   border-top-color: var(--coral);
   color: var(--ink);
 }
@@ -43,7 +43,7 @@
   font-size: 13px;
   font-weight: 700;
   letter-spacing: .13em;
-  color: #a17462;
+  color: var(--accent-text);
 }
 
 .curriculum-tab strong {
@@ -57,19 +57,19 @@
   position: absolute;
   right: 19px;
   bottom: 20px;
-  color: #839188;
+  color: var(--text-3);
 }
 
 .curriculum-panel {
-  background: #fbfaf6;
-  border: 1px solid #e0e3dc;
+  background: var(--card);
+  border: 1px solid var(--line);
   border-top: 0;
-  box-shadow: 0 6px 20px #203c3010;
+  box-shadow: var(--shadow-sm);
 }
 
 .curriculum-overview {
   padding: 38px 44px 31px;
-  border-bottom: 1px solid #e1e3dd;
+  border-bottom: 1px solid var(--line);
 }
 
 .curriculum-overview h2 {
@@ -82,7 +82,7 @@
 .curriculum-overview>p {
   font-size: 16px;
   line-height: 1.75;
-  color: #66756b;
+  color: var(--text-2);
   margin: 0;
   max-width: 850px;
 }
@@ -102,27 +102,27 @@
 
 .curriculum-tags span,
 .lesson-chips span {
-  border: 1px solid #d6ddd4;
+  border: 1px solid var(--line);
   border-radius: 999px;
   padding: 7px 12px;
   font-size: 14px;
-  color: #476054;
-  background: #f7f8f3;
+  color: var(--ink-2);
+  background: var(--surface-2);
 }
 
 .outcomes-box {
-  background: #eff2ec;
+  background: var(--tint);
   border-left: 2px solid var(--coral);
   padding: 17px 20px;
   margin-top: 22px;
-  color: #52635a;
+  color: var(--ink-2);
   font-size: 15px;
   line-height: 1.65;
 }
 
 .outcomes-box strong {
   font-size: 15px;
-  color: #29463a;
+  color: var(--ink-2);
 }
 
 .outcomes-box ul {
@@ -177,13 +177,13 @@
   min-width: 0;
   background: #fff;
   padding: 22px 23px;
-  border: 1px solid #e3e6df;
+  border: 1px solid var(--line);
   border-radius: 3px;
 }
 
 .lesson-card h4 {
   font: 700 16px/1.4 'DM Sans',sans-serif;
-  color: #29463a;
+  color: var(--ink-2);
   margin: 0 0 12px;
 }
 
@@ -191,7 +191,7 @@
 .lesson-card li {
   font-size: 15px;
   line-height: 1.75;
-  color: #66756b;
+  color: var(--text-2);
 }
 
 .lesson-card p {
@@ -208,12 +208,12 @@
 }
 
 .lesson-note {
-  background: #f4f1e8;
+  background: var(--tint-warm);
   border-radius: 2px;
   padding: 12px 14px;
   margin: 15px 0 0!important;
   border-left: 2px solid #d2775e;
-  color: #56665c!important;
+  color: var(--ink-2)!important;
 }
 
 .lesson-chips {
@@ -221,7 +221,7 @@
 }
 
 .lesson-chips span {
-  background: #f5f6f1;
+  background: var(--surface-2);
 }
 
 .concept-grid,
@@ -237,7 +237,7 @@
 .framework-grid>div,
 .comparison-grid>div {
   min-width: 0;
-  background: #f3f5f0;
+  background: var(--surface-2);
   padding: 12px;
   border-radius: 2px;
 }
@@ -246,7 +246,7 @@
 .framework-grid strong,
 .comparison-grid strong {
   font-size: 14px;
-  color: #335345;
+  color: var(--ink-2);
 }
 
 .concept-grid p,
@@ -267,7 +267,7 @@
 }
 
 .comparison-grid>div {
-  background: #f4f1e8;
+  background: var(--tint-warm);
 }
 
 .comparison-grid p {
@@ -277,7 +277,7 @@
 .application-support {
   margin-top: 80px;
   padding-top: 35px;
-  border-top: 1px solid #cfd5cc;
+  border-top: 1px solid var(--line);
 }
 
 .support-heading {
@@ -292,7 +292,7 @@
   font-size: 13px;
   font-weight: 700;
   letter-spacing: .13em;
-  color: #a17462;
+  color: var(--accent-text);
 }
 
 .support-heading p {
@@ -321,9 +321,9 @@
   right: 0;
   top: calc(100% + 8px);
   padding: 18px 20px;
-  background: #fbfaf6;
-  border: 1px solid #d8ded5;
-  box-shadow: 0 12px 24px #18352f1c;
+  background: var(--card);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-md);
 }
 
 .application-support .module-card {
@@ -336,7 +336,7 @@
 
 .application-support .module-card:has(details[open]) {
   z-index: 5;
-  background: #f6f7f2;
+  background: var(--surface-2);
 }
 
 .application-support .module-card details[open] summary b {
@@ -374,7 +374,7 @@
     grid-template-columns: 1fr 20px;
     gap: 5px 10px;
     padding: 13px 15px;
-    border: 1px solid #d6dbd3!important;
+    border: 1px solid var(--line)!important;
     border-radius: 3px;
   }
 
@@ -396,7 +396,7 @@
 
   .curriculum-tab.active {
     border-left: 2px solid var(--coral)!important;
-    background: #fbfaf6;
+    background: var(--card);
   }
 
   .curriculum-panel {
@@ -577,8 +577,8 @@
   width: 100%;
   position: static;
   padding: 15px 18px;
-  background: #f7f8f3;
-  border: 1px solid #d8ded5;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
   box-shadow: none;
   font-size: 15px;
   line-height: 1.75;
@@ -631,26 +631,26 @@
   gap: 8%;
   padding: 22px 24px;
   margin-top: 22px;
-  background: #f3f4ef;
-  border: 1px solid #dce1d9;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
 }
 
 .reviewer-network>div>span {
   font-size: 12px;
   letter-spacing: .13em;
   font-weight: 700;
-  color: #a17462;
+  color: var(--accent-text);
 }
 
 .reviewer-network p {
   font-size: 15px;
   line-height: 1.7;
-  color: #617168;
+  color: var(--text-2);
   margin: 9px 0 0;
 }
 
 .reviewer-network>p {
-  border-left: 1px solid #d2d8cf;
+  border-left: 1px solid var(--line);
   padding-left: 22px;
   margin: 0;
 }
@@ -673,7 +673,7 @@
 .outcomes-list li {
   font-size: 13px;
   line-height: 1.45;
-  color: #657168;
+  color: var(--text-2);
   padding-left: 12px;
   position: relative;
 }
@@ -700,7 +700,7 @@
 
   .reviewer-network>p {
     border-left: 0;
-    border-top: 1px solid #d2d8cf;
+    border-top: 1px solid var(--line);
     padding: 11px 0 0;
   }
 

@@ -6,8 +6,8 @@
 }
 
 .module-preview {
-  background: #fbfaf6;
-  border: 1px solid #e0e3dc;
+  background: var(--card);
+  border: 1px solid var(--line);
   padding: 24px 23px 20px;
   display: flex;
   flex-direction: column;
@@ -17,14 +17,14 @@
 
 .module-preview:hover {
   transform: translateY(-3px);
-  box-shadow: 0 12px 28px #1c392014;
+  box-shadow: var(--shadow-sm);
 }
 
 .preview-meta {
   display: flex;
   justify-content: space-between;
   gap: 8px;
-  color: #a17462;
+  color: var(--accent-text);
   font-size: 12px;
   font-weight: 700;
   letter-spacing: .12em;
@@ -40,7 +40,7 @@
 .module-preview>p {
   font-size: 15px;
   line-height: 1.75;
-  color: #68756d;
+  color: var(--text-2);
   margin: 0;
 }
 
@@ -60,8 +60,8 @@
   align-items: center;
   margin-top: auto;
   padding-top: 16px;
-  border-top: 1px solid #e1e3dd;
-  color: #315448;
+  border-top: 1px solid var(--line);
+  color: var(--green);
   font-size: 15px;
   font-weight: 700;
 }
@@ -77,16 +77,16 @@
   gap: 16px;
   margin-top: 25px;
   padding-top: 18px;
-  border-top: 1px solid #cfd5cc;
+  border-top: 1px solid var(--line);
   font-size: 15px;
-  color: #65736a;
+  color: var(--text-2);
 }
 
 .support-inline-link span {
   display: flex;
   align-items: center;
   gap: 10px;
-  color: #315448;
+  color: var(--green);
   font-weight: 700;
 }
 
@@ -99,7 +99,7 @@
   align-items: center;
   font-size: 15px;
   font-weight: 700;
-  color: #52675c;
+  color: var(--ink-2);
   margin-bottom: 28px;
 }
 
@@ -111,8 +111,8 @@
   display: grid;
   grid-template-columns: repeat(3,minmax(0,1fr));
   margin-bottom: 20px;
-  border: 1px solid #d5dbd3;
-  background: #f6f6f1;
+  border: 1px solid var(--line);
+  background: var(--surface-2);
 }
 
 .page-module-link {
@@ -120,24 +120,24 @@
   flex-direction: column;
   gap: 8px;
   padding: 15px 18px;
-  color: #6a786f;
+  color: var(--text-2);
   border-top: 2px solid transparent;
 }
 
 .page-module-link+.page-module-link {
-  border-left: 1px solid #d5dbd3;
+  border-left: 1px solid var(--line);
 }
 
 .page-module-link.active {
   color: var(--ink);
-  background: #fbfaf6;
+  background: var(--card);
   border-top-color: var(--coral);
 }
 
 .page-module-link span {
   font-size: 12px;
   letter-spacing: .13em;
-  color: #a17462;
+  color: var(--accent-text);
   font-weight: 700;
 }
 
@@ -146,7 +146,7 @@
 }
 
 .module-page .curriculum-panel {
-  border-top: 1px solid #e0e3dc;
+  border-top: 1px solid var(--line);
 }
 
 .module-pagination {
@@ -159,22 +159,22 @@
 .module-pagination a {
   display: grid;
   gap: 7px;
-  border: 1px solid #d9dfd6;
-  background: #f8f8f3;
+  border: 1px solid var(--line);
+  background: var(--surface-2);
   padding: 14px 17px;
-  color: #315448;
+  color: var(--green);
 }
 
 .module-pagination a:hover {
-  border-color: #b3c2b6;
-  background: #fbfaf6;
+  border-color: var(--line-strong);
+  background: var(--card);
 }
 
 .module-pagination a span {
   font-size: 11px;
   font-weight: 700;
   letter-spacing: .13em;
-  color: #a17462;
+  color: var(--accent-text);
 }
 
 .module-pagination a strong {
@@ -199,7 +199,7 @@
 
 .support-page-intro h1 em {
   font-weight: 400;
-  color: #a7afa3;
+  color: var(--heading-muted);
   font-style: normal;
 }
 
@@ -207,7 +207,7 @@
   max-width: 600px;
   font-size: 15px;
   line-height: 1.8;
-  color: #68756d;
+  color: var(--text-2);
 }
 
 .support-page-intro+.pathway-section {
@@ -224,16 +224,16 @@
   gap: 12px;
   margin-top: 26px;
   padding: 13px 17px;
-  background: #f7f8f3;
-  border: 1px solid #d5dbd3;
-  color: #315448;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  color: var(--green);
   font-size: 15px;
   font-weight: 700;
 }
 
 .program-details-link:hover {
-  background: #fffefa;
-  border-color: #bdc8bd;
+  background: var(--card);
+  border-color: var(--line-strong);
 }
 
 .program-page-intro .breadcrumb-link {
@@ -327,12 +327,12 @@
 
   .page-module-link+.page-module-link {
     border-left: 0;
-    border-top: 1px solid #d5dbd3;
+    border-top: 1px solid var(--line);
   }
 
   .page-module-link.active {
     border-left: 2px solid var(--coral);
-    border-top-color: #d5dbd3;
+    border-top-color: var(--line);
   }
 
   .page-module-link strong {
@@ -397,7 +397,7 @@
 }
 
 .card-modules li+li {
-  border-top: 1px solid #ededeb;
+  border-top: 1px solid var(--line);
 }
 
 .card-modules a {
@@ -439,7 +439,7 @@
   }
 
   .page-module-link:nth-child(n+4) {
-    border-top: 1px solid #d5dbd3;
+    border-top: 1px solid var(--line);
   }
 
   .page-module-link:nth-child(4) {
