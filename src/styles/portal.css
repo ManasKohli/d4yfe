@@ -145,32 +145,26 @@
 .button-dark,
 .button-light,
 .nav-cta {
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
 }
 
 .button-dark,
 .button-light {
-  padding: 15px 21px;
+  padding: 0 22px;
 }
 
 .nav-cta {
-  padding: 13px 18px 13px 20px;
+  min-height: 44px;
+  padding: 0 20px;
 }
 
 .button:focus-visible,
 .nav-cta:focus-visible,
 .text-link:focus-visible,
 .under-link:focus-visible,
-.site-header a:focus-visible,
-.module-details summary:focus-visible {
-  outline: 3px solid var(--coral);
-  outline-offset: 4px;
-}
-
-.button-dark:hover,
-.nav-cta:hover {
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-sm);
+.site-header a:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 3px;
 }
 
 .site-header nav {
@@ -214,32 +208,6 @@
 }
 
 .value-strip small {
-  font-size: 14px;
-}
-
-.module-tag {
-  font-size: 13px;
-}
-
-.module-main h3 {
-  font-size: 24px;
-}
-
-.module-main p {
-  font-size: 15px;
-  line-height: 1.75;
-}
-
-.module-details summary {
-  font-size: 15px;
-}
-
-.details-content {
-  font-size: 15px;
-  line-height: 1.7;
-}
-
-.modules-footnote {
   font-size: 14px;
 }
 
@@ -318,13 +286,9 @@
     font-size: 16px;
   }
 
-  .module-main h3 {
-    font-size: 21px;
-  }
+  
 
-  .module-main p {
-    font-size: 15px;
-  }
+  
 
   .approach-card p {
     font-size: 15px;
@@ -354,10 +318,10 @@
   }
 
   .intro-text p,
-  .section-heading>p,
-  .approach-heading>p,
-  .goals-heading>p,
-  .pilot-content>p {
+.section-heading>p,
+.approach-heading>p,
+.goals-heading>p,
+.pilot-content>p {
     font-size: 14px;
     line-height: 1.8;
   }
@@ -370,31 +334,17 @@
     font-size: 14px;
   }
 
-  .module-tag {
-    font-size: 12px;
-  }
+  
 
-  .module-main h3 {
-    font-size: 19px;
-  }
+  
 
-  .module-main p {
-    font-size: 15px;
-    line-height: 1.7;
-  }
+  
 
-  .module-details summary {
-    font-size: 14px;
-  }
+  
 
-  .details-content {
-    font-size: 15px;
-    width: calc(100vw - 100px);
-  }
+  
 
-  .modules-footnote {
-    font-size: 13px;
-  }
+  
 
   .approach-card h3 {
     font-size: 19px;

@@ -12,11 +12,11 @@
   display: flex;
   flex-direction: column;
   min-height: 286px;
-  transition: transform .2s,box-shadow .2s;
+  transition: transform var(--duration) var(--ease),box-shadow var(--duration) var(--ease);
 }
 
 .module-preview:hover {
-  transform: translateY(-3px);
+  border-color: var(--line-strong);
   box-shadow: var(--shadow-sm);
 }
 
@@ -214,28 +214,6 @@
   padding-top: 76px;
 }
 
-.support-page-intro+.pathway-section .application-support {
-  margin-top: 0;
-}
-
-.program-details-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  margin-top: 26px;
-  padding: 13px 17px;
-  background: var(--surface-2);
-  border: 1px solid var(--line);
-  color: var(--green);
-  font-size: 15px;
-  font-weight: 700;
-}
-
-.program-details-link:hover {
-  background: var(--card);
-  border-color: var(--line-strong);
-}
-
 .program-page-intro .breadcrumb-link {
   display: flex;
   width: max-content;
@@ -369,11 +347,7 @@
     padding-top: 54px;
   }
 
-  .program-details-link {
-    align-items: flex-start;
-    line-height: 1.5;
-    font-size: 14px;
-  }
+  
 
   .program-page-intro+.portal-section {
     padding-top: 44px;
