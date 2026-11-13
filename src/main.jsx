@@ -7,6 +7,7 @@ import './styles/styles.css';
 import './styles/portal.css';
 import './styles/curriculum.css';
 import './styles/pages.css';
+import './styles/app.css';
 
 // Keep old hash-based links (e.g. /#module-02) working before the router reads the URL.
 redirectLegacyHashUrl();

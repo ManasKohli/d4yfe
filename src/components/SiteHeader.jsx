@@ -30,6 +30,7 @@ export default function SiteHeader() {
         {navLinks.map(link => (
           <NavLink key={link.label} to={link.to} end={link.end} onClick={closeMenu}>{link.label}</NavLink>
         ))}
+        <NavLink to={paths.login} onClick={closeMenu}>Log in</NavLink>
         <Link to={paths.pilotSection} className="nav-cta" onClick={closeMenu}>Pilot cohort <Icon name="arrow" size={16}/></Link>
       </nav>
     </header>
