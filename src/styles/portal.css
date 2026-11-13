@@ -8,8 +8,8 @@
 }
 
 .portal-heading h2 {
-  font: 500 clamp(42px,5vw,64px)/1.07 var(--serif);
-  letter-spacing: -.075em;
+  font: 500 clamp(42px,5vw,64px)/1.05 var(--serif);
+  letter-spacing: -.04em;
   margin: 22px 0 14px;
 }
 
@@ -23,7 +23,7 @@
   max-width: 455px;
   color: var(--text-2);
   font-size: 15px;
-  line-height: 1.8;
+  line-height: 1.6;
   margin: 0;
 }
 
@@ -43,7 +43,7 @@
 
 .portal-number {
   font-size: 11px;
-  letter-spacing: .13em;
+  letter-spacing: .12em;
   color: var(--accent-text);
   font-weight: 700;
 }
@@ -66,13 +66,13 @@
 
 .portal-card h3 {
   font: 600 17px var(--serif);
-  letter-spacing: -.04em;
+  letter-spacing: -.02em;
   margin: 0 0 8px;
 }
 
 .portal-card p {
   font-size: 13px;
-  line-height: 1.7;
+  line-height: 1.6;
   color: var(--text-2);
   margin: 0;
 }
@@ -88,14 +88,14 @@
 
 .access-head>span {
   font-size: 11px;
-  letter-spacing: .14em;
+  letter-spacing: .12em;
   color: var(--accent-text);
   font-weight: 700;
 }
 
 .access-head>p {
   font: 500 22px/1.35 var(--serif);
-  letter-spacing: -.04em;
+  letter-spacing: -.02em;
   max-width: 300px;
   margin: 15px 0;
   color: var(--ink);
@@ -182,7 +182,7 @@
 
 .hero-lede {
   font-size: 17px;
-  line-height: 1.75;
+  line-height: 1.6;
 }
 
 .text-link,
@@ -200,7 +200,7 @@
 .goals-heading>p,
 .pilot-content>p {
   font-size: 15px;
-  line-height: 1.8;
+  line-height: 1.6;
 }
 
 .value-strip strong {
@@ -217,12 +217,12 @@
 
 .approach-card p {
   font-size: 15px;
-  line-height: 1.75;
+  line-height: 1.6;
 }
 
 .portal-heading>p {
   font-size: 15px;
-  line-height: 1.8;
+  line-height: 1.6;
 }
 
 .portal-card h3 {
@@ -231,7 +231,7 @@
 
 .portal-card p {
   font-size: 15px;
-  line-height: 1.75;
+  line-height: 1.6;
 }
 
 .access-head>p {
@@ -253,7 +253,7 @@
 
 .community-copy>p {
   font-size: 14px;
-  line-height: 1.85;
+  line-height: 1.6;
 }
 
 .community-list strong {
@@ -274,7 +274,7 @@
 
 .pilot-note p {
   font-size: 15px;
-  line-height: 1.75;
+  line-height: 1.6;
 }
 
 .footer-bottom {
@@ -306,7 +306,7 @@
 
   .hero-lede {
     font-size: 15px;
-    line-height: 1.75;
+    line-height: 1.6;
   }
 
   .text-link {
@@ -323,7 +323,7 @@
 .goals-heading>p,
 .pilot-content>p {
     font-size: 14px;
-    line-height: 1.8;
+    line-height: 1.6;
   }
 
   .value-strip strong {
@@ -352,7 +352,7 @@
 
   .approach-card p {
     font-size: 15px;
-    line-height: 1.75;
+    line-height: 1.6;
   }
 
   .portal-heading>p {
@@ -365,7 +365,7 @@
 
   .portal-card p {
     font-size: 15px;
-    line-height: 1.75;
+    line-height: 1.6;
   }
 
   .access-head>p {
@@ -387,7 +387,7 @@
 
   .community-copy>p {
     font-size: 15px;
-    line-height: 1.8;
+    line-height: 1.6;
   }
 
   .community-list strong {
@@ -410,7 +410,7 @@
 
   .pilot-note p {
     font-size: 14px;
-    line-height: 1.7;
+    line-height: 1.6;
   }
 
   .footer-bottom {
@@ -420,7 +420,7 @@
 
 @media (max-width:680px) {
   .portal-section {
-    padding: 76px 0;
+    padding: 64px 0;
   }
 
   .portal-heading h2 {

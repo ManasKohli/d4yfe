@@ -110,12 +110,12 @@ button {
 
 .brand-copy strong {
   font: 800 18px var(--serif);
-  letter-spacing: -.06em;
+  letter-spacing: -.02em;
 }
 
 .brand-copy small {
   font-size: 11px;
-  letter-spacing: .16em;
+  letter-spacing: .12em;
   margin-top: 4px;
 }
 
@@ -179,7 +179,7 @@ button {
   gap: 10px;
   font-size: 12px;
   font-weight: 700;
-  letter-spacing: .14em;
+  letter-spacing: .12em;
   color: var(--text-2);
 }
 
@@ -205,8 +205,8 @@ button {
 .community-copy h2,
 .goals-heading h2,
 .pilot-wrap h2 {
-  font: 500 clamp(50px,6.15vw,83px)/1.07 var(--serif);
-  letter-spacing: -.075em;
+  font: 500 clamp(50px,6.15vw,83px)/1.05 var(--serif);
+  letter-spacing: -.04em;
   margin: 34px 0 22px;
 }
 
@@ -226,7 +226,7 @@ button {
 .hero-lede {
   max-width: 435px;
   font-size: 15px;
-  line-height: 1.8;
+  line-height: 1.6;
   color: var(--text-2);
   margin: 0;
 }
@@ -336,7 +336,7 @@ button {
   align-items: center;
   gap: 9px;
   font-size: 11px;
-  letter-spacing: .14em;
+  letter-spacing: .12em;
   color: var(--text-3);
   font-weight: 700;
 }
@@ -363,8 +363,8 @@ button {
 }
 
 .intro-section {
-  padding-top: 124px;
-  padding-bottom: 115px;
+  padding-top: 96px;
+  padding-bottom: 96px;
 }
 
 .intro-kicker {
@@ -372,7 +372,7 @@ button {
   gap: 14px;
   align-items: center;
   font-size: 12px;
-  letter-spacing: .15em;
+  letter-spacing: .12em;
   font-weight: 700;
   color: var(--text-3);
 }
@@ -400,6 +400,7 @@ button {
 
 .intro-text {
   padding: 0 0 6px;
+  max-width: 62ch;
 }
 
 .intro-text p,
@@ -409,7 +410,7 @@ button {
 .pilot-content>p {
   color: var(--text-2);
   font-size: 15px;
-  line-height: 1.85;
+  line-height: 1.6;
   margin: 0 0 14px;
 }
 
@@ -485,8 +486,8 @@ button {
 }
 
 .approach-section {
-  padding-top: 120px;
-  padding-bottom: 128px;
+  padding-top: 96px;
+  padding-bottom: 96px;
 }
 
 .approach-heading {
@@ -523,7 +524,7 @@ button {
 
 .approach-index {
   font-size: 11px;
-  letter-spacing: .13em;
+  letter-spacing: .12em;
   color: var(--accent-text);
   font-weight: 700;
 }
@@ -573,8 +574,8 @@ button {
   position: absolute;
   top: 15px;
   right: 13px;
-  font-size: 10px;
-  letter-spacing: .1em;
+  font-size: 11px;
+  letter-spacing: .12em;
   color: var(--text-3);
 }
 
@@ -647,7 +648,7 @@ button {
 }
 
 .refine-paper b {
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: .12em;
   color: var(--text-3);
 }
@@ -675,14 +676,14 @@ button {
 
 .approach-card h3 {
   font: 600 18px var(--serif);
-  letter-spacing: -.04em;
+  letter-spacing: -.02em;
   margin: 0 0 10px;
 }
 
 .approach-card p {
   font-size: 14px;
   color: var(--text-2);
-  line-height: 1.8;
+  line-height: 1.6;
   margin: 0;
   max-width: 340px;
 }
@@ -716,7 +717,7 @@ button {
 .community-copy>p {
   max-width: 390px;
   font-size: 15px;
-  line-height: 1.85;
+  line-height: 1.6;
   color: var(--on-green-muted);
   margin: 22px 0 26px;
 }
@@ -742,13 +743,13 @@ button {
   align-items: center;
   color: var(--on-green-muted);
   font-size: 11px;
-  letter-spacing: .14em;
+  letter-spacing: .12em;
   font-weight: 700;
 }
 
 .community-quote {
   font: 500 22px/1.4 var(--serif);
-  letter-spacing: -.04em;
+  letter-spacing: -.02em;
   margin: 27px 0 22px;
   max-width: 390px;
 }
@@ -777,8 +778,8 @@ button {
 }
 
 .goals-section {
-  padding-top: 121px;
-  padding-bottom: 125px;
+  padding-top: 96px;
+  padding-bottom: 96px;
 }
 
 .goals-heading {
@@ -816,7 +817,7 @@ button {
 
 .outcomes-label {
   font-size: 11px;
-  letter-spacing: .15em;
+  letter-spacing: .12em;
   color: var(--text-3);
   font-weight: 700;
   position: relative;
@@ -825,7 +826,7 @@ button {
 
 .outcomes-big {
   font: 500 52px/1.06 var(--serif);
-  letter-spacing: -.07em;
+  letter-spacing: -.04em;
   position: relative;
   z-index: 1;
 }
@@ -858,7 +859,7 @@ button {
 }
 
 .pilot-section {
-  padding: 100px 0;
+  padding: 96px 0;
   background: var(--tint);
 }
 
@@ -907,7 +908,7 @@ button {
 
 .pilot-note p {
   font-size: 13px;
-  line-height: 1.7;
+  line-height: 1.6;
   color: var(--text-2);
   margin: 0;
 }
@@ -940,7 +941,7 @@ button {
 .footer-message {
   text-align: right;
   font: 500 22px/1.4 var(--serif);
-  letter-spacing: -.04em;
+  letter-spacing: -.02em;
 }
 
 .footer-message em {
@@ -957,7 +958,7 @@ button {
   justify-content: space-between;
   color: var(--on-green-muted);
   font-size: 11px;
-  letter-spacing: .1em;
+  letter-spacing: .12em;
 }
 
 .footer-bottom a:hover {
@@ -1087,7 +1088,7 @@ button {
 
   .eyebrow {
     font-size: 11px;
-    letter-spacing: .1em;
+    letter-spacing: .12em;
   }
 
   .eyebrow-rule {
@@ -1160,8 +1161,8 @@ button {
   
 
   .intro-section {
-    padding-top: 78px;
-    padding-bottom: 75px;
+    padding-top: 64px;
+    padding-bottom: 64px;
   }
 
   .intro-content {
@@ -1200,7 +1201,7 @@ button {
   }
 
   .pathway-section {
-    padding: 76px 0;
+    padding: 64px 0;
   }
 
   .section-heading {
@@ -1240,8 +1241,8 @@ button {
   
 
   .approach-section {
-    padding-top: 76px;
-    padding-bottom: 80px;
+    padding-top: 64px;
+    padding-bottom: 64px;
   }
 
   .approach-heading {
@@ -1272,7 +1273,7 @@ button {
   }
 
   .community-section {
-    padding: 75px 0;
+    padding: 64px 0;
   }
 
   .community-wrap {
@@ -1303,8 +1304,8 @@ button {
   }
 
   .goals-section {
-    padding-top: 78px;
-    padding-bottom: 80px;
+    padding-top: 64px;
+    padding-bottom: 64px;
   }
 
   .goals-heading {
@@ -1344,7 +1345,7 @@ button {
   }
 
   .pilot-section {
-    padding: 76px 0;
+    padding: 64px 0;
   }
 
   .pilot-wrap {
