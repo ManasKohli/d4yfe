@@ -28,9 +28,15 @@ npm run preview   # serve the production build locally
 | `/` | Program overview (sections: `#modules`, `#how-it-works`, `#goals`) |
 | `/modules/:slug` | A single module, e.g. `/modules/casper` |
 | `/program-details` | How it works (sections: `#portal`, `#options`, `#mentors`, `#community`, `#pilot`) |
+| `/login` | Sign in (stub until Supabase), with preview links to each area |
+| `/portal` | Student portal: home, `modules/:slug`, `assignments`, `feedback`, `sessions`, `resources`, `schools`, `community` |
+| `/mentor` | Mentor area: dashboard, `reviews`, `reviews/:id`, `availability`, `hours` |
+| `/admin` | Admin: overview, `students`, `mentors`, `reviews`, `hardship` |
 | `*` | 404 page |
 
-Module slugs: `applicant-strategy`, `casper`, `personal-statement`, `application-entries`, `final-check-in`.
+Module slugs: `applicant-strategy`, `dat`, `casper`, `personal-statement`, `application-entries`, `interview`, `final-check-in`.
+
+The signed-in areas run on sample data from `src/data/demo.js`. Connecting Supabase means replacing those imports with queries and replacing `signIn` in `src/lib/auth.js`.
 
 Old URLs (`/application-support`, `/#module-02`, `/#program-model`, …) redirect to the current pages.
 
@@ -43,7 +49,9 @@ src/
   routes.js           Central list of URL paths
   pages/              One component per route
   components/         Reusable UI (Icon, Reveal, LessonCard, CurriculumSection, ...)
-  data/modules.js     The five program modules
+  data/modules.js     The seven program modules (public content and portal chapters)
+  data/portal.js      Rules and labels for the signed-in areas
+  data/demo.js        Sample records until the database is connected
   data/program.js     Goals, portal, access options, mentors, community, pilot, outcomes
   hooks/              useDocumentTitle
   utils/              legacyHashRedirect

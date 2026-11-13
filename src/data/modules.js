@@ -1,5 +1,15 @@
-// The five Dental Pathway Program modules, from the D4Y program development proposal.
-// Each module has `parts` (workshop, practice, review, …); each part has `sections` rendered as lesson cards.
+// The seven Dental Pathway Program modules.
+// Public content (summary, outcomes, parts) comes from the D4Y program development proposal.
+// The chapter structure (videos, materials, module-wide items) comes from D4Y's portal prototype.
+//
+// Shape:
+//   parts      -> public module page: each part has `sections` rendered as lesson cards
+//   chapters   -> portal module page: { title, track?, videos: [{ title, minutes }], materials: [{ type, title }] }
+//   moduleWide -> portal items that belong to the whole module, not one chapter
+// Material types are labelled in `materialTypes` (src/data/portal.js).
+
+const video = (title, minutes) => ({ title, minutes });
+const item = (type, title) => ({ type, title });
 
 export const modules = [
   {
@@ -7,7 +17,7 @@ export const modules = [
     number: '01',
     title: 'Applicant Strategy & Prerequisites',
     tag: 'Workshop + checklist',
-    icon: 'compass',
+    track: 'Canada and US tracks',
     summary: 'Understand the dental school application process from start to finish and build an individualized strategy.',
     tags: ['Application timeline', 'School selection', 'Prerequisites', 'Deadlines'],
     outcomes: [
@@ -52,13 +62,98 @@ export const modules = [
         ],
       },
     ],
+    chapters: [
+      { title: 'Big picture: two systems', videos: [video('US vs Canada overview', 8)], materials: [item('visual', 'US and Canada timeline infographic'), item('download', 'Key dates sheet for this cycle')] },
+      { title: 'Building your school list', videos: [video('Choosing schools', 8)], materials: [item('template', 'School list worksheet'), item('spreadsheet', 'Application cost calculator'), item('link', 'School requirements hub')] },
+      {
+        title: 'AADSAS walkthrough',
+        track: 'US',
+        videos: [video('Personal information', 4), video('Academic history and transcripts', 6), video('Tests and letters', 5), video('Experiences and achievements', 6), video('Statement and program materials', 4), video('Submit and verification', 4)],
+        materials: [item('visual', 'Annotated AADSAS screenshots'), item('download', 'AADSAS section checklist'), item('download', 'Limits cheat sheet')],
+      },
+      { title: 'Canadian walkthroughs', track: 'Canada', videos: [video('Toronto', 5), video('Alberta', 5), video('McGill', 5)], materials: [item('link', 'School-by-school pages'), item('download', 'Canadian application checklist')] },
+      { title: 'Build your timeline', videos: [video('Working backward from deadlines', 5)], materials: [item('template', 'Timeline template'), item('assignment', 'Planning checklist and timeline')] },
+      { title: 'Common mistakes', videos: [video('Mistakes to avoid', 5)], materials: [item('quiz', '5-question check')] },
+    ],
+    moduleWide: [item('assignment', 'Planning checklist and timeline, mentor reviewed'), item('booking', 'Optional strategy session'), item('live', 'AADSAS overview workshop'), item('survey', 'Wrap-up survey')],
+  },
+  {
+    slug: 'dat',
+    number: '02',
+    title: 'DAT Preparation',
+    tag: 'Study plan + practice',
+    track: 'Canada and US tracks',
+    summary: 'Choose the right DAT, follow a personal study plan, practice weekly, and get mentor support from diagnostic to test day.',
+    tags: ['US and Canadian DAT', 'Study plan', 'Section strategies', 'Full-length practice'],
+    outcomes: [
+      'Know the difference between the US and Canadian DAT',
+      'Pick a test date that fits your application timeline',
+      'Follow a study plan built from your diagnostic scores',
+      'Review full-length practice tests and prepare for test day',
+    ],
+    parts: [
+      {
+        label: 'Workshop',
+        title: 'Planning for the DAT',
+        sections: [
+          {
+            heading: 'Before you study',
+            bullets: [
+              'The US and Canadian DAT explained',
+              'Timing your DAT',
+              'Taking and recording a diagnostic test',
+              'Building an 8, 12, or 16-week study plan',
+            ],
+          },
+          {
+            heading: 'Section strategies',
+            bullets: [
+              'Biology',
+              'General chemistry',
+              'Organic chemistry (US only)',
+              'Perceptual ability (PAT)',
+              'Reading comprehension',
+              'Quantitative reasoning (US only)',
+            ],
+          },
+        ],
+      },
+      {
+        label: 'Practice',
+        title: 'Practice and support',
+        sections: [
+          {
+            heading: 'Weekly practice',
+            body: 'Weekly drills by section, high-yield topic sheets, and full-length practice tests with a review log.',
+          },
+          {
+            heading: 'Mentor support',
+            body: 'A mentor reviews your study plan and diagnostic, with check-ins along the way and a score review after the test. Weekly office hours by section and biweekly accountability groups keep you on track.',
+          },
+        ],
+      },
+    ],
+    chapters: [
+      { title: 'DAT 101', videos: [video('US and Canadian DAT explained', 8)], materials: [item('visual', 'DAT comparison chart'), item('quiz', 'DAT basics quiz')] },
+      { title: 'Picking your test date', videos: [video('Timing your DAT', 5)], materials: [item('template', 'Test date planner')] },
+      { title: 'Diagnostic test', videos: [video('Taking and recording a diagnostic', 3)], materials: [item('link', 'Free full-length test'), item('spreadsheet', 'Score tracker'), item('practice', 'Record diagnostic scores')] },
+      { title: 'Building your study plan', videos: [video('Building your plan', 8)], materials: [item('template', '8, 12, and 16-week plans'), item('assignment', 'Study plan submission'), item('booking', 'DAT mentor plan review')] },
+      {
+        title: 'Section strategies',
+        videos: [video('Biology', 10), video('General chemistry', 10), video('Organic chemistry, US only', 10), video('PAT overview', 8), video('PAT question types', 12), video('Reading comprehension', 8), video('Quantitative reasoning, US only', 10)],
+        materials: [item('quiz', 'Weekly drills by section'), item('download', 'High-yield topic sheets')],
+      },
+      { title: 'Full-length practice', videos: [video('Reviewing full-lengths', 6)], materials: [item('template', 'Practice test review log'), item('link', 'Partner platforms and codes')] },
+      { title: 'Test day and next steps', videos: [video('Test day and retakes', 5)], materials: [item('download', 'Test day checklist'), item('booking', 'Score review session')] },
+    ],
+    moduleWide: [item('assignment', 'Study plan and diagnostic, mentor reviewed'), item('booking', '2 check-ins plus score review'), item('live', 'Weekly office hours by section'), item('live', 'Biweekly accountability groups'), item('survey', 'Wrap-up survey')],
   },
   {
     slug: 'casper',
-    number: '02',
+    number: '03',
     title: 'CASPer Preparation',
     tag: 'Workshop + practice',
-    icon: 'spark',
+    track: 'Canada emphasis',
     summary: 'Combine a structured workshop with timed practice scenarios and feedback on your responses.',
     tags: ['Question types', 'Time management', 'Ethical reasoning', 'Mock scenarios'],
     outcomes: [
@@ -115,13 +210,24 @@ export const modules = [
         ],
       },
     ],
+    chapters: [
+      { title: 'What CASPer is', videos: [video('What CASPer is and who requires it', 6)], materials: [item('link', 'Schools requiring CASPer'), item('download', 'Test booking checklist')] },
+      { title: 'The format', videos: [video('Sections and timing', 5)], materials: [item('visual', 'Format infographic')] },
+      { title: 'What raters look for', videos: [video('Qualities raters assess', 6)], materials: [item('download', 'Qualities cheat sheet')] },
+      { title: 'D4Y response framework', videos: [video('The 5-step framework', 10)], materials: [item('download', 'Framework card'), item('download', 'Two worked examples')] },
+      { title: 'Scenario types', videos: [video('Ethical dilemmas', 4), video('Interpersonal conflict', 4), video('Policy and opinion', 4), video('Tell us about a time', 4), video('Healthcare scenarios', 4)], materials: [item('practice', 'Scenario bank by type')] },
+      { title: 'Video responses', videos: [video('Answering on camera in 60 seconds', 6)], materials: [item('download', 'Camera setup checklist'), item('practice', 'Record 2 practice answers')] },
+      { title: 'Typed responses', videos: [video('Answering 2 questions in 3.5 minutes', 6)], materials: [item('quiz', 'Timed typing drill'), item('practice', 'Typed practice set')] },
+      { title: 'Test day', videos: [video('Logistics and booking', 4)], materials: [item('practice', 'Full 11-scenario timed mock'), item('download', 'Test day checklist')] },
+    ],
+    moduleWide: [item('assignment', '2 video and 3 typed responses, mentor reviewed'), item('live', 'Group practice sessions'), item('survey', 'Wrap-up survey')],
   },
   {
     slug: 'personal-statement',
-    number: '03',
+    number: '04',
     title: 'Personal Statement Lab',
     tag: 'Workshop + review',
-    icon: 'pen',
+    track: 'Canada and US tracks',
     summary: 'Communicate your experiences and motivations effectively, with peer discussion and optional individual review.',
     tags: ['Storytelling', 'Reflection', 'Narrative', 'Revision'],
     outcomes: [
@@ -180,13 +286,24 @@ export const modules = [
         ],
       },
     ],
+    chapters: [
+      { title: 'What committees want', videos: [video('What committees look for', 8)], materials: [item('visual', 'Prompt and limit box'), item('download', 'Annotated sample excerpts')] },
+      { title: 'Brainstorming', videos: [video('Finding your story', 6)], materials: [item('template', 'Brainstorm workbook')] },
+      { title: 'Structure', videos: [video('Three ways to structure', 8)], materials: [item('template', 'Three outline templates')] },
+      { title: 'Showing reflection', videos: [video('Show, don’t tell', 8)], materials: [item('download', 'Weak vs strong examples')] },
+      { title: 'Openings and endings', videos: [video('Strong openings and endings', 5)], materials: [item('template', 'Opening practice worksheet')] },
+      { title: 'Revising', videos: [video('Self-editing', 6)], materials: [item('download', 'Self-edit checklist'), item('link', 'Peer circle sign-up')] },
+      { title: 'Formatting for AADSAS', track: 'US', videos: [video('Plain text and character counts', 3)], materials: [item('download', 'Paste-in guide'), item('tool', 'Character counter')] },
+      { title: 'Canadian essays', track: 'Canada', videos: [video('Personal statements', 5), video('Accomplishment essays', 5)], materials: [item('download', 'School-by-school essay guide')] },
+    ],
+    moduleWide: [item('assignment', 'Draft 1 for content review'), item('assignment', 'Final draft for proofread'), item('live', 'Peer review circles'), item('survey', 'Wrap-up survey')],
   },
   {
     slug: 'application-entries',
-    number: '04',
+    number: '05',
     title: 'Experiences & Application Entries',
     tag: 'Workshop + review',
-    icon: 'layers',
+    track: 'Canada and US tracks',
     summary: 'Describe what you did, what you learned, and why it matters, within each application’s character limits.',
     tags: ['Selecting experiences', 'Showing impact', 'Character limits'],
     outcomes: [
@@ -240,13 +357,77 @@ export const modules = [
         ],
       },
     ],
+    chapters: [
+      { title: 'Experience log', videos: [video('Building your log', 6)], materials: [item('spreadsheet', 'Experience log spreadsheet')] },
+      { title: 'Choosing categories', track: 'US', videos: [video('Picking the right category', 5)], materials: [item('download', 'Category decision guide')] },
+      { title: '600-character entries', videos: [video('Context, action, impact, reflection', 8)], materials: [item('download', 'Weak vs strong entries'), item('template', 'Entry template'), item('tool', 'Character counter')] },
+      { title: 'Your top six', track: 'US', videos: [video('Choosing your most important six', 5)], materials: [item('template', 'Top six worksheet')] },
+      { title: 'Achievements', videos: [video('Awards, honors, scholarships', 4)], materials: [item('template', 'Achievement sorter')] },
+      { title: 'Canadian formats', track: 'Canada', videos: [video('Alberta personal experiences', 5), video('McGill CV and verifiers', 5)], materials: [item('template', 'CV template')] },
+      { title: 'Documenting hours', videos: [video('Keeping records now', 4)], materials: [item('spreadsheet', 'Hours and verifier tracker')] },
+    ],
+    moduleWide: [item('assignment', 'Experience log and 3 entries, mentor reviewed'), item('survey', 'Wrap-up survey')],
+  },
+  {
+    slug: 'interview',
+    number: '06',
+    title: 'Interview Preparation',
+    tag: 'Practice + mock interview',
+    track: 'Canada and US tracks',
+    summary: 'Know each school’s interview format, practice on camera and live, and get feedback before interview season.',
+    tags: ['MMI', 'Panel interviews', 'Video assessments', 'Ethics'],
+    outcomes: [
+      'Know the interview format at each school you apply to',
+      'Prepare answers to core questions such as why dentistry',
+      'Work through MMI stations and ethics scenarios',
+      'Practice on camera and in a mock interview with a mentor',
+    ],
+    parts: [
+      {
+        label: 'Workshop',
+        title: 'Interview formats and questions',
+        sections: [
+          {
+            heading: 'What the lessons cover',
+            bullets: [
+              'MMI, panel, traditional, and video interviews',
+              'Why dentistry, and why this school',
+              'MMI station types',
+              'A framework for ethics questions',
+              'Recorded video assessments',
+              'Camera, sound, and professionalism for virtual interviews',
+              'Thank-you notes and update letters',
+            ],
+          },
+        ],
+      },
+      {
+        label: 'Practice',
+        title: 'Practice with a mentor',
+        sections: [
+          {
+            heading: 'Recorded and live practice',
+            body: 'Record practice answers for review, work through an MMI station practice set, and book a mock interview with a mentor.',
+          },
+        ],
+      },
+    ],
+    chapters: [
+      { title: 'Interview formats', videos: [video('MMI, panel, traditional, and video', 8)], materials: [item('visual', 'Format comparison chart'), item('link', 'Formats in school hub')] },
+      { title: 'Core questions', videos: [video('Why dentistry and why us', 10)], materials: [item('download', 'Question bank'), item('template', 'Answer prep worksheet')] },
+      { title: 'Ethics and MMI', videos: [video('MMI station types', 6), video('Ethics framework', 6)], materials: [item('practice', 'MMI station practice set')] },
+      { title: 'Recorded video assessments', videos: [video('Kira-style practice', 6)], materials: [item('practice', 'Record 3 practice answers')] },
+      { title: 'Virtual setup', videos: [video('Camera, sound, professionalism', 4)], materials: [item('download', 'Virtual setup checklist')] },
+      { title: 'After the interview', videos: [video('Thank-you notes and updates', 4)], materials: [item('template', 'Thank-you and update letter templates')] },
+    ],
+    moduleWide: [item('booking', 'Mock interview with a mentor'), item('assignment', 'Recorded practice answers'), item('survey', 'Wrap-up survey')],
   },
   {
     slug: 'final-check-in',
-    number: '05',
+    number: '07',
     title: 'Final Application Check-In',
     tag: 'One-on-one session',
-    icon: 'check',
+    track: 'Canada and US tracks',
     summary: 'Bring everything together in an individual session with a current dental student, dentist, or qualified D4Y mentor.',
     tags: ['Strategy', 'School selection', 'Interview prep', 'Q&A'],
     outcomes: [
@@ -275,7 +456,7 @@ export const modules = [
           },
           {
             heading: 'What the check-in is',
-            body: 'The session is a final application check with someone who has navigated the process. It offers guidance and a second perspective.',
+            body: 'A 45-minute session with someone who has navigated the process, ending with a written action plan. It offers guidance and a second perspective.',
             note: 'It is not an admissions evaluation and does not guarantee admission.',
           },
         ],
@@ -291,7 +472,19 @@ export const modules = [
         ],
       },
     ],
+    chapters: [
+      { title: 'Pre-session questionnaire', videos: [video('How to prepare', 3)], materials: [item('template', 'Pre-session questionnaire'), item('download', 'Session prep sheet')] },
+      { title: 'Book your session', videos: [video('What to expect', 2)], materials: [item('booking', 'Booking calendar'), item('visual', '45-minute agenda')] },
+      { title: 'Your action plan', videos: [], materials: [item('download', 'Mentor notes, in the Feedback tab'), item('template', 'Next-steps checklist')] },
+    ],
+    moduleWide: [item('booking', '1 final check-in session'), item('survey', 'Wrap-up survey')],
   },
 ];
 
 export const findModule = (slug) => modules.find(module => module.slug === slug);
+
+/** "2.4" style code used for chapters and video file names. */
+export const chapterCode = (module, chapterIndex) => `${Number(module.number)}.${chapterIndex + 1}`;
+
+/** "Module 2" style short label for a slug. */
+export const moduleLabel = (slug) => `Module ${Number(findModule(slug)?.number)}`;

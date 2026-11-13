@@ -63,10 +63,11 @@ export const portalFeatures = [
 ];
 
 export const accessOptions = [
-  { title: 'Individual modules', description: 'Purchase only the modules you need: Applicant Strategy, CASPer, Personal Statement, Application Entries, or Final Check-In.' },
+  { title: 'Individual modules', description: 'Purchase only the modules you need: Applicant Strategy, DAT, CASPer, Personal Statement, Application Entries, Interview, or Final Check-In.' },
   { title: 'Essential package', description: 'Educational workshops and resources.' },
   { title: 'Application package', description: 'Workshops, application resources, and selected feedback.' },
   { title: 'Premium package', description: 'The full program, with individualized reviews and a mentorship check-in.' },
+  { title: 'Hardship seats', description: 'Students facing financial hardship can apply for a seat. Two committee members review each application without seeing the applicant’s name.' },
 ];
 
 export const mentorNetwork = [

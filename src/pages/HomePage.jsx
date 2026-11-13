@@ -15,6 +15,8 @@ const valueProps = [
 ];
 
 const pad = (number) => String(number).padStart(2, '0');
+const numberWords = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten'];
+const moduleCount = numberWords[modules.length] ?? String(modules.length);
 
 function Hero() {
   return (
@@ -27,7 +29,7 @@ function Hero() {
           <Link className="button button-dark" to={paths.modulesSection}>Explore the modules <Icon name="arrow" size={17}/></Link>
           <Link className="text-link" to={paths.howItWorksSection}>How it works <span>↓</span></Link>
         </div>
-        <div className="hero-note"><span className="note-line"/> Five modules. Choose the ones you need.</div>
+        <div className="hero-note"><span className="note-line"/> {moduleCount} modules. Choose the ones you need.</div>
       </div>
       <div className="hero-art">
         <div className="art-wash"/>
@@ -56,7 +58,7 @@ function IntroSection() {
           <div className="intro-text">
             <p>The Dental Pathway Program is a structured, digital program that supports aspiring dental students throughout the dental school application process. It brings practical guidance, workshops, application resources, practice opportunities, and individualized feedback into one place.</p>
             <p>Rather than one general program every student must complete, it is modular: students access and pay for the specific areas where they need support.</p>
-            <Link to={paths.modulesSection} className="under-link">See the five modules <Icon name="arrow" size={16}/></Link>
+            <Link to={paths.modulesSection} className="under-link">See the {moduleCount.toLowerCase()} modules <Icon name="arrow" size={16}/></Link>
           </div>
         </Reveal>
       </div>

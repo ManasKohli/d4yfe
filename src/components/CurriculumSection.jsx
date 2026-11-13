@@ -1,7 +1,8 @@
 import LessonCard from './LessonCard.jsx';
 import TagList from './TagList.jsx';
+import { chapterCode } from '../data/modules.js';
 
-/** Full content of one module: overview and outcomes, then each part (workshop, practice, review…) with its lesson cards. */
+/** Full content of one module: overview and outcomes, each part (workshop, practice, review…) with its lesson cards, then the chapter outline. */
 export default function CurriculumSection({ module }) {
   return (
     <section className="curriculum-panel" aria-labelledby={`module-${module.slug}-title`}>
@@ -24,6 +25,20 @@ export default function CurriculumSection({ module }) {
             <div className="lesson-grid">{part.sections.map(section => <LessonCard key={section.heading} section={section}/>)}</div>
           </section>
         ))}
+        {module.chapters && (
+          <section className="curriculum-day" aria-label="Chapters in the student portal">
+            <div className="day-heading"><span>CHAPTERS</span><h3>In the student portal</h3></div>
+            <ol className="chapter-outline">
+              {module.chapters.map((chapter, index) => (
+                <li key={chapter.title}>
+                  <span className="chapter-code">{chapterCode(module, index)}</span>
+                  <strong>{chapter.title}</strong>
+                  {chapter.track && <small>{chapter.track} only</small>}
+                </li>
+              ))}
+            </ol>
+          </section>
+        )}
       </div>
     </section>
   );
