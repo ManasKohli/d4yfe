@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-export const SITE_TITLE = 'Dental Research Program — Dentistry for Youth';
+export const SITE_TITLE = 'Dental Pathway Program — Dentistry for Youth';
 
 /** Sets the browser tab title for the current page. */
 export default function useDocumentTitle(pageTitle) {

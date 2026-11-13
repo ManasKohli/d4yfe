@@ -72,7 +72,7 @@
   border-bottom: 1px solid #e1e3dd;
 }
 
-.curriculum-overview h3 {
+.curriculum-overview h2 {
   font: 600 clamp(29px,3.3vw,43px)/1.15 var(--serif);
   letter-spacing: -.06em;
   margin: 13px 0 10px;
@@ -159,7 +159,7 @@
   letter-spacing: .1em;
 }
 
-.day-heading h4 {
+.day-heading h3 {
   font: 600 23px/1.25 var(--serif);
   letter-spacing: -.04em;
   margin: 0;
@@ -181,7 +181,7 @@
   border-radius: 3px;
 }
 
-.lesson-card h5 {
+.lesson-card h4 {
   font: 700 16px/1.4 'DM Sans',sans-serif;
   color: #29463a;
   margin: 0 0 12px;
@@ -407,7 +407,7 @@
     padding: 24px 19px 21px;
   }
 
-  .curriculum-overview h3 {
+  .curriculum-overview h2 {
     font-size: 28px;
   }
 
@@ -464,7 +464,7 @@
     margin-top: 2px;
   }
 
-  .day-heading h4 {
+  .day-heading h3 {
     font-size: 19px;
   }
 
@@ -477,7 +477,7 @@
     padding: 17px 16px;
   }
 
-  .lesson-card h5 {
+  .lesson-card h4 {
     font-size: 15px;
   }
 

@@ -1,28 +1,27 @@
 import LessonCard from './LessonCard.jsx';
 import TagList from './TagList.jsx';
 
-/** Full content of one curriculum module: overview, outcomes, then lessons grouped by day. */
+/** Full content of one module: overview and outcomes, then each part (workshop, practice, review…) with its lesson cards. */
 export default function CurriculumSection({ module }) {
   return (
-    <section className="curriculum-panel" aria-label={`Module ${module.number}: ${module.title}`}>
+    <section className="curriculum-panel" aria-labelledby={`module-${module.slug}-title`}>
       <div className="curriculum-overview">
         <div className="curriculum-module-label">MODULE {module.number}</div>
-        <h3>{module.title}</h3>
+        <h2 id={`module-${module.slug}-title`}>{module.title}</h2>
         <p>{module.summary}</p>
-        {module.frameworks && <p className="framework-note"><strong>Frameworks used:</strong> {module.frameworks}</p>}
         <TagList tags={module.tags}/>
         {module.outcomes && (
           <div className="outcomes-box">
-            <strong>By the end of this module, students should be able to:</strong>
+            <strong>By the end of this module, you will be able to:</strong>
             <ul>{module.outcomes.map(item => <li key={item}>{item}</li>)}</ul>
           </div>
         )}
       </div>
       <div className="curriculum-days">
-        {module.days.map((day, dayIndex) => (
-          <section className="curriculum-day" key={day.title}>
-            <div className="day-heading"><span>DAY {dayIndex + 1}</span><h4>{day.title}</h4></div>
-            <div className="lesson-grid">{day.sections.map(section => <LessonCard key={section.heading} section={section}/>)}</div>
+        {module.parts.map(part => (
+          <section className="curriculum-day" key={part.label} aria-label={`${part.label}: ${part.title}`}>
+            <div className="day-heading"><span>{part.label.toUpperCase()}</span><h3>{part.title}</h3></div>
+            <div className="lesson-grid">{part.sections.map(section => <LessonCard key={section.heading} section={section}/>)}</div>
           </section>
         ))}
       </div>

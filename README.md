@@ -1,6 +1,6 @@
-# D4Y Dental Research Program
+# D4Y Dental Pathway Program
 
-Website for Dentistry 4 Youth's Dental Research Program, a three-module program that teaches pre-dental students to read scientific literature, develop a research question, and write scoping review objectives.
+Website for Dentistry for Youth's Dental Pathway Program: a modular, digital program that supports students through the dental school application process. Content follows the D4Y program development proposal; see `CLAUDE.md` for the content and design rules.
 
 Live site: https://eduplatform-rosy.vercel.app/
 
@@ -25,13 +25,14 @@ npm run preview   # serve the production build locally
 
 | Path | Page |
 | --- | --- |
-| `/` | Program overview (sections: `#modules`, `#approach`) |
-| `/modules/:moduleNumber` | A single curriculum module, e.g. `/modules/01` |
-| `/application-support` | Dental school application support modules |
-| `/program-details` | Program model (sections: `#community`, `#goals`) |
+| `/` | Program overview (sections: `#modules`, `#how-it-works`, `#goals`) |
+| `/modules/:slug` | A single module, e.g. `/modules/casper` |
+| `/program-details` | How it works (sections: `#portal`, `#options`, `#mentors`, `#community`, `#pilot`) |
 | `*` | 404 page |
 
-Old hash links (e.g. `/#module-02`, `/#program-model`) are redirected to the new paths on load by `src/utils/legacyHashRedirect.js`.
+Module slugs: `applicant-strategy`, `casper`, `personal-statement`, `application-entries`, `final-check-in`.
+
+Old URLs (`/application-support`, `/#module-02`, `/#program-model`, …) redirect to the current pages.
 
 ## Project structure
 
@@ -42,23 +43,25 @@ src/
   routes.js           Central list of URL paths
   pages/              One component per route
   components/         Reusable UI (Icon, Reveal, LessonCard, CurriculumSection, ...)
-  data/               Page content, separated from the UI
+  data/modules.js     The five program modules
+  data/program.js     Goals, portal, access options, mentors, community, pilot, outcomes
   hooks/              useDocumentTitle
   utils/              legacyHashRedirect
   styles/             Global and page-level CSS
 ```
 
-## Editing curriculum content
+## Editing content
 
-All research curriculum content is stored in `src/data/curriculum.js`. Each module has `days`, and each day has `sections`. A section can use any of these optional fields, and `LessonCard` picks the matching layout:
+Module content is in `src/data/modules.js`. Each module has `parts` (workshop, practice, review, …) and each part has `sections`. A section can use any of these optional fields, and `LessonCard` picks the matching layout:
 
 - `intro`, `body`, `note`: paragraphs
 - `bullets`: a list
 - `chips`: pill labels
-- `threeCols`, `fourCs`, `comparison`: grids of `[title, text]` pairs
 
-To add a module, add an object to the `curriculum` array. The overview cards, module tabs, previous/next links and the `/modules/:moduleNumber` page update automatically.
+Adding a module to the array updates the hero list, module cards, module tabs, and previous/next links automatically.
+
+Program-level content (goals, portal features, packages, mentor network, community, pilot) is in `src/data/program.js`.
 
 ## Deployment
 
-The repository is connected to Vercel. `vercel.json` sets the Vite build and rewrites every path to `index.html`, so deep links like `/modules/02` load correctly. Hashed files in `/assets` are cached for a long time.
+The repository is connected to Vercel. `vercel.json` sets the Vite build and rewrites every path to `index.html`, so deep links like `/modules/casper` load correctly. Hashed files in `/assets` are cached for a long time.

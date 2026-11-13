@@ -856,13 +856,6 @@ button {
   margin: 0;
 }
 
-.practice-spark {
-  position: absolute;
-  top: 28px;
-  right: 29%;
-  color: var(--coral);
-  font-size: 22px;
-}
 
 .visual-refine {
   background: #e9ece9;
@@ -904,14 +897,6 @@ button {
   margin-top: 8px;
 }
 
-.refine-pen {
-  position: absolute;
-  right: 25%;
-  top: 35px;
-  font-size: 33px;
-  color: #7d897f;
-  transform: rotate(34deg);
-}
 
 .approach-card h3 {
   font: 600 18px var(--serif);
@@ -1054,15 +1039,6 @@ button {
   overflow: hidden;
 }
 
-.outcomes-card:after {
-  content: '✳';
-  position: absolute;
-  right: -13px;
-  top: 73px;
-  font-size: 160px;
-  color: #e2e2d8;
-  font-weight: 400;
-}
 
 .outcomes-label {
   font-size: 11px;

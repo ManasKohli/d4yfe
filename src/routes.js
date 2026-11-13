@@ -2,11 +2,12 @@
 export const paths = {
   home: '/',
   modulesSection: '/#modules',
-  approachSection: '/#approach',
-  applicationSupport: '/application-support',
+  howItWorksSection: '/#how-it-works',
   programDetails: '/program-details',
-  goalsSection: '/program-details#goals',
+  portalSection: '/program-details#portal',
+  mentorsSection: '/program-details#mentors',
   communitySection: '/program-details#community',
+  pilotSection: '/program-details#pilot',
 };
 
-export const modulePath = (moduleNumber) => `/modules/${moduleNumber}`;
+export const modulePath = (slug) => `/modules/${slug}`;

@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import { Link } from 'react-router';
+import { Link, NavLink } from 'react-router';
 import Brand from './Brand.jsx';
 import Icon from './Icon.jsx';
 import { paths } from '../routes.js';
 
 const navLinks = [
-  { label: 'Research program', to: paths.home },
-  { label: 'Application support', to: paths.applicationSupport },
+  { label: 'Program', to: paths.home, end: true },
+  { label: 'Modules', to: paths.modulesSection },
   { label: 'How it works', to: paths.programDetails },
 ];
 
@@ -16,13 +16,21 @@ export default function SiteHeader() {
 
   return (
     <header className="site-header">
-      <Brand aria-label="Dentistry for Youth home" onClick={closeMenu}/>
-      <button className="menu-toggle" aria-label="Toggle navigation" aria-expanded={menuOpen} onClick={() => setMenuOpen(open => !open)}>
+      <Brand aria-label="Dentistry for Youth, home" onClick={closeMenu}/>
+      <button
+        className="menu-toggle"
+        aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+        aria-expanded={menuOpen}
+        aria-controls="site-nav"
+        onClick={() => setMenuOpen(open => !open)}
+      >
         <Icon name="menu"/>
       </button>
-      <nav className={menuOpen ? 'nav-open' : ''} aria-label="Main navigation">
-        {navLinks.map(link => <Link key={link.label} to={link.to} onClick={closeMenu}>{link.label}</Link>)}
-        <Link to={paths.modulesSection} className="nav-cta" onClick={closeMenu}>Explore the modules <Icon name="arrow" size={16}/></Link>
+      <nav id="site-nav" className={menuOpen ? 'nav-open' : ''} aria-label="Main">
+        {navLinks.map(link => (
+          <NavLink key={link.label} to={link.to} end={link.end} onClick={closeMenu}>{link.label}</NavLink>
+        ))}
+        <Link to={paths.pilotSection} className="nav-cta" onClick={closeMenu}>Pilot cohort <Icon name="arrow" size={16}/></Link>
       </nav>
     </header>
   );
