@@ -1,5 +1,12 @@
 // Program-level content from the D4Y Dental Pathway Program proposal.
 
+/** The three short points under the home page introduction. */
+export const valueProps = [
+  { title: 'Modular', description: 'Take only the modules you need' },
+  { title: 'Practical', description: 'Workshops, assignments, and timed practice' },
+  { title: 'Personal', description: 'Feedback from dental students and dentists' },
+];
+
 export const programGoals = [
   'Provide a clear understanding of the dental school application process',
   'Help students develop a strategic, personalized application plan',
@@ -77,6 +84,14 @@ export const mentorNetwork = [
   'D4Y alumni',
   'Previous D4Y board members',
   'Other qualified application mentors',
+];
+
+/** How the reviewer network works, shown beside the list of who is in it. */
+export const mentorNetworkNotes = [
+  'Reviewers are compensated per review or session.',
+  'Students can choose the type of feedback they want.',
+  'A network, rather than a single reviewer, lets the program support more students.',
+  'Over time, the network becomes a formal D4Y Dental Mentor Network.',
 ];
 
 export const communityItems = [

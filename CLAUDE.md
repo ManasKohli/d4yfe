@@ -41,21 +41,24 @@ Do **not** publish internal planning material from the doc: budgets, revenue pro
 ```
 src/
   main.jsx            Entry: router, styles, legacy hash redirect
-  App.jsx             Route table: public layout, then /portal, /mentor, /admin
-  routes.js           All URL paths in one place
-  layouts/            PublicLayout (header + footer), AppShell (signed-in areas)
-  pages/              One component per route; student/, mentor/, admin/ for the signed-in areas
-  components/         Reusable UI
-  lib/                auth.js (sign-in stub for Supabase), format.js (dates), reviews.js
+  app/                App.jsx (route table, lazy areas), paths.js (all URL paths), ErrorBoundary, ScrollManager, legacyRedirects
+  features/site/      Public site: PublicLayout, pages/, components/
+  features/auth/      LoginPage, auth.js (sign-in stub for Supabase)
+  features/student/   StudentRoutes.jsx, pages/, components/
+  features/mentor/    MentorRoutes.jsx, pages/, components/
+  features/admin/     AdminRoutes.jsx, pages/, reviewAge.js
+  shared/             components/, layouts/AppShell, hooks/, lib/format.js: used by more than one feature
   data/modules.js     The seven modules: public content plus portal chapters
   data/program.js     Goals, portal, access options, mentors, community, pilot, outcomes
   data/portal.js      Signed-in area rules and labels: nav, statuses, rubrics, escalation
   data/demo.js        Sample records standing in for the database
-  styles/             styles.css (base + home), portal.css, curriculum.css, pages.css, app.css (signed-in areas)
+  styles/             index.css (cascade order), tokens.css, base.css, public/, app/ (signed-in areas)
 ```
+
+Imports use the `@/` alias for `src/`. Dependencies point one way: `app` → `features` → `shared` → `data`. Features never import from each other.
 
 ## Checks before finishing
 
-- `npm run build` passes
+- `npm run check` (lint, then build) passes
 - Every page renders at 1360px and 390px without horizontal scroll
 - All copy traces back to the doc
