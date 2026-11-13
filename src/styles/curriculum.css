@@ -1,90 +1,37 @@
-.curriculum-tabs {
-  display: grid;
-  grid-template-columns: repeat(3,minmax(0,1fr));
-  border-bottom: 1px solid #cfd5cc;
-  margin: 12px 0 0;
-}
 
-.curriculum-tab {
-  appearance: none;
-  text-align: left;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 10px;
-  min-height: 110px;
-  padding: 19px 24px 20px;
-  background: transparent;
-  border: 0;
-  border-top: 2px solid transparent;
-  color: #617269;
-  cursor: pointer;
-  transition: background .2s,color .2s,border .2s;
-}
 
-.curriculum-tab+.curriculum-tab {
-  border-left: 1px solid #d5dbd3;
-}
-
-.curriculum-tab:hover {
-  background: #f5f6f1;
-  color: var(--ink);
-}
-
-.curriculum-tab.active {
-  background: #f8f8f3;
-  border-top-color: var(--coral);
-  color: var(--ink);
-}
-
-.curriculum-tab span,
 .curriculum-module-label {
   font-size: 13px;
   font-weight: 700;
-  letter-spacing: .13em;
-  color: #a17462;
-}
-
-.curriculum-tab strong {
-  font: 600 17px/1.25 var(--serif);
-  letter-spacing: -.035em;
-  max-width: 90%;
-}
-
-.curriculum-tab i {
-  font-style: normal;
-  position: absolute;
-  right: 19px;
-  bottom: 20px;
-  color: #839188;
+  letter-spacing: .12em;
+  color: var(--accent-text);
 }
 
 .curriculum-panel {
-  background: #fbfaf6;
-  border: 1px solid #e0e3dc;
+  background: var(--card);
+  border: 1px solid var(--line);
   border-top: 0;
-  box-shadow: 0 6px 20px #203c3010;
+  box-shadow: var(--shadow-sm);
 }
 
 .curriculum-overview {
   padding: 38px 44px 31px;
-  border-bottom: 1px solid #e1e3dd;
+  border-bottom: 1px solid var(--line);
 }
 
 .curriculum-overview h2 {
   font: 600 clamp(29px,3.3vw,43px)/1.15 var(--serif);
-  letter-spacing: -.06em;
+  letter-spacing: -.02em;
   margin: 13px 0 10px;
   color: var(--ink);
 }
 
 .curriculum-overview>p {
   font-size: 16px;
-  line-height: 1.75;
-  color: #66756b;
+  line-height: 1.6;
+  color: var(--text-2);
   margin: 0;
-  max-width: 850px;
+  max-width: 68ch;
 }
 
 .curriculum-overview .framework-note {
@@ -102,27 +49,27 @@
 
 .curriculum-tags span,
 .lesson-chips span {
-  border: 1px solid #d6ddd4;
-  border-radius: 999px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
   padding: 7px 12px;
   font-size: 14px;
-  color: #476054;
-  background: #f7f8f3;
+  color: var(--ink-2);
+  background: var(--surface-2);
 }
 
 .outcomes-box {
-  background: #eff2ec;
+  background: var(--tint);
   border-left: 2px solid var(--coral);
   padding: 17px 20px;
   margin-top: 22px;
-  color: #52635a;
+  color: var(--ink-2);
   font-size: 15px;
   line-height: 1.65;
 }
 
 .outcomes-box strong {
   font-size: 15px;
-  color: #29463a;
+  color: var(--ink-2);
 }
 
 .outcomes-box ul {
@@ -152,16 +99,16 @@
   flex: none;
   background: var(--green);
   color: #fff;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   padding: 7px 12px;
   font-size: 12px;
   font-weight: 700;
-  letter-spacing: .1em;
+  letter-spacing: .12em;
 }
 
 .day-heading h3 {
   font: 600 23px/1.25 var(--serif);
-  letter-spacing: -.04em;
+  letter-spacing: -.02em;
   margin: 0;
   color: var(--ink);
 }
@@ -175,23 +122,23 @@
 
 .lesson-card {
   min-width: 0;
-  background: #fff;
+  background: var(--card);
   padding: 22px 23px;
-  border: 1px solid #e3e6df;
-  border-radius: 3px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
 }
 
 .lesson-card h4 {
   font: 700 16px/1.4 'DM Sans',sans-serif;
-  color: #29463a;
+  color: var(--ink-2);
   margin: 0 0 12px;
 }
 
 .lesson-card p,
 .lesson-card li {
   font-size: 15px;
-  line-height: 1.75;
-  color: #66756b;
+  line-height: 1.6;
+  color: var(--text-2);
 }
 
 .lesson-card p {
@@ -207,13 +154,13 @@
   margin-top: 5px;
 }
 
-.lesson-note {
-  background: #f4f1e8;
-  border-radius: 2px;
+.lesson-card .lesson-note {
+  background: var(--tint-warm);
+  border-radius: var(--radius);
   padding: 12px 14px;
-  margin: 15px 0 0!important;
+  margin: 15px 0 0;
   border-left: 2px solid #d2775e;
-  color: #56665c!important;
+  color: var(--ink-2);
 }
 
 .lesson-chips {
@@ -221,183 +168,33 @@
 }
 
 .lesson-chips span {
-  background: #f5f6f1;
-}
-
-.concept-grid,
-.framework-grid,
-.comparison-grid {
-  display: grid;
-  grid-template-columns: repeat(3,minmax(0,1fr));
-  gap: 8px;
-  margin-top: 14px;
-}
-
-.concept-grid>div,
-.framework-grid>div,
-.comparison-grid>div {
-  min-width: 0;
-  background: #f3f5f0;
-  padding: 12px;
-  border-radius: 2px;
-}
-
-.concept-grid strong,
-.framework-grid strong,
-.comparison-grid strong {
-  font-size: 14px;
-  color: #335345;
-}
-
-.concept-grid p,
-.framework-grid p,
-.comparison-grid p {
-  font-size: 14px;
-  line-height: 1.6;
-  margin: 5px 0 0;
-  white-space: pre-line;
-}
-
-.framework-grid {
-  grid-template-columns: repeat(2,minmax(0,1fr));
-}
-
-.comparison-grid {
-  grid-template-columns: repeat(2,minmax(0,1fr));
-}
-
-.comparison-grid>div {
-  background: #f4f1e8;
-}
-
-.comparison-grid p {
-  font-size: 15px;
-}
-
-.application-support {
-  margin-top: 80px;
-  padding-top: 35px;
-  border-top: 1px solid #cfd5cc;
-}
-
-.support-heading {
-  display: grid;
-  grid-template-columns: .7fr 1fr;
-  gap: 7%;
-  align-items: start;
-  margin-bottom: 24px;
-}
-
-.support-heading span {
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: .13em;
-  color: #a17462;
-}
-
-.support-heading p {
-  font: 500 22px/1.35 var(--serif);
-  letter-spacing: -.04em;
-  color: var(--ink);
-  margin: -5px 0 0;
-  max-width: 450px;
-}
-
-.application-support .module-card {
-  grid-template-columns: 42px 48px minmax(0,1fr) 100px;
-  align-items: start;
-}
-
-.application-support .module-details {
-  grid-column: 4;
-  width: 100%;
-  min-width: 0;
-}
-
-.application-support .details-content {
-  width: min(520px,calc(100vw - 80px));
-  position: absolute;
-  z-index: 4;
-  right: 0;
-  top: calc(100% + 8px);
-  padding: 18px 20px;
-  background: #fbfaf6;
-  border: 1px solid #d8ded5;
-  box-shadow: 0 12px 24px #18352f1c;
-}
-
-.application-support .module-card {
-  position: relative;
-}
-
-.application-support .details-content ul {
-  columns: 1;
-}
-
-.application-support .module-card:has(details[open]) {
-  z-index: 5;
-  background: #f6f7f2;
-}
-
-.application-support .module-card details[open] summary b {
-  transform: rotate(45deg);
+  background: var(--surface-2);
 }
 
 @media (max-width:900px) and (min-width:681px) {
   .curriculum-overview,
-  .curriculum-days {
+.curriculum-days {
     padding-left: 27px;
     padding-right: 27px;
   }
 
-  .application-support .module-card {
-    grid-template-columns: 32px 40px minmax(0,1fr) 86px;
-    gap: 10px;
-  }
+  
 
-  .application-support .module-details {
-    width: 86px;
-  }
+  
 }
 
 @media (max-width:680px) {
-  .curriculum-tabs {
-    grid-template-columns: 1fr;
-    margin-top: 20px;
-    border: 0;
-    gap: 7px;
-  }
+  
 
-  .curriculum-tab {
-    min-height: 0;
-    display: grid;
-    grid-template-columns: 1fr 20px;
-    gap: 5px 10px;
-    padding: 13px 15px;
-    border: 1px solid #d6dbd3!important;
-    border-radius: 3px;
-  }
+  
 
-  .curriculum-tab span {
-    grid-column: 1;
-  }
+  
 
-  .curriculum-tab strong {
-    font-size: 14px;
-    grid-column: 1;
-  }
+  
 
-  .curriculum-tab i {
-    grid-column: 2;
-    grid-row: 1/3;
-    position: static;
-    align-self: center;
-  }
+  
 
-  .curriculum-tab.active {
-    border-left: 2px solid var(--coral)!important;
-    background: #fbfaf6;
-  }
+  
 
   .curriculum-panel {
     margin-top: 9px;
@@ -413,7 +210,7 @@
 
   .curriculum-overview>p {
     font-size: 14px;
-    line-height: 1.75;
+    line-height: 1.6;
   }
 
   .curriculum-overview .framework-note {
@@ -426,7 +223,7 @@
   }
 
   .curriculum-tags span,
-  .lesson-chips span {
+.lesson-chips span {
     font-size: 13px;
     padding: 6px 9px;
   }
@@ -482,177 +279,38 @@
   }
 
   .lesson-card p,
-  .lesson-card li {
+.lesson-card li {
     font-size: 15px;
-    line-height: 1.7;
+    line-height: 1.6;
   }
 
   .lesson-card li+li {
     margin-top: 4px;
   }
 
-  .concept-grid,
-  .framework-grid,
-  .comparison-grid {
-    grid-template-columns: 1fr;
-    gap: 7px;
-  }
+  
 
-  .concept-grid p,
-  .framework-grid p,
-  .comparison-grid p {
-    font-size: 14px;
-  }
+  
 
-  .comparison-grid p {
-    font-size: 15px;
-  }
+  
 
-  .application-support {
-    margin-top: 52px;
-    padding-top: 25px;
-  }
+  
 
-  .support-heading {
-    grid-template-columns: 1fr;
-    gap: 12px;
-  }
+  
 
-  .support-heading p {
-    font-size: 19px;
-    margin: 0;
-  }
+  
 
-  .application-support .module-card {
-    grid-template-columns: 25px 36px minmax(0,1fr);
-    gap: 8px;
-    padding: 18px 0;
-  }
+  
 
-  .application-support .module-main h3 {
-    font-size: 17px;
-  }
+  
 
-  .application-support .module-details {
-    grid-column: 3;
-    justify-self: start;
-    width: auto;
-    margin: 8px 0 0;
-  }
+  
 
-  .application-support .details-content {
-    width: calc(100vw - 88px);
-    right: auto;
-    left: 0;
-    padding: 14px;
-  }
+  
 
-  .application-support .module-card:has(details[open]) {
-    margin-bottom: 170px;
-  }
+  
 
-  .application-support .module-details summary {
-    font-size: 14px;
-  }
-}
-
-.application-support .module-card {
-  grid-template-columns: 42px 48px minmax(0,1fr);
-  align-items: start;
-}
-
-.application-support .module-details {
-  grid-column: 1/-1;
-  width: 100%;
-  min-width: 0;
-  margin: 0;
-}
-
-.application-support .module-details summary {
-  width: 100%;
-  padding: 8px 0;
-}
-
-.application-support .details-content {
-  width: 100%;
-  position: static;
-  padding: 15px 18px;
-  background: #f7f8f3;
-  border: 1px solid #d8ded5;
-  box-shadow: none;
-  font-size: 15px;
-  line-height: 1.75;
-}
-
-.application-support .details-content ul {
-  columns: 2;
-}
-
-.application-support .module-card details[open] summary b {
-  transform: rotate(45deg);
-}
-
-@media (max-width:900px) and (min-width:681px) {
-  .application-support .module-card {
-    grid-template-columns: 32px 40px minmax(0,1fr);
-    gap: 10px;
-  }
-}
-
-@media (max-width:680px) {
-  .application-support .module-card {
-    grid-template-columns: 25px 36px minmax(0,1fr);
-    gap: 8px;
-    padding: 18px 0;
-  }
-
-  .application-support .module-details {
-    grid-column: 1/-1;
-    justify-self: stretch;
-    width: 100%;
-    margin: 0;
-  }
-
-  .application-support .details-content {
-    width: 100%;
-    padding: 14px;
-    font-size: 15px;
-    line-height: 1.7;
-  }
-
-  .application-support .details-content ul {
-    columns: 1;
-  }
-}
-
-.reviewer-network {
-  display: grid;
-  grid-template-columns: 1.15fr .85fr;
-  gap: 8%;
-  padding: 22px 24px;
-  margin-top: 22px;
-  background: #f3f4ef;
-  border: 1px solid #dce1d9;
-}
-
-.reviewer-network>div>span {
-  font-size: 12px;
-  letter-spacing: .13em;
-  font-weight: 700;
-  color: #a17462;
-}
-
-.reviewer-network p {
-  font-size: 15px;
-  line-height: 1.7;
-  color: #617168;
-  margin: 9px 0 0;
-}
-
-.reviewer-network>p {
-  border-left: 1px solid #d2d8cf;
-  padding-left: 22px;
-  margin: 0;
+  
 }
 
 .outcomes-card {
@@ -673,7 +331,7 @@
 .outcomes-list li {
   font-size: 13px;
   line-height: 1.45;
-  color: #657168;
+  color: var(--text-2);
   padding-left: 12px;
   position: relative;
 }
@@ -688,21 +346,11 @@
 }
 
 @media (max-width:680px) {
-  .reviewer-network {
-    grid-template-columns: 1fr;
-    gap: 12px;
-    padding: 17px;
-  }
+  
 
-  .reviewer-network p {
-    font-size: 14px;
-  }
+  
 
-  .reviewer-network>p {
-    border-left: 0;
-    border-top: 1px solid #d2d8cf;
-    padding: 11px 0 0;
-  }
+  
 
   .outcomes-list {
     gap: 6px 12px;

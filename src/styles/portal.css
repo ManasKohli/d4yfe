@@ -1,5 +1,5 @@
 .portal-section {
-  background: #f1f0ea;
+  background: var(--tint);
   padding: 110px 0 115px;
 }
 
@@ -8,22 +8,22 @@
 }
 
 .portal-heading h2 {
-  font: 500 clamp(42px,5vw,64px)/1.07 var(--serif);
-  letter-spacing: -.075em;
+  font: 500 clamp(42px,5vw,64px)/1.05 var(--serif);
+  letter-spacing: -.04em;
   margin: 22px 0 14px;
 }
 
 .portal-heading h2 em {
   font-weight: 400;
-  color: #a7afa3;
+  color: var(--heading-muted);
   font-style: normal;
 }
 
 .portal-heading>p {
   max-width: 455px;
-  color: #68756d;
+  color: var(--text-2);
   font-size: 15px;
-  line-height: 1.8;
+  line-height: 1.6;
   margin: 0;
 }
 
@@ -35,16 +35,16 @@
 }
 
 .portal-card {
-  background: #fbfaf6;
+  background: var(--card);
   padding: 23px 22px 25px;
   min-height: 225px;
-  border: 1px solid #e4e3dc;
+  border: 1px solid var(--line);
 }
 
 .portal-number {
   font-size: 11px;
-  letter-spacing: .13em;
-  color: #a17462;
+  letter-spacing: .12em;
+  color: var(--accent-text);
   font-weight: 700;
 }
 
@@ -54,8 +54,8 @@
   border-radius: 50%;
   display: grid;
   place-items: center;
-  color: #426255;
-  background: #e8eee7;
+  color: var(--ink-2);
+  background: var(--tint-2);
   margin: 22px 0 15px;
 }
 
@@ -66,14 +66,14 @@
 
 .portal-card h3 {
   font: 600 17px var(--serif);
-  letter-spacing: -.04em;
+  letter-spacing: -.02em;
   margin: 0 0 8px;
 }
 
 .portal-card p {
   font-size: 13px;
-  line-height: 1.7;
-  color: #6d7971;
+  line-height: 1.6;
+  color: var(--text-2);
   margin: 0;
 }
 
@@ -83,19 +83,19 @@
   gap: 8%;
   margin-top: 76px;
   padding-top: 25px;
-  border-top: 1px solid #d9d9d1;
+  border-top: 1px solid var(--line);
 }
 
 .access-head>span {
   font-size: 11px;
-  letter-spacing: .14em;
-  color: #a17462;
+  letter-spacing: .12em;
+  color: var(--accent-text);
   font-weight: 700;
 }
 
 .access-head>p {
   font: 500 22px/1.35 var(--serif);
-  letter-spacing: -.04em;
+  letter-spacing: -.02em;
   max-width: 300px;
   margin: 15px 0;
   color: var(--ink);
@@ -107,16 +107,16 @@
   align-items: start;
   gap: 8px;
   padding: 13px 0;
-  border-bottom: 1px solid #deded7;
+  border-bottom: 1px solid var(--line);
 }
 
 .access-list>div:first-child {
-  border-top: 1px solid #deded7;
+  border-top: 1px solid var(--line);
 }
 
 .access-list>div>b {
   font-size: 11px;
-  color: #b2755f;
+  color: var(--accent-text);
   padding-top: 2px;
 }
 
@@ -127,50 +127,44 @@
 
 .access-list strong {
   font-size: 13px;
-  color: #314b40;
+  color: var(--ink-2);
 }
 
 .access-list small {
   font-size: 12px;
   line-height: 1.55;
-  color: #7a857d;
+  color: var(--text-3);
 }
 
 .pricing-note {
   font-size: 12px;
-  color: #8a9189;
+  color: var(--text-3);
   margin: 12px 0 0;
 }
 
 .button-dark,
 .button-light,
 .nav-cta {
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
 }
 
 .button-dark,
 .button-light {
-  padding: 15px 21px;
+  padding: 0 22px;
 }
 
 .nav-cta {
-  padding: 13px 18px 13px 20px;
+  min-height: 44px;
+  padding: 0 20px;
 }
 
 .button:focus-visible,
 .nav-cta:focus-visible,
 .text-link:focus-visible,
 .under-link:focus-visible,
-.site-header a:focus-visible,
-.module-details summary:focus-visible {
-  outline: 3px solid var(--coral);
-  outline-offset: 4px;
-}
-
-.button-dark:hover,
-.nav-cta:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 7px 18px #18352f20;
+.site-header a:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 3px;
 }
 
 .site-header nav {
@@ -188,7 +182,7 @@
 
 .hero-lede {
   font-size: 17px;
-  line-height: 1.75;
+  line-height: 1.6;
 }
 
 .text-link,
@@ -206,7 +200,7 @@
 .goals-heading>p,
 .pilot-content>p {
   font-size: 15px;
-  line-height: 1.8;
+  line-height: 1.6;
 }
 
 .value-strip strong {
@@ -217,44 +211,18 @@
   font-size: 14px;
 }
 
-.module-tag {
-  font-size: 13px;
-}
-
-.module-main h3 {
-  font-size: 24px;
-}
-
-.module-main p {
-  font-size: 15px;
-  line-height: 1.75;
-}
-
-.module-details summary {
-  font-size: 15px;
-}
-
-.details-content {
-  font-size: 15px;
-  line-height: 1.7;
-}
-
-.modules-footnote {
-  font-size: 14px;
-}
-
 .approach-card h3 {
   font-size: 20px;
 }
 
 .approach-card p {
   font-size: 15px;
-  line-height: 1.75;
+  line-height: 1.6;
 }
 
 .portal-heading>p {
   font-size: 15px;
-  line-height: 1.8;
+  line-height: 1.6;
 }
 
 .portal-card h3 {
@@ -263,7 +231,7 @@
 
 .portal-card p {
   font-size: 15px;
-  line-height: 1.75;
+  line-height: 1.6;
 }
 
 .access-head>p {
@@ -285,7 +253,7 @@
 
 .community-copy>p {
   font-size: 14px;
-  line-height: 1.85;
+  line-height: 1.6;
 }
 
 .community-list strong {
@@ -306,7 +274,7 @@
 
 .pilot-note p {
   font-size: 15px;
-  line-height: 1.75;
+  line-height: 1.6;
 }
 
 .footer-bottom {
@@ -318,13 +286,9 @@
     font-size: 16px;
   }
 
-  .module-main h3 {
-    font-size: 21px;
-  }
+  
 
-  .module-main p {
-    font-size: 15px;
-  }
+  
 
   .approach-card p {
     font-size: 15px;
@@ -342,7 +306,7 @@
 
   .hero-lede {
     font-size: 15px;
-    line-height: 1.75;
+    line-height: 1.6;
   }
 
   .text-link {
@@ -354,12 +318,12 @@
   }
 
   .intro-text p,
-  .section-heading>p,
-  .approach-heading>p,
-  .goals-heading>p,
-  .pilot-content>p {
+.section-heading>p,
+.approach-heading>p,
+.goals-heading>p,
+.pilot-content>p {
     font-size: 14px;
-    line-height: 1.8;
+    line-height: 1.6;
   }
 
   .value-strip strong {
@@ -370,31 +334,17 @@
     font-size: 14px;
   }
 
-  .module-tag {
-    font-size: 12px;
-  }
+  
 
-  .module-main h3 {
-    font-size: 19px;
-  }
+  
 
-  .module-main p {
-    font-size: 15px;
-    line-height: 1.7;
-  }
+  
 
-  .module-details summary {
-    font-size: 14px;
-  }
+  
 
-  .details-content {
-    font-size: 15px;
-    width: calc(100vw - 100px);
-  }
+  
 
-  .modules-footnote {
-    font-size: 13px;
-  }
+  
 
   .approach-card h3 {
     font-size: 19px;
@@ -402,7 +352,7 @@
 
   .approach-card p {
     font-size: 15px;
-    line-height: 1.75;
+    line-height: 1.6;
   }
 
   .portal-heading>p {
@@ -415,7 +365,7 @@
 
   .portal-card p {
     font-size: 15px;
-    line-height: 1.75;
+    line-height: 1.6;
   }
 
   .access-head>p {
@@ -437,7 +387,7 @@
 
   .community-copy>p {
     font-size: 15px;
-    line-height: 1.8;
+    line-height: 1.6;
   }
 
   .community-list strong {
@@ -460,7 +410,7 @@
 
   .pilot-note p {
     font-size: 14px;
-    line-height: 1.7;
+    line-height: 1.6;
   }
 
   .footer-bottom {
@@ -470,7 +420,7 @@
 
 @media (max-width:680px) {
   .portal-section {
-    padding: 76px 0;
+    padding: 64px 0;
   }
 
   .portal-heading h2 {
