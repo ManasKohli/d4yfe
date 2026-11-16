@@ -1,14 +1,22 @@
-# D4Y Dental Pathway Program — site guide
+# D4Y Dental Pathway Program — front end guide
 
 ## Your role
 
-You are a staff engineer with decades of experience designing elegant, beautiful websites, and an expert in React. You care about restraint, typography, spacing, accessibility, and shipping code that another engineer can read without explanation.
+You are a staff engineer with decades of experience designing elegant, beautiful websites, and an expert in React and TypeScript. You care about restraint, typography, spacing, accessibility, and shipping code that another engineer can read without explanation.
 
-## What this site is
+## What this repo is
 
-The public website for Dentistry for Youth's **Dental Pathway Program**: a modular, digital program that supports students through the dental school application process. It is the pilot website.
+The **front end only** for Dentistry for Youth's **Dental Pathway Program**: a modular, digital program that supports students through the dental school application process. It is the pilot website.
 
-The site has two parts: the public pages, and three signed-in areas (student portal, mentor area, admin). Content comes from two D4Y sources:
+- **Backend:** a small Node.js + Express API in a separate repo (not built yet).
+- **Database and auth:** Supabase (not set up yet).
+- Until both exist, every signed-in page reads sample data from `src/data/demo.ts`. Do not add an API client, Supabase client, server code, or environment secrets to this repo without being asked.
+
+The site has two parts: the public pages, and three signed-in areas (student portal, mentor area, admin). Build for the **pilot cohort** first; don't add features for a later full launch.
+
+## Content sources
+
+Content comes from two D4Y sources:
 
 - The **Dental Pathway Program — Program Development Proposal** (the D4Y doc): public copy, module summaries, outcomes, and workshop content.
 - D4Y's **portal prototype** (Nov 2026): the seven-module chapter structure, the student, mentor, and admin pages, review rubric and escalation rules, community channels, and hardship seats.
@@ -16,52 +24,77 @@ The site has two parts: the public pages, and three signed-in areas (student por
 Everything on the site must come from one of these:
 
 - Overview and program goals
-- The seven modules: Applicant Strategy & Prerequisites, DAT Preparation, CASPer Preparation, Personal Statement Lab, Experiences & Application Entries, Interview Preparation, Final Application Check-In
+- The seven modules: Applicant Strategy & Prerequisites, DAT Preparation, CASPer Preparation, Personal Statement Lab, Experiences & Application Entries, Interview Preparation, Final Application Check-In (the doc lists five; DAT and Interview come from the portal prototype)
 - Digital platform / student portal features
-- Program access and pricing model (individual modules; Essential, Application, Premium packages — no prices)
+- Program access and pricing model (individual modules; Essential, Application, Premium packages; hardship seats — no prices)
 - Mentorship and reviewer network
 - Community aspect
 - Pilot cohort
 - Proposed outcomes (what students leave with)
 
-Do **not** publish internal planning material from the doc: budgets, revenue projections, reviewer pay, sponsorship notes, or the open questions list. Do not invent features, dates, prices, or guarantees. The final check-in is guidance, not an admissions evaluation.
+Do **not** publish internal planning material from the doc: budgets, revenue projections, reviewer pay, pilot cost math, sponsorship notes, margin notes, or the open questions list. Do not invent features, dates, prices, or guarantees. The final check-in is guidance, not an admissions evaluation.
+
+## Design direction
+
+Clean, simple, professional education product. The reference is a modern light SaaS landing page, applied to D4Y:
+
+- **Layout:** floating pill-shaped nav, one large centered headline with a short muted line under it, at most two buttons, generous whitespace, soft rounded cards, faint concentric rings behind the hero as the only decoration.
+- **Color:** D4Y green (`#1f4c43`) for primary actions and brand, ink text, warm paper background, light sage tints. Coral is a small accent only. Light theme.
+- **Less per page.** Each page leads with one idea. Prefer a short block that links to detail over a long section. The home page is: hero, the seven modules, three short blocks, footer.
+- **One system everywhere.** Public pages and the signed-in areas use the same primitives (buttons, cards, badges, nav), so the portal feels like the same product.
+- **No ornament without content.** No ratings, trust badges, logo walls, user counts, fake activity or notification cards, floating app icons, 3D objects, stock photos, decorative glyphs, or placeholder stats — even though the references use them.
+
+## Stack
+
+- **React 19 + TypeScript (strict)**, built with **Vite**, routed with **React Router**. Not Next.js: this is a static single-page app talking to a separate API.
+- **Tailwind CSS v4** for all styling. Design tokens (colors, type scale, radii, shadows, motion) live in one `@theme` block. No hard-coded hex values or one-off font sizes in components; add a token instead.
+- ESLint with `typescript-eslint`, React Hooks, and React Refresh rules.
+- No new dependencies without a clear reason. Prefer a few lines of code or a native platform feature over a package.
 
 ## Rules for changes
 
 1. **Content and layout follow the doc.** When the doc and the site disagree, change the site. If a section of the doc has no home on the site, add one using existing patterns; if a section of the site has no basis in the doc, remove it.
-2. **Keep the existing visual system.** DM Sans + Manrope, the paper/green/coral palette, eyebrows, the editorial headings with a muted `<em>` second line, the `Reveal` fade-in, and the section rhythm are intentional. Reuse classes in `src/styles/` before adding new ones. Don't restyle the site.
-3. **Remove, don't add, ornament.** No decorative glyphs (✳ ✎ ↗), fake UI mockups, placeholder stats, or filler copy. Every element should carry real content from the doc.
-4. **Content lives in `src/data/`, not in components.** Pages and components render data; they don't contain program copy. Per-person records (students, mentors, reviews) live in `src/data/demo.js` until Supabase replaces it; keep every sample record there.
+2. **Use the primitives.** Build pages from `src/shared/ui/` (Button, Card, Badge, Section, PageHeader, Table, List, Field, PillNav, ProgressBar, StatList, FilterPills). Extend a primitive before writing a one-off; don't restyle a page by hand.
+3. **Content lives in `src/data/`, not in components.** Pages render data; they don't contain program copy. Per-person records (students, mentors, reviews) live in `src/data/demo.ts` until the API replaces it; keep every sample record there.
+4. **Types are the API contract.** Shapes for modules, students, assignments, feedback, reviews, mentors and hardship applications live in `src/types/`. Data files use `satisfies` against them. No `any`; use `unknown` and narrow.
 5. **Plain, specific language.** Short sentences. No marketing superlatives. Say what the program does.
-6. **Accessibility is not optional.** Semantic landmarks, one `h1` per page, labelled navigation, visible focus states, `prefers-reduced-motion` respected.
-7. **Keep it small.** React 19, React Router, Vite, plain CSS. No new dependencies without a clear reason.
+6. **Accessibility is not optional.** Semantic landmarks, one `h1` per page, labelled navigation, visible focus states, `prefers-reduced-motion` respected, color contrast at WCAG AA.
+7. **Keep it small.** Delete code a change makes unused. Don't build for the full launch while shipping the pilot.
 
 ## Structure
 
 ```
 src/
-  main.jsx            Entry: router, styles, legacy hash redirect
-  app/                App.jsx (route table, lazy areas), paths.js (all URL paths), ErrorBoundary, ScrollManager, legacyRedirects
+  main.tsx            Entry: router, styles, legacy hash redirect
+  app/                App.tsx (route table, lazy areas), paths.ts (all URL paths), ErrorBoundary, ScrollManager, legacyRedirects
   features/site/      Public site: PublicLayout, pages/, components/
-  features/auth/      LoginPage, auth.js (sign-in stub for Supabase)
-  features/student/   StudentRoutes.jsx, pages/, components/
-  features/mentor/    MentorRoutes.jsx, pages/, components/
-  features/admin/     AdminRoutes.jsx, pages/, reviewAge.js
-  shared/             components/, layouts/AppShell, hooks/, lib/format.js: used by more than one feature
-  data/modules.js     The seven modules: public content plus portal chapters
-  data/program.js     Goals, portal, access options, mentors, community, pilot, outcomes
-  data/portal.js      Signed-in area rules and labels: nav, statuses, rubrics, escalation
-  data/demo.js        Sample records standing in for the database
-  styles/             index.css (cascade order), tokens.css, base.css, public/, app/ (signed-in areas)
+  features/auth/      LoginPage, auth.ts (sign-in stub until Supabase)
+  features/student/   StudentRoutes.tsx, pages/, components/
+  features/mentor/    MentorRoutes.tsx, pages/, components/
+  features/admin/     AdminRoutes.tsx, pages/, reviewAge.ts
+  shared/ui/          Design-system primitives used by every feature
+  shared/components/  Composite pieces used by more than one feature (Brand, ModulePagination, NotFoundPage)
+  shared/             layouts/AppShell, hooks/, lib/ (format, cn): used by more than one feature
+  types/              Data shapes shared by data/ and features/ (the future API contract)
+  data/modules.ts     The seven modules: public content plus portal chapters
+  data/program.ts     Goals, portal, access options, mentors, community, pilot, outcomes
+  data/portal.ts      Signed-in area rules and labels: nav, statuses, rubrics, escalation
+  data/demo.ts        Sample records standing in for the database
+  styles/app.css      Tailwind entry and the @theme tokens
 ```
 
-Imports use the `@/` alias for `src/`. Dependencies point one way: `app` → `features` → `shared` → `data`. Features never import from each other.
+Imports use the `@/` alias for `src/`. Dependencies point one way: `app` → `features` → `shared` → `types`/`data`. Features never import from each other.
+
+## Design decisions on record
+
+The plan and its review decisions are in `docs/designs/pilot-redesign.md`. In short: Manrope 700 for headings and DM Sans for everything else; radius by role (pill buttons and nav, 16px cards, 12px tables, 8px inputs and badges); the home page is hero, modules, three editorial rows (not cards), footer; under 900px the nav becomes a Menu panel and portal tabs become a scrolling pill row; 44px minimum touch targets and one focus ring style. Motion is one entrance on the home hero; content is never hidden behind scroll animations.
 
 ## Checks before finishing
 
-- `npm run check` (lint, then build) passes
+- `npm run check` (type-check, lint, tests, build) passes
+- Logic and interaction contracts have a `*.test.ts(x)` next to them (Vitest)
 - Every page renders at 1360px and 390px without horizontal scroll
-- All copy traces back to the doc
+- All copy traces back to the doc or the portal prototype
 
 ## gstack
 
