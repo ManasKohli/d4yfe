@@ -62,3 +62,7 @@ Imports use the `@/` alias for `src/`. Dependencies point one way: `app` → `fe
 - `npm run check` (lint, then build) passes
 - Every page renders at 1360px and 390px without horizontal scroll
 - All copy traces back to the doc
+
+## gstack
+
+Use the /browse skill from gstack for all web browsing. Never use mcp__claude-in-chrome__* tools.
