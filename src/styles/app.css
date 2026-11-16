@@ -1,0 +1,98 @@
+/*
+ * The only stylesheet. Tailwind v4 plus the D4Y design tokens.
+ * Components style themselves with utilities that read these tokens; add a token here before hard-coding a value.
+ */
+@import "tailwindcss";
+
+@theme {
+  /* Breakpoints: the site's two layout changes, phone (680px) and tablet (900px). */
+  --breakpoint-md: 42.5rem;
+  --breakpoint-lg: 56.25rem;
+
+  /* Color */
+  --color-ink: #18352f;          /* primary text */
+  --color-ink-2: #2f4a40;        /* strong secondary text, links */
+  --color-muted: #5c6b64;        /* secondary text, AA on every surface */
+  --color-subtle: #66736c;       /* fine print, AA */
+  --color-heading-muted: #6f7c74;/* muted second line of display headings, AA */
+  --color-accent: #8f5742;       /* small uppercase labels, AA */
+  --color-coral: #d2775e;        /* decorative accent only */
+  --color-green: #1f4c43;        /* brand and primary actions */
+  --color-green-hover: #2d6156;
+  --color-green-soft: #e3ebe6;   /* active nav pill, selected rows */
+  --color-paper: #f7f6f2;        /* page background */
+  --color-card: #fdfcf9;         /* cards and panels */
+  --color-surface: #f4f5f0;      /* nested surfaces */
+  --color-tint: #eef0ea;         /* tinted sections */
+  --color-line: #d9ded6;
+  --color-line-strong: #c5cdc3;
+  --color-warn: #8a5a12;
+  --color-warn-soft: #f6ecd9;
+  --color-done-soft: #e1eee6;
+
+  /* Type: Manrope for headings only, DM Sans for everything else. */
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Manrope", "DM Sans", ui-sans-serif, sans-serif;
+  --text-ui: 0.9375rem;          /* 15px: buttons, pills, nav, labels (controls, not reading text) */
+  --text-hero: 2.5rem;           /* phone size of the home h1 */
+
+  /* Radius by role (design review D6). Buttons and nav use rounded-full. */
+  --radius-card: 1rem;           /* cards, panels */
+  --radius-table: 0.75rem;       /* tables, menu panel */
+  --radius-field: 0.5rem;        /* inputs, badges */
+
+  /* Depth: offset plus soft blur, never a halo. */
+  --shadow-soft: 0 1px 2px rgb(24 53 47 / 0.05), 0 4px 12px rgb(24 53 47 / 0.06);
+  --shadow-lift: 0 8px 24px rgb(24 53 47 / 0.1);
+
+  /* Motion */
+  --ease-out-soft: cubic-bezier(0.2, 0, 0, 1);
+  --animate-reveal: reveal 500ms var(--ease-out-soft) both;
+
+  @keyframes reveal {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: none; }
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-paper font-sans text-base text-ink antialiased;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display font-bold tracking-[-0.02em] text-balance;
+  }
+
+  p { @apply text-pretty; }
+
+  a { @apply underline-offset-4; }
+
+  ::selection { @apply bg-green-soft text-ink; }
+
+  /* One focus ring everywhere (design review D3). */
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-green;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 1ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 1ms !important;
+    }
+  }
+}
+
+@utility container-page {
+  @apply mx-auto w-full max-w-6xl px-4 md:px-6 lg:px-8;
+}
