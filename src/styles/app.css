@@ -20,6 +20,9 @@
   --color-green: #1f4c43;        /* brand and primary actions */
   --color-green-hover: #2d6156;
   --color-green-soft: #e3ebe6;   /* active nav pill, selected rows */
+  --color-sage: #3f7466;         /* second line of landing headings, school names; AA on paper, tint and band */
+  --color-band: #e9f0eb;         /* alternating landing-page sections */
+  --color-on-green: #cfe3d9;     /* secondary text on green panels, AA */
   --color-paper: #f7f6f2;        /* page background */
   --color-card: #fdfcf9;         /* cards and panels */
   --color-surface: #f4f5f0;      /* nested surfaces */
@@ -34,7 +37,8 @@
   --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Manrope", "DM Sans", ui-sans-serif, sans-serif;
   --text-ui: 0.9375rem;          /* 15px: buttons, pills, nav, labels (controls, not reading text) */
-  --text-hero: 2.5rem;           /* phone size of the home h1 */
+  --text-hero: 2.75rem;          /* phone size of the home h1 */
+  --text-display: 5rem;          /* desktop size of the home h1 */
 
   /* Radius by role (design review D6). Buttons and nav use rounded-full. */
   --radius-card: 1rem;           /* cards, panels */
@@ -48,10 +52,34 @@
   /* Motion */
   --ease-out-soft: cubic-bezier(0.2, 0, 0, 1);
   --animate-reveal: reveal 500ms var(--ease-out-soft) both;
+  --animate-marquee: marquee 70s linear infinite;
+  --animate-strand: strand 9s linear infinite;
+  --animate-ripple: ripple 7s var(--ease-out-soft) infinite;
+  --animate-breathe: breathe 8s ease-in-out infinite alternate;
 
   @keyframes reveal {
     from { opacity: 0; transform: translateY(12px); }
     to { opacity: 1; transform: none; }
+  }
+
+  @keyframes marquee {
+    to { transform: translateX(-50%); }
+  }
+
+  /* A short dash of light travelling the length of a funnel line (pathLength = 1). */
+  @keyframes strand {
+    from { stroke-dashoffset: 0.14; }
+    to { stroke-dashoffset: -1; }
+  }
+
+  @keyframes ripple {
+    from { transform: scale(0.29); opacity: 0.4; }
+    to { transform: scale(1); opacity: 0; }
+  }
+
+  @keyframes breathe {
+    from { opacity: 0.7; }
+    to { opacity: 1; }
   }
 }
 

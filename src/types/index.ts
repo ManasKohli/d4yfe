@@ -51,13 +51,20 @@ export interface ProgramModule {
 
 export interface TitledItem { title: string; description: string }
 
-/** One section of the program details page. `id` is its URL anchor; `label` names it in the jump list and eyebrow. */
-export interface DetailSection {
-  id: 'how-it-works' | 'goals' | 'outcomes' | 'portal' | 'options' | 'mentors' | 'community' | 'pilot';
+/** One section of the landing page. `id` is its URL anchor; `label` names it in the nav. */
+export interface HomeSection {
+  id: 'about' | 'modules' | 'how-it-works' | 'portal' | 'options' | 'mentors' | 'community' | 'outcomes' | 'pilot';
   label: string;
   title: string;
+  titleMuted?: string;
   lede?: string;
 }
+
+/** A school in the hero carousel. `shape` sets its display height: crests sit taller than wordmarks. */
+export interface SchoolLogo { name: string; logo: string; shape: 'crest' | 'wordmark' }
+
+/** A bundled package. Deliberately has no price field until pricing is set. */
+export interface Package { name: string; includes: string[] }
 
 export interface NavItem { label: string; to: string; end?: boolean }
 export interface Area { label: string; nav: NavItem[] }

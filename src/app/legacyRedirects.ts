@@ -6,8 +6,8 @@ const legacyHashes: Record<string, string> = {
   home: paths.home,
   approach: paths.howItWorksSection,
   'application-support': paths.modulesSection,
-  'program-model': paths.programDetails,
-  goals: paths.goalsSection,
+  'program-model': paths.aboutSection,
+  goals: paths.aboutSection,
   community: paths.communitySection,
 };
 
