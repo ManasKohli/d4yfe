@@ -18,13 +18,13 @@ function Hero() {
   return (
     <section aria-labelledby="hero-title" className="relative isolate -mt-20 flex min-h-[44rem] flex-col justify-between pt-36 pb-10 md:min-h-[100svh] md:pt-44">
       <HeroFunnel/>
-      <div className="container-page animate-reveal text-center">
-        <h1 id="hero-title" className="mx-auto max-w-4xl text-hero leading-[1.02] tracking-[-0.045em] md:text-6xl lg:text-display">
+      <div className="container-page text-center">
+        <h1 id="hero-title" className="animate-reveal mx-auto max-w-4xl text-hero leading-[1.02] tracking-[-0.045em] md:text-6xl lg:text-display">
           {hero.headline}<br/>
           <span className="bg-linear-to-b from-green to-sage bg-clip-text text-transparent">{hero.headlineMuted}</span>
         </h1>
-        <p className="mx-auto mt-6 max-w-xl text-lg text-muted">{hero.subline}</p>
-        <div className="mt-9 flex flex-col justify-center gap-3 md:flex-row">
+        <p className="mx-auto mt-6 max-w-xl animate-reveal text-lg text-muted [animation-delay:120ms]">{hero.subline}</p>
+        <div className="mt-9 flex animate-reveal flex-col justify-center gap-3 [animation-delay:240ms] md:flex-row">
           <ButtonLink to={paths.modulesSection} className="min-h-12 px-6">Explore the modules <Icon name="arrow" size={16}/></ButtonLink>
           <ButtonLink to={paths.howItWorksSection} variant="outline" className="min-h-12 px-6">How it works</ButtonLink>
         </div>

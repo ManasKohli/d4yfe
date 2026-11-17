@@ -53,6 +53,9 @@
   --ease-out-soft: cubic-bezier(0.2, 0, 0, 1);
   --animate-reveal: reveal 500ms var(--ease-out-soft) both;
   --animate-marquee: marquee 70s linear infinite;
+  --animate-strand: strand 9s linear infinite;
+  --animate-ripple: ripple 7s var(--ease-out-soft) infinite;
+  --animate-breathe: breathe 8s ease-in-out infinite alternate;
 
   @keyframes reveal {
     from { opacity: 0; transform: translateY(12px); }
@@ -61,6 +64,22 @@
 
   @keyframes marquee {
     to { transform: translateX(-50%); }
+  }
+
+  /* A short dash of light travelling the length of a funnel line (pathLength = 1). */
+  @keyframes strand {
+    from { stroke-dashoffset: 0.14; }
+    to { stroke-dashoffset: -1; }
+  }
+
+  @keyframes ripple {
+    from { transform: scale(0.29); opacity: 0.4; }
+    to { transform: scale(1); opacity: 0; }
+  }
+
+  @keyframes breathe {
+    from { opacity: 0.7; }
+    to { opacity: 1; }
   }
 }
 
