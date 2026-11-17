@@ -57,6 +57,9 @@ export interface PageIntro { title: string; lede: string }
 /** A public page's one solid button. `to` names a key of `paths` (types cannot import from app). */
 export interface PageCta { label: string; to: 'packages' | 'modulesSection' }
 
+/** The closing call to action at the end of a public page. */
+export interface PageClose { title: string; lede: string; actions: PageCta[] }
+
 /** A page section heading, with an optional supporting line. */
 export interface SectionIntro { title: string; lede?: string }
 

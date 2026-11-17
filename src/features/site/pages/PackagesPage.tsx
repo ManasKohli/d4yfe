@@ -1,60 +1,61 @@
 import { useId } from 'react';
+import { Link } from 'react-router';
 import { modulePath, paths } from '@/app/paths';
-import PackageComparison from '@/features/site/components/PackageComparison';
+import GreenPanel, { PanelChips } from '@/features/site/components/GreenPanel';
+import PackageCards from '@/features/site/components/PackageCards';
+import PageHero from '@/features/site/components/PageHero';
 import { modules } from '@/data/modules';
 import { packageFeatures, packagesPage, pilotFocus, programPackages } from '@/data/program';
 import useDocumentTitle from '@/shared/hooks/useDocumentTitle';
 import { ButtonLink } from '@/shared/ui/Button';
 import Icon from '@/shared/ui/Icon';
-import { List, ListRow } from '@/shared/ui/List';
-import PageHeader from '@/shared/ui/PageHeader';
 import Section from '@/shared/ui/Section';
 
-/** Packages: pay only for what you need. Anchored by the package comparison table. */
+/** Packages: pay only for what you need. Anchored by the three package cards. */
 export default function PackagesPage() {
   useDocumentTitle('Packages');
-  const compareId = useId();
   const { intro, compare, hardship, pilot, cta } = packagesPage;
+  const hardshipId = useId();
 
   return (
     <>
-      <div className="container-page pt-16 pb-4 md:pt-24 md:pb-8">
-        <PageHeader
-          size="display"
-          title={intro.title}
-          lede={<><p>{intro.lede}</p><p className="mt-4 text-sm text-subtle">{packagesPage.pricingNote}</p></>}
-        />
-      </div>
+      <PageHero title={intro.title} lede={intro.lede}>
+        <p className="rounded-full border border-line bg-card px-4 py-2 text-sm text-muted">{packagesPage.pricingNote}</p>
+      </PageHero>
 
-      <Section headingId={compareId} title={compare.title}>
-        <PackageComparison packages={programPackages} features={packageFeatures} labels={packagesPage.table} labelledBy={compareId}/>
+      <Section title={compare.title} align="center" className="pt-4 md:pt-6">
+        <PackageCards packages={programPackages} features={packageFeatures} labels={packagesPage.included}/>
+        <section aria-labelledby={hardshipId} className="mt-4 grid gap-3 rounded-panel bg-tint p-6 md:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] md:gap-10 md:p-8">
+          <h3 id={hardshipId} className="text-2xl">{hardship.title}</h3>
+          <p className="text-lg text-ink">{hardship.lede}</p>
+        </section>
       </Section>
 
-      <Section layout="split" rule title={packagesPage.modules.title} lede={packagesPage.modules.lede}>
-        <List>
+      <Section title={packagesPage.modules.title} lede={packagesPage.modules.lede} align="center">
+        <ul className="flex flex-wrap justify-center gap-2">
           {modules.map(m => (
-            <ListRow
-              key={m.slug}
-              to={modulePath(m.slug)}
-              title={<><span className="mr-3 font-display text-subtle">{m.number}</span>{m.title}</>}
-              trailing={<Icon name="arrow" size={18}/>}
-            />
+            <li key={m.slug}>
+              <Link
+                to={modulePath(m.slug)}
+                className="group inline-flex min-h-12 items-center gap-3 rounded-full border border-line bg-card py-1.5 pr-4 pl-1.5 text-ink no-underline shadow-soft transition-colors hover:border-line-strong"
+              >
+                <span className="inline-flex size-9 items-center justify-center rounded-full bg-green-soft font-display text-sm font-bold text-green">{m.number}</span>
+                <span className="font-medium">{m.title}</span>
+                <span className="text-muted transition-transform group-hover:translate-x-0.5"><Icon name="arrow" size={16}/></span>
+              </Link>
+            </li>
           ))}
-        </List>
-      </Section>
-
-      <Section layout="split" rule title={hardship.title}>
-        <p className="max-w-2xl text-xl text-ink">{hardship.lede}</p>
-      </Section>
-
-      <Section id="pilot" layout="split" className="bg-tint" title={pilot.title} lede={pilot.lede}>
-        <h3 className="text-xl">{packagesPage.pilotFocusTitle}</h3>
-        <ul className="mt-4 grid border-t border-line md:grid-cols-2 md:gap-x-10">
-          {pilotFocus.map(item => <li key={item} className="border-b border-line py-3">{item}</li>)}
         </ul>
-        <p className="mt-8 text-muted">{packagesPage.pilotCta}</p>
-        <ButtonLink to={paths[cta.to]} className="mt-6">{cta.label}</ButtonLink>
       </Section>
+
+      <div className="container-page py-12 md:py-16">
+        <GreenPanel id="pilot" title={pilot.title} lede={pilot.lede}>
+          <h3 className="mt-8 mb-4 text-lg">{packagesPage.pilotFocusTitle}</h3>
+          <PanelChips items={pilotFocus}/>
+          <p className="mt-8 text-on-brand-muted">{packagesPage.pilotCta}</p>
+          <ButtonLink to={paths[cta.to]} variant="inverse" className="mt-6">{cta.label}</ButtonLink>
+        </GreenPanel>
+      </div>
     </>
   );
 }

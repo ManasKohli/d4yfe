@@ -87,7 +87,7 @@ Imports use the `@/` alias for `src/`. Dependencies point one way: `app` → `fe
 
 ## Design decisions on record
 
-The plan and its review decisions are in `docs/designs/pilot-redesign.md`. In short: Manrope 700 for headings and DM Sans for everything else; radius by role (pill buttons and nav, 16px cards, 12px tables, 8px inputs and badges); the home page is hero, modules, three editorial rows (not cards), footer; under 900px the nav becomes a Menu panel and portal tabs become a scrolling pill row; 44px minimum touch targets and one focus ring style. Motion is one entrance on the home hero; content is never hidden behind scroll animations. Only the home hero h1 uses a muted second line; every other heading is one line in one color, and signed-in pages carry no area eyebrow (the shell already names the area).
+Manrope 700 for headings and DM Sans for everything else; radius by role (pill buttons and nav, 28px public-page panels, 16px cards, 12px tables, 8px inputs and badges); the home page is hero, modules, three editorial rows (not cards), footer; public inner pages open with a centered hero over the same rings, use soft rounded cards and pill chips, and carry at most one brand-green panel; under 900px the nav becomes a Menu panel and portal tabs become a scrolling pill row; 44px minimum touch targets and one focus ring style. Motion is one entrance on the home hero; content is never hidden behind scroll animations. Only the home hero h1 uses a muted second line; every other heading is one line in one color, and signed-in pages carry no area eyebrow (the shell already names the area).
 
 ## Checks before finishing
 

@@ -29,6 +29,8 @@
   --color-warn: #8a5a12;
   --color-warn-soft: #f6ecd9;
   --color-done-soft: #e1eee6;
+  --color-brand-raised: #2a5a50; /* cards and chips inside a green panel */
+  --color-on-brand-muted: #c9d9d1;/* secondary text on green panels, AA on green and brand-raised */
 
   /* Type: Manrope for headings only, DM Sans for everything else. */
   --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
@@ -37,6 +39,7 @@
   --text-hero: 2.5rem;           /* phone size of the home h1 */
 
   /* Radius by role (design review D6). Buttons and nav use rounded-full. */
+  --radius-panel: 1.75rem;       /* large public-page panels and green bands */
   --radius-card: 1rem;           /* cards, panels */
   --radius-table: 0.75rem;       /* tables, menu panel */
   --radius-field: 0.5rem;        /* inputs, badges */

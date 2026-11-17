@@ -1,7 +1,7 @@
 // Program-level content from the D4Y Dental Pathway Program proposal.
 // Pages render these exports; they never hold program copy themselves.
 
-import type { PackageFeature, PageCta, PageIntro, ProgramPackage, SectionIntro, TitledItem } from '@/types';
+import type { PackageFeature, PageClose, PageCta, PageIntro, ProgramPackage, SectionIntro, TitledItem } from '@/types';
 
 /** Home page hero. Headline is the existing site headline; the subline condenses proposal §1 Overview. */
 export const hero = {
@@ -127,16 +127,21 @@ export const howItWorksPage = {
   },
   outcomes: { title: 'What students leave with' },
   goals: { title: 'What the program is built to do' },
-  cta: { label: 'Compare packages', to: 'packages' },
-  modulesLink: 'See the seven modules',
+  close: {
+    title: 'Take only the modules you need',
+    lede: 'Choose individual modules, or the Essential, Application, or Premium package. Hardship seats are available.',
+    actions: [
+      { label: 'Compare packages', to: 'packages' },
+      { label: 'See the seven modules', to: 'modulesSection' },
+    ],
+  },
 } satisfies {
   intro: PageIntro;
   steps: SectionIntro;
   portal: SectionIntro & { dashboardTitle: string; submitTitle: string };
   outcomes: SectionIntro;
   goals: SectionIntro;
-  cta: PageCta;
-  modulesLink: string;
+  close: PageClose;
 };
 
 /** What the student dashboard shows (proposal §8). */
@@ -179,7 +184,7 @@ export const packagesPage = {
   },
   pilotFocusTitle: 'The pilot will evaluate',
   pilotCta: 'Dates, pricing, and registration details will be announced.',
-  table: { feature: 'What’s included', included: 'Included', notIncluded: 'Not included' },
+  included: { included: 'Included', notIncluded: 'Not included' },
   cta: { label: 'Explore the modules', to: 'modulesSection' },
 } satisfies {
   intro: PageIntro;
@@ -190,7 +195,7 @@ export const packagesPage = {
   pilot: SectionIntro;
   pilotFocusTitle: string;
   pilotCta: string;
-  table: { feature: string; included: string; notIncluded: string };
+  included: { included: string; notIncluded: string };
   cta: PageCta;
 };
 
@@ -201,7 +206,7 @@ export const programPackages: ProgramPackage[] = [
   { name: 'Premium', summary: 'The full program, with individualized reviews and a mentorship check-in.' },
 ];
 
-/** The proposal §9 table as rows; `values` follow `programPackages` order. */
+/** The proposal §9 table as feature rows; `values` follow `programPackages` order. */
 export const packageFeatures: PackageFeature[] = [
   { label: 'Workshops', values: [true, true, true] },
   { label: 'Application resources', values: [true, true, true] },

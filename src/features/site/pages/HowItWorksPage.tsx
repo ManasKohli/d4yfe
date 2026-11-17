@@ -1,41 +1,27 @@
-import { Link } from 'react-router';
-import { paths } from '@/app/paths';
+import ClosingCta from '@/features/site/components/ClosingCta';
+import GreenPanel, { PanelChips } from '@/features/site/components/GreenPanel';
+import NumberCircle from '@/features/site/components/NumberCircle';
+import PageHero from '@/features/site/components/PageHero';
 import { howItWorks, howItWorksPage, portalDashboardItems, programGoals, studentOutcomes, submissionTypes } from '@/data/program';
 import useDocumentTitle from '@/shared/hooks/useDocumentTitle';
-import { ButtonLink } from '@/shared/ui/Button';
 import Icon from '@/shared/ui/Icon';
-import PageHeader from '@/shared/ui/PageHeader';
 import Section from '@/shared/ui/Section';
 
-const { intro, steps, portal, outcomes, goals, cta, modulesLink } = howItWorksPage;
+const { intro, steps, portal, outcomes, goals, close } = howItWorksPage;
 
-/** A titled plain list for the portal section: no icons, hairlines between rows. */
-function PortalList({ title, items }: { title: string; items: string[] }) {
-  return (
-    <div>
-      <h3 className="text-xl">{title}</h3>
-      <ul className="mt-4 divide-y divide-line border-y border-line">
-        {items.map(item => <li key={item} className="py-3">{item}</li>)}
-      </ul>
-    </div>
-  );
-}
-
-/** Every module runs Learn, Practice, Feedback; the numbered steps are the page's anchor. */
+/** Every module runs Learn, Practice, Feedback; the three step cards are the page's anchor. */
 export default function HowItWorksPage() {
   useDocumentTitle('How it works');
   return (
     <>
-      <div className="container-page pt-16 pb-4 md:pt-24 md:pb-8">
-        <PageHeader size="display" title={intro.title} lede={intro.lede}/>
-      </div>
+      <PageHero title={intro.title} lede={intro.lede}/>
 
-      <Section title={steps.title}>
-        <ol className="grid gap-10 md:grid-cols-3 md:gap-8">
+      <Section title={steps.title} align="center" className="pt-4 md:pt-6">
+        <ol className="grid gap-4 md:grid-cols-3">
           {howItWorks.map((step, index) => (
-            <li key={step.step} className="border-t-2 border-green pt-6">
-              <span aria-hidden className="font-display text-5xl font-bold text-green">{index + 1}</span>
-              <h3 className="mt-6 text-2xl">{step.step}</h3>
+            <li key={step.step} className="rounded-panel border border-line bg-card p-6 shadow-soft md:p-8">
+              <NumberCircle n={index + 1}/>
+              <h3 className="mt-8 text-3xl">{step.step}</h3>
               <p className="mt-2 font-medium text-ink">{step.title}</p>
               <p className="mt-2 text-muted">{step.description}</p>
             </li>
@@ -43,38 +29,44 @@ export default function HowItWorksPage() {
         </ol>
       </Section>
 
-      <Section layout="split" rule title={portal.title} lede={portal.lede}>
-        <div className="grid gap-10 md:grid-cols-2">
-          <PortalList title={portal.dashboardTitle} items={portalDashboardItems}/>
-          <PortalList title={portal.submitTitle} items={submissionTypes}/>
-        </div>
-      </Section>
+      <div className="container-page py-12 md:py-16">
+        <GreenPanel title={portal.title} lede={portal.lede}>
+          <div className="mt-10 grid gap-8 lg:grid-cols-2">
+            <div>
+              <h3 className="mb-4 text-lg">{portal.dashboardTitle}</h3>
+              <PanelChips items={portalDashboardItems}/>
+            </div>
+            <div>
+              <h3 className="mb-4 text-lg">{portal.submitTitle}</h3>
+              <PanelChips items={submissionTypes}/>
+            </div>
+          </div>
+        </GreenPanel>
+      </div>
 
-      <Section layout="split" rule title={outcomes.title}>
-        <ul className="grid border-t border-line md:grid-cols-2 md:gap-x-10">
+      <Section title={outcomes.title} align="center">
+        <ul className="grid gap-3 md:grid-cols-2 lg:grid-cols-4">
           {studentOutcomes.map(outcome => (
-            <li key={outcome} className="border-b border-line py-4 font-display text-xl font-bold tracking-[-0.01em]">{outcome}</li>
+            <li key={outcome} className="flex items-start gap-3 rounded-card border border-line bg-card p-5">
+              <span className="inline-flex size-8 shrink-0 items-center justify-center rounded-full bg-green-soft text-green"><Icon name="check" size={18}/></span>
+              <span className="pt-1 font-medium text-ink">{outcome}</span>
+            </li>
           ))}
         </ul>
       </Section>
 
-      <Section title={goals.title} className="bg-tint">
-        <ol className="grid gap-x-10 gap-y-4 md:grid-cols-2 lg:grid-cols-3">
+      <Section title={goals.title} align="center">
+        <ol className="grid gap-x-8 gap-y-5 rounded-panel bg-tint p-6 md:grid-cols-2 md:p-10 lg:grid-cols-3">
           {programGoals.map((goal, index) => (
-            <li key={goal} className="text-ink">
-              {/* text-muted, not text-subtle: subtle falls below AA on the tint band. */}
-              <span aria-hidden className="mr-2 font-medium text-muted tabular-nums">{String(index + 1).padStart(2, '0')}</span>
-              {goal}
+            <li key={goal} className="flex items-start gap-3 text-ink">
+              <NumberCircle n={index + 1} size="sm"/>
+              <span className="pt-1">{goal}</span>
             </li>
           ))}
         </ol>
-        <div className="mt-12 flex flex-wrap items-center gap-x-6 gap-y-3">
-          <ButtonLink to={paths[cta.to]}>{cta.label}</ButtonLink>
-          <Link to={paths.modulesSection} className="inline-flex min-h-11 items-center gap-1.5 font-medium text-green hover:underline">
-            {modulesLink} <Icon name="arrow" size={16}/>
-          </Link>
-        </div>
       </Section>
+
+      <ClosingCta close={close}/>
     </>
   );
 }
