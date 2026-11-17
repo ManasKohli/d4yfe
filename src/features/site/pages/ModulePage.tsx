@@ -41,7 +41,7 @@ function ModuleContent({ module, index }: { module: ProgramModule; index: number
     <div className="container-page pt-12 pb-16 md:pt-16">
       <ModuleTabs/>
       <PageHeader eyebrow={`Module ${module.number} · ${module.tag}`} title={module.title} lede={module.summary}>
-        <ButtonLink to={paths.packages} variant="outline">Packages</ButtonLink>
+        <ButtonLink to={paths.optionsSection} variant="outline">Program options</ButtonLink>
       </PageHeader>
       <TagList tags={module.tags}/>
       <CurriculumSection module={module}/>

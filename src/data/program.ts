@@ -1,7 +1,7 @@
 // Program-level content from the D4Y Dental Pathway Program proposal.
 // Pages render these exports; they never hold program copy themselves.
 
-import type { PackageFeature, PageCta, PageIntro, ProgramPackage, SectionIntro, TitledItem } from '@/types';
+import type { DetailSection, TitledItem } from '@/types';
 
 /** Home page hero. Headline is the existing site headline; the subline condenses proposal §1 Overview. */
 export const hero = {
@@ -12,6 +12,12 @@ export const hero = {
   headlineMuted: 'dental school.',
   subline: 'Modular support for the dental school application: workshops, practice, and individual feedback from dental students and dentists. Take only the modules you need.',
 };
+
+/** Proposal §1, shown at the top of the program details page. */
+export const overview = [
+  'The Dental Pathway Program is a structured, digital program that supports aspiring dental students throughout the dental school application process. It brings practical guidance, workshops, application resources, practice opportunities, and individualized feedback into one place.',
+  'Rather than one general program every student must complete, it is modular: students access and pay for the specific areas where they need support.',
+];
 
 export const programGoals = [
   'Provide a clear understanding of the dental school application process',
@@ -56,25 +62,48 @@ export const howItWorks: (TitledItem & { step: string })[] = [
 ];
 
 /** Home page rows under the modules. `to` is a key of `paths`. */
-export const homeRows: (TitledItem & { linkLabel: string; to: 'howItWorks' | 'packages' | 'mentors' })[] = [
+export const homeRows: (TitledItem & { linkLabel: string; to: 'howItWorksDetail' | 'optionsSection' | 'mentorsSection' })[] = [
   {
     title: 'How it works',
     description: 'Every module follows the same three steps: learn in a workshop, practice with assignments, then get individual feedback.',
     linkLabel: 'See how it works',
-    to: 'howItWorks',
+    to: 'howItWorksDetail',
   },
   {
     title: 'Packages',
     description: 'Choose individual modules, or the Essential, Application, or Premium package. Hardship seats are available.',
     linkLabel: 'Compare options',
-    to: 'packages',
+    to: 'optionsSection',
   },
   {
     title: 'Mentors',
     description: 'Your work is reviewed by current dental students, recent graduates, dentists, and D4Y mentors.',
     linkLabel: 'Meet the network',
-    to: 'mentors',
+    to: 'mentorsSection',
   },
+];
+
+export const portalFeatures: TitledItem[] = [
+  {
+    title: 'Everything in one view',
+    description: 'Purchased modules, upcoming workshops, assignments, deadlines, submitted work, feedback, and resources.',
+  },
+  {
+    title: 'Choose what you need',
+    description: 'Register and pay for individual modules or a bundled package directly through the website.',
+  },
+  {
+    title: 'Submit, then get feedback',
+    description: 'Upload personal statements, application entries, practice CASPer responses, and planning documents, and receive feedback on the platform.',
+  },
+];
+
+export const accessOptions: TitledItem[] = [
+  { title: 'Individual modules', description: 'Purchase only the modules you need: Applicant Strategy, DAT, CASPer, Personal Statement, Application Entries, Interview, or Final Check-In.' },
+  { title: 'Essential package', description: 'Educational workshops and resources.' },
+  { title: 'Application package', description: 'Workshops, application resources, and selected feedback.' },
+  { title: 'Premium package', description: 'The full program, with individualized reviews and a mentorship check-in.' },
+  { title: 'Hardship seats', description: 'Students facing financial hardship can apply for a seat. Two committee members review each application without seeing the applicant’s name.' },
 ];
 
 export const mentorNetwork = [
@@ -110,121 +139,46 @@ export const pilotFocus = [
   'Where students need more support',
 ];
 
-// ---- Public pages: How it works, Packages, Mentors ---------------------------
-// Each page leads with one idea. Copy is from the proposal (§1-§12, pilot) and the portal prototype.
+/** Program details page: the page heading, then its sections in order (proposal §2-§12 and the pilot phase). */
+export const detailsHeader = {
+  eyebrow: 'Program details',
+  title: 'How the program fits together',
+};
 
-export const howItWorksPage = {
-  intro: {
-    title: 'How the program works',
-    lede: 'Every module follows the same three steps. Take only the modules where you need support.',
-  },
-  steps: { title: 'Learn, practice, then get feedback' },
-  portal: {
+export const detailSections = [
+  { id: 'how-it-works', label: 'How it works', title: 'Learn, practice, then get feedback' },
+  { id: 'goals', label: 'Program goals', title: 'What the program is built to do' },
+  { id: 'outcomes', label: 'Outcomes', title: 'What students leave with' },
+  {
+    id: 'portal',
+    label: 'Student portal',
     title: 'Your program in one place',
     lede: 'The website works as a student portal, so registration, payment, module access, assignments, resources, workshops, and feedback are managed from one location.',
-    dashboardTitle: 'Your dashboard shows',
-    submitTitle: 'Work you can submit for review',
   },
-  outcomes: { title: 'What students leave with' },
-  goals: { title: 'What the program is built to do' },
-  cta: { label: 'Compare packages', to: 'packages' },
-  modulesLink: 'See the seven modules',
-} satisfies {
-  intro: PageIntro;
-  steps: SectionIntro;
-  portal: SectionIntro & { dashboardTitle: string; submitTitle: string };
-  outcomes: SectionIntro;
-  goals: SectionIntro;
-  cta: PageCta;
-  modulesLink: string;
-};
-
-/** What the student dashboard shows (proposal §8). */
-export const portalDashboardItems = [
-  'Purchased modules',
-  'Upcoming workshops',
-  'Assignments',
-  'Deadlines',
-  'Submitted work',
-  'Feedback',
-  'Resources',
-];
-
-/** Work students can submit for review (proposal §8). */
-export const submissionTypes = [
-  'Personal statements',
-  'Application entries',
-  'Practice CASPer responses',
-  'Application planning documents',
-];
-
-export const packagesPage = {
-  intro: {
-    title: 'Packages',
-    lede: 'Pay only for what you need. Buy individual modules, or choose a bundled package.',
+  {
+    id: 'options',
+    label: 'Program options',
+    title: 'Pay only for what you need',
+    lede: 'Purchase individual modules, or choose a bundled package.',
   },
-  compare: { title: 'Compare packages' },
-  modules: {
-    title: 'Or buy single modules',
-    lede: 'Purchase only the modules you need.',
-  },
-  hardship: {
-    title: 'Hardship seats',
-    lede: 'Students facing financial hardship can apply for a seat. Two committee members review each application without seeing the applicant’s name.',
-  },
-  pricingNote: 'Pricing will be announced before registration opens.',
-  pilot: {
-    title: 'Starting with a pilot cohort',
-    lede: 'Before a full launch, D4Y will run the program with a small pilot cohort. Feedback from pilot students will be used to improve the workshops, reviews, and platform before the official launch.',
-  },
-  pilotFocusTitle: 'The pilot will evaluate',
-  pilotCta: 'Dates, pricing, and registration details will be announced.',
-  table: { feature: 'What’s included', included: 'Included', notIncluded: 'Not included' },
-  cta: { label: 'Explore the modules', to: 'modulesSection' },
-} satisfies {
-  intro: PageIntro;
-  compare: SectionIntro;
-  modules: SectionIntro;
-  hardship: SectionIntro;
-  pricingNote: string;
-  pilot: SectionIntro;
-  pilotFocusTitle: string;
-  pilotCta: string;
-  table: { feature: string; included: string; notIncluded: string };
-  cta: PageCta;
-};
-
-/** Proposal §9, Option 2. */
-export const programPackages: ProgramPackage[] = [
-  { name: 'Essential', summary: 'Educational workshops and resources.' },
-  { name: 'Application', summary: 'Workshops, application resources, and selected feedback.' },
-  { name: 'Premium', summary: 'The full program, with individualized reviews and a mentorship check-in.' },
-];
-
-/** The proposal §9 table as rows; `values` follow `programPackages` order. */
-export const packageFeatures: PackageFeature[] = [
-  { label: 'Workshops', values: [true, true, true] },
-  { label: 'Application resources', values: [true, true, true] },
-  { label: 'Feedback on your work', values: [false, 'Selected', 'Individualized reviews'] },
-  { label: 'Mentorship check-in', values: [false, false, true] },
-];
-
-export const mentorsPage = {
-  intro: {
-    title: 'Mentors and reviewers',
+  {
+    id: 'mentors',
+    label: 'Mentors and reviewers',
+    title: 'Feedback from people who have been there',
     lede: 'Individual reviews and check-ins come from a network of people who have successfully navigated the dental school application process.',
   },
-  network: { title: 'Who reviews your work' },
-  howItWorks: { title: 'How reviews work' },
-  community: {
+  {
+    id: 'community',
+    label: 'Community',
     title: 'Go through it with others',
     lede: 'The program is primarily digital, but applicants should not have to navigate the process alone. Community activities connect students with each other and with mentors throughout the application cycle.',
   },
-  cta: { label: 'Compare packages', to: 'packages' },
-} satisfies {
-  intro: PageIntro;
-  network: SectionIntro;
-  howItWorks: SectionIntro;
-  community: PageIntro;
-  cta: PageCta;
-};
+  {
+    id: 'pilot',
+    label: 'Pilot cohort',
+    title: 'Starting with a pilot cohort',
+    lede: 'Before a full launch, D4Y will run the program with a small pilot cohort. Feedback from pilot students will be used to improve the workshops, reviews, and platform before the official launch.',
+  },
+] as const satisfies readonly DetailSection[];
+
+export type DetailSectionId = (typeof detailSections)[number]['id'];
