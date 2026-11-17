@@ -1,0 +1,20 @@
+# Weekly update PRs. CI runs on each one, so a green Dependabot PR is safe to merge.
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    groups:
+      # One PR for routine dev-tool bumps instead of one per package.
+      dev-tooling:
+        dependency-type: development
+        update-types: [minor, patch]
+      react:
+        patterns: [react, react-dom, '@types/react', '@types/react-dom']
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
