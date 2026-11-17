@@ -54,6 +54,9 @@ export interface TitledItem { title: string; description: string }
 /** A public page's heading: its h1 and the one line under it. */
 export interface PageIntro { title: string; lede: string }
 
+/** A public page's one solid button. `to` names a key of `paths` (types cannot import from app). */
+export interface PageCta { label: string; to: 'packages' | 'modulesSection' }
+
 /** A page section heading, with an optional supporting line. */
 export interface SectionIntro { title: string; lede?: string }
 

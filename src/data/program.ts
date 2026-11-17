@@ -1,7 +1,7 @@
 // Program-level content from the D4Y Dental Pathway Program proposal.
 // Pages render these exports; they never hold program copy themselves.
 
-import type { PackageFeature, PageIntro, ProgramPackage, SectionIntro, TitledItem } from '@/types';
+import type { PackageFeature, PageCta, PageIntro, ProgramPackage, SectionIntro, TitledItem } from '@/types';
 
 /** Home page hero. Headline is the existing site headline; the subline condenses proposal §1 Overview. */
 export const hero = {
@@ -12,12 +12,6 @@ export const hero = {
   headlineMuted: 'dental school.',
   subline: 'Modular support for the dental school application: workshops, practice, and individual feedback from dental students and dentists. Take only the modules you need.',
 };
-
-/** Proposal §1. */
-export const overview = [
-  'The Dental Pathway Program is a structured, digital program that supports aspiring dental students throughout the dental school application process. It brings practical guidance, workshops, application resources, practice opportunities, and individualized feedback into one place.',
-  'Rather than one general program every student must complete, it is modular: students access and pay for the specific areas where they need support.',
-];
 
 export const programGoals = [
   'Provide a clear understanding of the dental school application process',
@@ -83,29 +77,6 @@ export const homeRows: (TitledItem & { linkLabel: string; to: 'howItWorks' | 'pa
   },
 ];
 
-export const portalFeatures: TitledItem[] = [
-  {
-    title: 'Everything in one view',
-    description: 'Purchased modules, upcoming workshops, assignments, deadlines, submitted work, feedback, and resources.',
-  },
-  {
-    title: 'Choose what you need',
-    description: 'Register and pay for individual modules or a bundled package directly through the website.',
-  },
-  {
-    title: 'Submit, then get feedback',
-    description: 'Upload personal statements, application entries, practice CASPer responses, and planning documents, and receive feedback on the platform.',
-  },
-];
-
-export const accessOptions: TitledItem[] = [
-  { title: 'Individual modules', description: 'Purchase only the modules you need: Applicant Strategy, DAT, CASPer, Personal Statement, Application Entries, Interview, or Final Check-In.' },
-  { title: 'Essential package', description: 'Educational workshops and resources.' },
-  { title: 'Application package', description: 'Workshops, application resources, and selected feedback.' },
-  { title: 'Premium package', description: 'The full program, with individualized reviews and a mentorship check-in.' },
-  { title: 'Hardship seats', description: 'Students facing financial hardship can apply for a seat. Two committee members review each application without seeing the applicant’s name.' },
-];
-
 export const mentorNetwork = [
   'Current dental students',
   'Recent dental graduates',
@@ -151,10 +122,22 @@ export const howItWorksPage = {
   portal: {
     title: 'Your program in one place',
     lede: 'The website works as a student portal, so registration, payment, module access, assignments, resources, workshops, and feedback are managed from one location.',
+    dashboardTitle: 'Your dashboard shows',
+    submitTitle: 'Work you can submit for review',
   },
   outcomes: { title: 'What students leave with' },
   goals: { title: 'What the program is built to do' },
-} satisfies Record<string, PageIntro | SectionIntro>;
+  cta: { label: 'Compare packages', to: 'packages' },
+  modulesLink: 'See the seven modules',
+} satisfies {
+  intro: PageIntro;
+  steps: SectionIntro;
+  portal: SectionIntro & { dashboardTitle: string; submitTitle: string };
+  outcomes: SectionIntro;
+  goals: SectionIntro;
+  cta: PageCta;
+  modulesLink: string;
+};
 
 /** What the student dashboard shows (proposal §8). */
 export const portalDashboardItems = [
@@ -196,7 +179,20 @@ export const packagesPage = {
   },
   pilotFocusTitle: 'The pilot will evaluate',
   pilotCta: 'Dates, pricing, and registration details will be announced.',
-} satisfies Record<string, PageIntro | SectionIntro | string>;
+  table: { feature: 'What’s included', included: 'Included', notIncluded: 'Not included' },
+  cta: { label: 'Explore the modules', to: 'modulesSection' },
+} satisfies {
+  intro: PageIntro;
+  compare: SectionIntro;
+  modules: SectionIntro;
+  hardship: SectionIntro;
+  pricingNote: string;
+  pilot: SectionIntro;
+  pilotFocusTitle: string;
+  pilotCta: string;
+  table: { feature: string; included: string; notIncluded: string };
+  cta: PageCta;
+};
 
 /** Proposal §9, Option 2. */
 export const programPackages: ProgramPackage[] = [
@@ -224,4 +220,11 @@ export const mentorsPage = {
     title: 'Go through it with others',
     lede: 'The program is primarily digital, but applicants should not have to navigate the process alone. Community activities connect students with each other and with mentors throughout the application cycle.',
   },
-} satisfies Record<string, PageIntro | SectionIntro>;
+  cta: { label: 'Compare packages', to: 'packages' },
+} satisfies {
+  intro: PageIntro;
+  network: SectionIntro;
+  howItWorks: SectionIntro;
+  community: PageIntro;
+  cta: PageCta;
+};
