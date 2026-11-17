@@ -94,23 +94,23 @@ function Modules() {
   );
 }
 
-/** Package cards in the pricing-card shape: a named panel on top, what it includes below. No prices. */
+/** Package cards in the pricing-card shape: name, a ruled price band (no prices yet, so it carries the note), what it includes. */
 function Packages() {
   return (
     <>
       <ul className="grid gap-4 lg:grid-cols-3">
         {packages.map(item => (
-          <li key={item.name} className="rounded-card border border-line bg-card p-2 shadow-soft">
-            <div className="rounded-table bg-green-soft px-5 py-6">
+          <li key={item.name} className="flex flex-col gap-7 rounded-card border border-line bg-card p-7 shadow-soft">
+            <div>
               <p className="text-sm font-semibold tracking-wider text-accent uppercase">Package</p>
-              <h3 className="mt-1 text-3xl tracking-[-0.03em]">{item.name}</h3>
+              <h3 className="mt-1.5 text-2xl tracking-[-0.03em]">{item.name}</h3>
             </div>
-            <div className="px-4 pt-6 pb-5"><CheckList items={item.includes}/></div>
+            <p className="border-y border-line py-5 text-sm text-muted">{pricingNote}</p>
+            <CheckList items={item.includes}/>
           </li>
         ))}
       </ul>
       <div className="mt-10"><Columns items={otherAccess}/></div>
-      <p className="mt-8 text-sm text-subtle">{pricingNote}</p>
     </>
   );
 }
