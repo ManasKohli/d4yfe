@@ -1,7 +1,15 @@
 // Program-level content from the D4Y Dental Pathway Program proposal.
 // Pages render these exports; they never hold program copy themselves.
 
-import type { HomeSection, Package, TitledItem } from '@/types';
+import alberta from '@/assets/schools/alberta.png';
+import harvard from '@/assets/schools/harvard.png';
+import mcgill from '@/assets/schools/mcgill.png';
+import nyu from '@/assets/schools/nyu.png';
+import penn from '@/assets/schools/penn.png';
+import toronto from '@/assets/schools/toronto.png';
+import ubc from '@/assets/schools/ubc.png';
+import ucla from '@/assets/schools/ucla.png';
+import type { HomeSection, Package, SchoolLogo, TitledItem } from '@/types';
 
 /** Home page hero. Headline is the existing site headline; the subline condenses proposal §1 Overview. */
 export const hero = {
@@ -12,24 +20,19 @@ export const hero = {
 };
 
 /**
- * Dental schools shown in the hero carousel, as plain names (no logos). Every entry has a dental school;
- * the program covers Canadian and American applications (proposal §3, Module 1).
+ * Dental schools shown in the hero carousel. Logos are single-color (sage) silhouettes of each
+ * university's mark; every school listed has a dental school. The program covers Canadian and
+ * American applications (proposal §3, Module 1).
  */
-export const schools = [
-  'University of Toronto',
-  'Harvard',
-  'McGill',
-  'UCLA',
-  'UBC',
-  'UCSF',
-  'Western',
-  'Columbia',
-  'University of Alberta',
-  'NYU',
-  'Dalhousie',
-  'University of Michigan',
-  'Université de Montréal',
-  'Penn',
+export const schools: SchoolLogo[] = [
+  { name: 'University of Toronto', logo: toronto, shape: 'crest' },
+  { name: 'Harvard University', logo: harvard, shape: 'wordmark' },
+  { name: 'McGill University', logo: mcgill, shape: 'crest' },
+  { name: 'UCLA', logo: ucla, shape: 'wordmark' },
+  { name: 'University of British Columbia', logo: ubc, shape: 'crest' },
+  { name: 'New York University', logo: nyu, shape: 'wordmark' },
+  { name: 'University of Pennsylvania', logo: penn, shape: 'crest' },
+  { name: 'University of Alberta', logo: alberta, shape: 'wordmark' },
 ];
 
 export const programGoals = [

@@ -52,7 +52,7 @@
   /* Motion */
   --ease-out-soft: cubic-bezier(0.2, 0, 0, 1);
   --animate-reveal: reveal 500ms var(--ease-out-soft) both;
-  --animate-marquee: marquee 60s linear infinite;
+  --animate-marquee: marquee 70s linear infinite;
 
   @keyframes reveal {
     from { opacity: 0; transform: translateY(12px); }

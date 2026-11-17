@@ -3,15 +3,23 @@ import { hero, schools } from '@/data/program';
 import { cn } from '@/shared/lib/cn';
 import Icon from '@/shared/ui/Icon';
 
+/** One run of logos. Only the first run is exposed to assistive tech; the repeats exist for the loop. */
 function SchoolList({ hidden = false }: { hidden?: boolean }) {
   return (
     <ul
       aria-hidden={hidden || undefined}
-      className={cn('flex shrink-0 items-center gap-12 pr-12 md:gap-16 md:pr-16', hidden && 'motion-reduce:hidden')}
+      className={cn('flex shrink-0 items-center gap-14 pr-14 md:gap-20 md:pr-20', hidden && 'motion-reduce:hidden')}
     >
       {schools.map(school => (
-        <li key={school} className="font-display text-lg font-bold tracking-[-0.01em] whitespace-nowrap text-sage md:text-xl">
-          {school}
+        <li key={school.name} className="shrink-0">
+          <img
+            src={school.logo}
+            alt={hidden ? '' : school.name}
+            className={cn('w-auto select-none', school.shape === 'crest' ? 'h-12 md:h-14' : 'h-8 md:h-10')}
+            draggable={false}
+            loading="eager"
+            decoding="async"
+          />
         </li>
       ))}
     </ul>
@@ -19,15 +27,15 @@ function SchoolList({ hidden = false }: { hidden?: boolean }) {
 }
 
 /**
- * A slow, continuous row of dental school names. The list renders twice so the loop is seamless; the copy
- * is hidden from screen readers. A pause button stops it (WCAG 2.2.2), and with reduced motion it is a
- * static, wrapped list.
+ * A slow, continuous row of dental school logos. The track holds four runs and moves by half its width,
+ * so the loop is seamless even on screens wider than one run. A pause button stops it (WCAG 2.2.2),
+ * and with reduced motion it is a single static, wrapped list.
  */
 export default function SchoolMarquee() {
   const [paused, setPaused] = useState(false);
   return (
     <div>
-      <div className="container-page mb-5 flex items-center justify-center gap-2">
+      <div className="container-page mb-6 flex items-center justify-center gap-2">
         <p className="text-center text-sm text-balance text-subtle">{hero.schoolsCaption}</p>
         <button
           type="button"
@@ -43,10 +51,12 @@ export default function SchoolMarquee() {
           className={cn(
             'flex w-max animate-marquee group-hover:[animation-play-state:paused]',
             paused && '[animation-play-state:paused]',
-            'motion-reduce:w-full motion-reduce:animate-none motion-reduce:[&>ul]:flex-wrap motion-reduce:[&>ul]:justify-center motion-reduce:[&>ul]:gap-y-3 motion-reduce:[&>ul]:pr-0 motion-reduce:[&>ul]:w-full motion-reduce:[&>ul]:shrink',
+            'motion-reduce:w-full motion-reduce:animate-none motion-reduce:[&>ul]:w-full motion-reduce:[&>ul]:shrink motion-reduce:[&>ul]:flex-wrap motion-reduce:[&>ul]:justify-center motion-reduce:[&>ul]:gap-y-6 motion-reduce:[&>ul]:pr-0',
           )}
         >
           <SchoolList/>
+          <SchoolList hidden/>
+          <SchoolList hidden/>
           <SchoolList hidden/>
         </div>
       </div>

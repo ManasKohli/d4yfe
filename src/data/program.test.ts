@@ -19,6 +19,6 @@ describe('home page sections', () => {
 
 describe('school carousel', () => {
   it('lists each school once', () => {
-    expect(new Set(schools).size).toBe(schools.length);
+    expect(new Set(schools.map(school => school.name)).size).toBe(schools.length);
   });
 });

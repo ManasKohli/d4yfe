@@ -60,6 +60,9 @@ export interface HomeSection {
   lede?: string;
 }
 
+/** A school in the hero carousel. `shape` sets its display height: crests sit taller than wordmarks. */
+export interface SchoolLogo { name: string; logo: string; shape: 'crest' | 'wordmark' }
+
 /** A bundled package. Deliberately has no price field until pricing is set. */
 export interface Package { name: string; includes: string[] }
 
