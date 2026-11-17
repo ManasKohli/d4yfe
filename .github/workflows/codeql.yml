@@ -1,12 +1,21 @@
 # Static security analysis of the TypeScript source. Findings appear under Security > Code scanning.
 name: CodeQL
 
+# Only runs when source code or workflows change, so dependency-only and docs-only PRs skip it.
+# The monthly run re-scans main with CodeQL's newest queries.
 on:
   pull_request:
+    paths: &code
+      - 'src/**'
+      - '*.ts'
+      - '*.js'
+      - 'index.html'
+      - '.github/workflows/**'
   push:
     branches: [main]
+    paths: *code
   schedule:
-    - cron: '23 6 * * 1'
+    - cron: '23 6 1 * *'
 
 permissions:
   contents: read
