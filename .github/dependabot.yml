@@ -1,20 +1,38 @@
-# Weekly update PRs. CI runs on each one, so a green Dependabot PR is safe to merge.
+# Monthly, grouped update PRs: at most one npm PR and one Actions PR a month (plus a separate
+# major-version PR when one is out). CI runs on each, so a green Dependabot PR is safe to merge.
+#
+# Open PRs are not rebased automatically every time main moves; that only re-runs CI for nothing.
+# If one goes stale or conflicts, comment "@dependabot rebase" on it.
 version: 2
 updates:
   - package-ecosystem: npm
     directory: /
     schedule:
-      interval: weekly
-    open-pull-requests-limit: 5
+      interval: monthly
+    # Skip releases younger than a week: they are the ones most often yanked or re-released.
+    cooldown:
+      default-days: 7
+    rebase-strategy: disabled
+    open-pull-requests-limit: 3
     groups:
-      # One PR for routine dev-tool bumps instead of one per package.
-      dev-tooling:
-        dependency-type: development
+      # Every minor and patch bump, runtime and tooling alike, in one PR.
+      npm-minor-patch:
         update-types: [minor, patch]
-      react:
-        patterns: [react, react-dom, '@types/react', '@types/react-dom']
+      # Major bumps together in a second PR, since they can need code changes.
+      npm-major:
+        update-types: [major]
+      # Security fixes arrive as they're published, but grouped into one PR instead of one each.
+      npm-security:
+        applies-to: security-updates
+        patterns: ['*']
 
   - package-ecosystem: github-actions
     directory: /
     schedule:
-      interval: weekly
+      interval: monthly
+    cooldown:
+      default-days: 7
+    rebase-strategy: disabled
+    groups:
+      actions:
+        patterns: ['*']
