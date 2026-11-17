@@ -51,6 +51,12 @@ export interface ProgramModule {
 
 export interface TitledItem { title: string; description: string }
 
+/** One line on a package card: `true` included, `false` not included, or included with a short qualifier. */
+export interface PackageInclude { label: string; value: boolean | string }
+
+/** One bundled package (proposal §9, Option 2). No prices until D4Y sets them. */
+export interface PackageTier { name: string; summary: string; includes: PackageInclude[] }
+
 /** One section of the program details page. `id` is its URL anchor; `label` names it in the jump list and eyebrow. */
 export interface DetailSection {
   id: 'how-it-works' | 'goals' | 'outcomes' | 'portal' | 'options' | 'mentors' | 'community' | 'pilot';

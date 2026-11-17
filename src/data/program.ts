@@ -1,7 +1,7 @@
 // Program-level content from the D4Y Dental Pathway Program proposal.
 // Pages render these exports; they never hold program copy themselves.
 
-import type { DetailSection, TitledItem } from '@/types';
+import type { DetailSection, PackageTier, TitledItem } from '@/types';
 
 /** Home page hero. Headline is the existing site headline; the subline condenses proposal §1 Overview. */
 export const hero = {
@@ -98,11 +98,50 @@ export const portalFeatures: TitledItem[] = [
   },
 ];
 
-export const accessOptions: TitledItem[] = [
+/** Proposal §9, Option 2. Every tier lists the same lines in the same order so the cards line up. */
+export const packageTiers: PackageTier[] = [
+  {
+    name: 'Essential',
+    summary: 'Educational workshops and resources.',
+    includes: [
+      { label: 'Workshops', value: true },
+      { label: 'Application resources', value: true },
+      { label: 'Feedback on your work', value: false },
+      { label: 'Mentorship check-in', value: false },
+    ],
+  },
+  {
+    name: 'Application',
+    summary: 'Workshops, application resources, and selected feedback.',
+    includes: [
+      { label: 'Workshops', value: true },
+      { label: 'Application resources', value: true },
+      { label: 'Feedback on your work', value: 'Selected feedback' },
+      { label: 'Mentorship check-in', value: false },
+    ],
+  },
+  {
+    name: 'Premium',
+    summary: 'The full program, with individualized reviews and a mentorship check-in.',
+    includes: [
+      { label: 'Workshops', value: true },
+      { label: 'Application resources', value: true },
+      { label: 'Feedback on your work', value: 'Individualized reviews' },
+      { label: 'Mentorship check-in', value: true },
+    ],
+  },
+];
+
+/** Labels for the package cards. No prices: the proposal leaves pricing to be set after research. */
+export const packageLabels = {
+  pricing: 'Pricing announced before registration',
+  included: 'Included',
+  notIncluded: 'Not included',
+};
+
+/** The two ways in besides a package: single modules (proposal §9, Option 1) and hardship seats (portal prototype). */
+export const otherAccessOptions: TitledItem[] = [
   { title: 'Individual modules', description: 'Purchase only the modules you need: Applicant Strategy, DAT, CASPer, Personal Statement, Application Entries, Interview, or Final Check-In.' },
-  { title: 'Essential package', description: 'Educational workshops and resources.' },
-  { title: 'Application package', description: 'Workshops, application resources, and selected feedback.' },
-  { title: 'Premium package', description: 'The full program, with individualized reviews and a mentorship check-in.' },
   { title: 'Hardship seats', description: 'Students facing financial hardship can apply for a seat. Two committee members review each application without seeing the applicant’s name.' },
 ];
 

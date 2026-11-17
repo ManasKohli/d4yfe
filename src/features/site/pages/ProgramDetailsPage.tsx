@@ -1,8 +1,9 @@
 import { paths } from '@/app/paths';
 import {
-  accessOptions, communityItems, detailSections, detailsHeader, howItWorks, mentorNetwork, mentorNetworkNotes, overview,
+  communityItems, otherAccessOptions, packageLabels, packageTiers, detailSections, detailsHeader, howItWorks, mentorNetwork, mentorNetworkNotes, overview,
   pilotFocus, portalFeatures, programGoals, studentOutcomes, type DetailSectionId,
 } from '@/data/program';
+import PackageTierCards from '@/features/site/components/PackageTierCards';
 import type { TitledItem } from '@/types';
 import useDocumentTitle from '@/shared/hooks/useDocumentTitle';
 import { ButtonLink } from '@/shared/ui/Button';
@@ -95,8 +96,15 @@ export default function ProgramDetailsPage() {
       </Section>
 
       <Section {...sectionHeading('options')}>
-        <DefinitionRows items={accessOptions}/>
-        <p className="mt-6 text-sm text-subtle">Pricing will be announced before registration opens.</p>
+        <PackageTierCards tiers={packageTiers} labels={packageLabels}/>
+        <ul className="mt-4 grid gap-4 md:grid-cols-2">
+          {otherAccessOptions.map(option => (
+            <li key={option.title} className="rounded-card bg-tint p-6 md:p-8">
+              <h3 className="text-lg">{option.title}</h3>
+              <p className="mt-2 text-muted">{option.description}</p>
+            </li>
+          ))}
+        </ul>
       </Section>
 
       <Section {...sectionHeading('mentors')} className="bg-tint">

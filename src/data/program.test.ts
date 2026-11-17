@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { paths } from '@/app/paths';
-import { detailSections } from '@/data/program';
+import { detailSections, packageTiers } from '@/data/program';
 
 describe('program details sections', () => {
   it('has one entry per anchor, with no duplicates', () => {
@@ -14,5 +14,12 @@ describe('program details sections', () => {
       .map(path => path.split('#')[1]);
     expect(anchors.length).toBeGreaterThan(0);
     for (const anchor of anchors) expect(detailSections.map(section => section.id)).toContain(anchor);
+  });
+});
+
+describe('package tiers', () => {
+  it('lists the same lines in the same order on every card, so the cards line up', () => {
+    const labels = packageTiers.map(tier => tier.includes.map(line => line.label).join('|'));
+    expect(new Set(labels).size).toBe(1);
   });
 });
