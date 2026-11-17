@@ -38,7 +38,7 @@ Do **not** publish internal planning material from the doc: budgets, revenue pro
 
 Clean, simple, professional education product. The reference is a modern light SaaS landing page, applied to D4Y:
 
-- **Layout:** floating pill-shaped nav, one large centered headline with a short muted line under it, at most two buttons, generous whitespace, soft rounded cards. The hero's only decoration is a fine-line green funnel (`HeroFunnel`), with a slow row of dental school logos (single-color sage silhouettes) at its foot.
+- **Layout:** floating pill-shaped nav, one large centered headline with a short muted line under it, at most two buttons, generous whitespace, soft rounded cards. The hero's only decoration is a fine-line green funnel (`HeroFunnel`), with a slow row of dental school logos (in their own colors) at its foot.
 - **Color:** D4Y green (`#1f4c43`) for primary actions and brand, ink text, warm paper background, light sage tints. Coral is a small accent only. Light theme.
 - **Less per page.** Each page leads with one idea. The public site is one landing page (hero, then the sections in `homeSections`: about, modules, how it works, portal, packages, mentors, community, outcomes, pilot) plus one page per module.
 - **One system everywhere.** Public pages and the signed-in areas use the same primitives (buttons, cards, badges, nav), so the portal feels like the same product.

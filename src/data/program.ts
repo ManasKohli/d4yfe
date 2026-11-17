@@ -20,8 +20,8 @@ export const hero = {
 };
 
 /**
- * Dental schools shown in the hero carousel. Logos are single-color (sage) silhouettes of each
- * university's mark; every school listed has a dental school. The program covers Canadian and
+ * Dental schools shown in the hero carousel, in each university's own colors (background removed,
+ * cropped, 2x display height). Every school listed has a dental school. The program covers Canadian and
  * American applications (proposal §3, Module 1).
  */
 export const schools: SchoolLogo[] = [
