@@ -18,7 +18,7 @@ The site has two parts: the public pages, and three signed-in areas (student por
 
 Content comes from two D4Y sources:
 
-- The **Dental Pathway Program — Program Development Proposal** (the D4Y doc): public copy, module summaries, outcomes, and workshop content.
+- The **Dental Pathway Program — Program Development Proposal** (the D4Y doc, copied to `docs/d4y-program-proposal.md`): public copy, module summaries, outcomes, and workshop content.
 - D4Y's **portal prototype** (Nov 2026): the seven-module chapter structure, the student, mentor, and admin pages, review rubric and escalation rules, community channels, and hardship seats.
 
 Everything on the site must come from one of these:
@@ -87,7 +87,7 @@ Imports use the `@/` alias for `src/`. Dependencies point one way: `app` → `fe
 
 ## Design decisions on record
 
-The plan and its review decisions are in `docs/designs/pilot-redesign.md`. In short: Manrope 700 for headings and DM Sans for everything else; radius by role (pill buttons and nav, 16px cards, 12px tables, 8px inputs and badges); the home page is hero, modules, three editorial rows (not cards), footer; under 900px the nav becomes a Menu panel and portal tabs become a scrolling pill row; 44px minimum touch targets and one focus ring style. Motion is one entrance on the home hero; content is never hidden behind scroll animations.
+The plan and its review decisions are in `docs/designs/pilot-redesign.md`. In short: Manrope 700 for headings and DM Sans for everything else; radius by role (pill buttons and nav, 16px cards, 12px tables, 8px inputs and badges); the home page is hero, modules, three editorial rows (not cards), footer; under 900px the nav becomes a Menu panel and portal tabs become a scrolling pill row; 44px minimum touch targets and one focus ring style. Motion is one entrance on the home hero; content is never hidden behind scroll animations. Only the home hero h1 uses a muted second line; every other heading is one line in one color, and signed-in pages carry no area eyebrow (the shell already names the area).
 
 ## Checks before finishing
 

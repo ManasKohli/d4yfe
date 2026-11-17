@@ -13,7 +13,7 @@ export default function MentorHours() {
 
   return (
     <>
-      <PageHeader eyebrow="Mentor area" title="Volunteer record" lede="Hours log automatically from completed reviews and sessions."/>
+      <PageHeader title="Volunteer record" lede="Hours log automatically from completed reviews and sessions."/>
       <div className="grid gap-6">
         <StatList label="Totals" stats={[
           { label: 'Total hours', value: total },

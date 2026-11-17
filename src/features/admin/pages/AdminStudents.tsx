@@ -16,7 +16,7 @@ export default function AdminStudents() {
 
   return (
     <>
-      <PageHeader eyebrow="D4Y admin" title="Students" lede={`${roster.length} of ${cohort.capacity} seats filled in the ${cohort.name.toLowerCase()}.`}/>
+      <PageHeader title="Students" lede={`${roster.length} of ${cohort.capacity} seats filled in the ${cohort.name.toLowerCase()}.`}/>
       <div className="mb-5"><FilterPills label="Track" options={trackOptions} value={track} onChange={setTrack}/></div>
       <Table
         caption="Students in the cohort"

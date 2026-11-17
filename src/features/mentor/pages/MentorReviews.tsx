@@ -8,7 +8,7 @@ export default function MentorReviews() {
   useDocumentTitle('Review queue');
   return (
     <>
-      <PageHeader eyebrow="Mentor area" title="Review queue" lede={`${reviewQueue.length} open. Each review includes ${feedbackParts.join(', ').toLowerCase()}.`}/>
+      <PageHeader title="Review queue" lede={`${reviewQueue.length} open. Each review includes ${feedbackParts.join(', ').toLowerCase()}.`}/>
       <ReviewQueueTable items={reviewQueue}/>
     </>
   );

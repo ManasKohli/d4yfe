@@ -79,7 +79,7 @@ export default function Assignments() {
 
   return (
     <>
-      <PageHeader eyebrow="Student portal" title="Assignments" lede="Everything you have submitted or still owe, and where each item is in review."/>
+      <PageHeader title="Assignments" lede="Everything you have submitted or still owe, and where each item is in review."/>
       <div className="mb-5"><FilterPills label="Filter assignments" options={filterNames} value={filter} onChange={setFilter}/></div>
       <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)]">
         <Card title="All assignments" className="self-start">

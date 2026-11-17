@@ -1,11 +1,13 @@
 // Program-level content from the D4Y Dental Pathway Program proposal.
 // Pages render these exports; they never hold program copy themselves.
 
-import type { TitledItem } from '@/types';
+import type { DetailSection, TitledItem } from '@/types';
 
 /** Home page hero. Headline is the existing site headline; the subline condenses proposal §1 Overview. */
 export const hero = {
   eyebrow: 'Dentistry for Youth · Dental Pathway Program',
+  modulesTitle: 'The seven modules',
+  modulesLinkLabel: 'How the modules fit together',
   headline: 'A clear path to',
   headlineMuted: 'dental school.',
   subline: 'Modular support for the dental school application: workshops, practice, and individual feedback from dental students and dentists. Take only the modules you need.',
@@ -136,3 +138,47 @@ export const pilotFocus = [
   'Pricing',
   'Where students need more support',
 ];
+
+/** Program details page: the page heading, then its sections in order (proposal §2-§12 and the pilot phase). */
+export const detailsHeader = {
+  eyebrow: 'Program details',
+  title: 'How the program fits together',
+};
+
+export const detailSections = [
+  { id: 'how-it-works', label: 'How it works', title: 'Learn, practice, then get feedback' },
+  { id: 'goals', label: 'Program goals', title: 'What the program is built to do' },
+  { id: 'outcomes', label: 'Outcomes', title: 'What students leave with' },
+  {
+    id: 'portal',
+    label: 'Student portal',
+    title: 'Your program in one place',
+    lede: 'The website works as a student portal, so registration, payment, module access, assignments, resources, workshops, and feedback are managed from one location.',
+  },
+  {
+    id: 'options',
+    label: 'Program options',
+    title: 'Pay only for what you need',
+    lede: 'Purchase individual modules, or choose a bundled package.',
+  },
+  {
+    id: 'mentors',
+    label: 'Mentors and reviewers',
+    title: 'Feedback from people who have been there',
+    lede: 'Individual reviews and check-ins come from a network of people who have successfully navigated the dental school application process.',
+  },
+  {
+    id: 'community',
+    label: 'Community',
+    title: 'Go through it with others',
+    lede: 'The program is primarily digital, but applicants should not have to navigate the process alone. Community activities connect students with each other and with mentors throughout the application cycle.',
+  },
+  {
+    id: 'pilot',
+    label: 'Pilot cohort',
+    title: 'Starting with a pilot cohort',
+    lede: 'Before a full launch, D4Y will run the program with a small pilot cohort. Feedback from pilot students will be used to improve the workshops, reviews, and platform before the official launch.',
+  },
+] as const satisfies readonly DetailSection[];
+
+export type DetailSectionId = (typeof detailSections)[number]['id'];

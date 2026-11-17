@@ -25,8 +25,10 @@ export default function SiteFooter() {
           </ul>
         </nav>
       </div>
-      <div className="container-page border-t border-line py-6 text-sm text-subtle">
-        © {new Date().getFullYear()} Dentistry for Youth · Dental Pathway Program
+      <div className="container-page">
+        <p className="border-t border-line py-6 text-sm text-subtle">
+          © {new Date().getFullYear()} Dentistry for Youth · Dental Pathway Program
+        </p>
       </div>
     </footer>
   );

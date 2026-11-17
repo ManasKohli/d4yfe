@@ -17,7 +17,7 @@ export default function Sessions() {
 
   return (
     <>
-      <PageHeader eyebrow="Student portal" title="Sessions" lede="Workshops, office hours, accountability groups, and one-on-one sessions in one calendar."/>
+      <PageHeader title="Sessions" lede="Workshops, office hours, accountability groups, and one-on-one sessions in one calendar."/>
       <StatList label="Your sessions" stats={[
         { label: 'One-on-ones left', value: `${student.oneOnOnes.left} of ${student.oneOnOnes.total}` },
         { label: 'Upcoming', value: sessions.length },

@@ -30,8 +30,7 @@ export default function LoginPage() {
     <div className="container-page grid gap-10 pt-16 pb-20 md:pt-20 lg:grid-cols-2 lg:gap-16">
       <PageHeader
         eyebrow="Sign in"
-        title="Welcome"
-        muted="back."
+        title="Welcome back"
         lede="Students, mentors, and D4Y admins sign in here. Each person sees only what their role needs."
       />
       <div className="grid gap-6">

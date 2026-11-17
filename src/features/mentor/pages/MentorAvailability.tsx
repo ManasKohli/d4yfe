@@ -33,7 +33,7 @@ export default function MentorAvailability() {
 
   return (
     <>
-      <PageHeader eyebrow="Mentor area" title="Availability" lede={`Students book one-on-one sessions in these weekly windows. Times are in ${viewerTimeZone()}.`}/>
+      <PageHeader title="Availability" lede={`Students book one-on-one sessions in these weekly windows. Times are in ${viewerTimeZone()}.`}/>
       <div className="grid gap-6 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)]">
         <Card title="Weekly windows" className="self-start">
           {slots.length === 0 ? <p className="text-muted">No windows yet. Students can’t book sessions with you.</p> : (

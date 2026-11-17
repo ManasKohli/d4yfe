@@ -162,4 +162,26 @@ Program-level content (hero, home rows, goals, portal features, packages, mentor
 
 ## Deployment
 
-The repository is connected to Vercel. `vercel.json` sets the Vite build and rewrites every path to `index.html`, so deep links like `/modules/casper` and `/portal/assignments` load correctly. Hashed files in `/assets` are cached for a long time. Every response also gets basic security headers (`X-Content-Type-Options`, `Referrer-Policy`, `X-Frame-Options`, `Permissions-Policy`).
+The repository is connected to Vercel. `vercel.json` sets the Vite build and rewrites every path to `index.html`, so deep links like `/modules/casper` and `/portal/assignments` load correctly. Hashed files in `/assets` are cached for a long time.
+
+**Security headers** (all responses, defined once in `vercel.json`): a Content Security Policy (scripts from this origin only; styles and fonts also from Google Fonts), HSTS, `X-Frame-Options: DENY`, `Cross-Origin-Opener-Policy`, `Referrer-Policy`, `X-Content-Type-Options` and `Permissions-Policy`. `npm run build && npm run preview` serves the same headers locally, so check there before changing the CSP. When Supabase and the API arrive, add their origins to `connect-src`.
+
+## CI/CD
+
+| What | Where | When |
+|---|---|---|
+| Type-check, lint, tests, build (`npm run check`) | `.github/workflows/ci.yml` | Every PR and push to `main` |
+| `npm audit`: any advisory in runtime deps, high+ in dev deps | `ci.yml` | Every PR and push to `main` |
+| Dependency review: new moderate+ vulnerabilities or GPL/AGPL licenses | `ci.yml` | Every PR |
+| CodeQL static analysis (`security-extended`) | `.github/workflows/codeql.yml` | Every PR, push to `main`, weekly |
+| Dependency and Actions updates | `.github/dependabot.yml` | Weekly PRs |
+| Preview deploy per PR, production deploy from `main` | Vercel Git integration | Every push |
+
+Vercel's build also runs `npm run check`, so a red build never deploys.
+
+**One-time GitHub settings (repo owner):**
+
+- Branch protection on `main`: require a pull request, and require the status checks *Type-check, lint, test, build*, *Dependency audit*, *Dependency review* and *Analyze*.
+- Settings > Code security: turn on secret scanning with push protection, and Dependabot alerts.
+
+**Later: Cloud Run.** The CI jobs stay as they are. Add a Dockerfile that builds with Node and serves `dist/` from a small static server with the same SPA rewrite and the headers from `vercel.json`, then a deploy job that pushes the image to Artifact Registry and deploys to Cloud Run, authenticating with Workload Identity Federation (no service account keys in GitHub secrets).

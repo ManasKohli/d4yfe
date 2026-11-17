@@ -17,7 +17,7 @@ export default function MentorDashboard() {
 
   return (
     <>
-      <PageHeader eyebrow="Mentor area" title={`Welcome back, ${firstName}`} lede={mentor.role}/>
+      <PageHeader title={`Welcome back, ${firstName}`} lede={mentor.role}/>
       <div className="grid gap-6">
         <Card title="Review queue" action={<Link className="text-sm font-medium text-green hover:underline" to={`${paths.mentor}/reviews`}>Open queue</Link>}>
           <ReviewQueueTable items={reviewQueue}/>

@@ -466,3 +466,19 @@ Approval readiness: PASS (D1, D2, D3 from the user's answers in this session).
 
 **UNRESOLVED DECISIONS:**
 + 6 unresolved from prior reviews
+
+## Design Review: live site (2026-11-16, branch feat/uiupdate)
+
+/design-review on the built site at 1360px and 390px, lean run (no outside voices). Score 6/10 → 8/10; AI slop C → B.
+
+| # | Impact | Finding | Fix |
+|---|---|---|---|
+| 1 | High | Hero rings ran past the hero and were cut off by the module row | Three rings instead of four, faded out with a mask before the hero ends |
+| 2 | High | The seven modules had no visible heading | "The seven modules" heading plus a link to program details |
+| 3 | Medium | Every heading used the two-tone "muted second line" pattern (templated) | `muted` removed from `Section` and `PageHeader`; only the home hero h1 keeps it |
+| 4 | Medium | Program details: 8 sections, no wayfinding | Section headings moved to `detailSections` in `src/data/program.ts`; the same list drives an "On this page" jump list; test keeps anchors in sync with `paths` |
+| 5 | Medium | Module page put unequal content in equal boxes | Lesson sections are hairline columns, not cards |
+| 6 | Medium | Portal pages repeated the area name as an eyebrow under the shell label | Area eyebrows removed from signed-in pages |
+| 7 | Polish | Footer bottom rule wider than the content column | Rule moved inside the container |
+
+Deferred (still open from the plan review): nav "See packages" vs hero "Explore the modules" as competing primary actions (founders own the real CTA); empty, loading and error states beyond home and feedback; admin and mentor tables at 390px.

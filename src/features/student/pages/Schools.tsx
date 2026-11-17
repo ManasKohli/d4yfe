@@ -25,7 +25,7 @@ export default function Schools() {
 
   return (
     <>
-      <PageHeader eyebrow="Student portal" title="School requirements" lede={schoolsNote}/>
+      <PageHeader title="School requirements" lede={schoolsNote}/>
       <div className="mb-6"><FilterPills label="Filter schools" options={Object.keys(filters) as Filter[]} value={filter} onChange={setFilter}/></div>
       {visible.length === 0 ? <p className="text-muted">No schools match this filter.</p> : (
         <div className="grid gap-4 md:grid-cols-2">
