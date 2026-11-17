@@ -4,7 +4,9 @@ import Brand from '@/shared/components/Brand';
 
 const footerLinks = [
   { label: 'Modules', to: paths.modulesSection },
-  { label: 'Program details', to: paths.programDetails },
+  { label: 'How it works', to: paths.howItWorks },
+  { label: 'Packages', to: paths.packages },
+  { label: 'Mentors', to: paths.mentors },
   { label: 'Pilot cohort', to: paths.pilotSection },
   { label: 'Sign in', to: paths.login },
 ];

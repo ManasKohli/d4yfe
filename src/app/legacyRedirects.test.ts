@@ -1,4 +1,4 @@
-import { getLegacyRedirect } from '@/app/legacyRedirects';
+import { getLegacyRedirect, programDetailsRedirect } from '@/app/legacyRedirects';
 
 describe('getLegacyRedirect', () => {
   it.each([
@@ -7,9 +7,9 @@ describe('getLegacyRedirect', () => {
     ['#module-05', '/modules/final-check-in'],
     ['#module-09', '/#modules'],
     ['#approach', '/#how-it-works'],
-    ['#program-model', '/program-details'],
-    ['#goals', '/program-details#goals'],
-    ['#community', '/program-details#community'],
+    ['#program-model', '/how-it-works'],
+    ['#goals', '/how-it-works'],
+    ['#community', '/mentors#community'],
     ['#module-00', '/#modules'],
     ['#home', '/'],
     ['#application-support', '/#modules'],
@@ -30,5 +30,20 @@ describe('getLegacyRedirect', () => {
   it('only redirects from the home page', () => {
     expect(getLegacyRedirect('/program-details', '#module-02')).toBeNull();
     expect(getLegacyRedirect('/', '')).toBeNull();
+  });
+});
+
+describe('programDetailsRedirect', () => {
+  it.each([
+    ['#options', '/packages'],
+    ['#pilot', '/packages#pilot'],
+    ['#mentors', '/mentors'],
+    ['#community', '/mentors#community'],
+    ['#how-it-works', '/how-it-works'],
+    ['#goals', '/how-it-works'],
+    ['', '/how-it-works'],
+    ['#__proto__', '/how-it-works'],
+  ])('maps /program-details%s to %s', (hash, target) => {
+    expect(programDetailsRedirect(hash)).toBe(target);
   });
 });

@@ -5,9 +5,9 @@ import PillNav, { type PillNavLink } from '@/shared/ui/PillNav';
 
 const links: PillNavLink[] = [
   { label: 'Modules', to: paths.modulesSection },
-  { label: 'How it works', to: paths.howItWorksDetail },
-  { label: 'Packages', to: paths.optionsSection },
-  { label: 'Mentors', to: paths.mentorsSection },
+  { label: 'How it works', to: paths.howItWorks },
+  { label: 'Packages', to: paths.packages },
+  { label: 'Mentors', to: paths.mentors },
 ];
 
 export default function SiteHeader() {
@@ -19,7 +19,7 @@ export default function SiteHeader() {
       actions={(
         <>
           <ButtonLink to={paths.login} variant="ghost">Sign in</ButtonLink>
-          <ButtonLink to={paths.optionsSection}>See packages</ButtonLink>
+          <ButtonLink to={paths.packages}>See packages</ButtonLink>
         </>
       )}
     />

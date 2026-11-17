@@ -51,13 +51,17 @@ export interface ProgramModule {
 
 export interface TitledItem { title: string; description: string }
 
-/** One section of the program details page. `id` is its URL anchor; `label` names it in the jump list and eyebrow. */
-export interface DetailSection {
-  id: 'how-it-works' | 'goals' | 'outcomes' | 'portal' | 'options' | 'mentors' | 'community' | 'pilot';
-  label: string;
-  title: string;
-  lede?: string;
-}
+/** A public page's heading: its h1 and the one line under it. */
+export interface PageIntro { title: string; lede: string }
+
+/** A page section heading, with an optional supporting line. */
+export interface SectionIntro { title: string; lede?: string }
+
+/** One bundled package (proposal §9). */
+export interface ProgramPackage { name: string; summary: string }
+
+/** One row of the package comparison: `true` included, `false` not included, or a short qualifier. */
+export interface PackageFeature { label: string; values: (boolean | string)[] }
 
 export interface NavItem { label: string; to: string; end?: boolean }
 export interface Area { label: string; nav: NavItem[] }
