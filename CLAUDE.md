@@ -38,11 +38,11 @@ Do **not** publish internal planning material from the doc: budgets, revenue pro
 
 Clean, simple, professional education product. The reference is a modern light SaaS landing page, applied to D4Y:
 
-- **Layout:** floating pill-shaped nav, one large centered headline with a short muted line under it, at most two buttons, generous whitespace, soft rounded cards, faint concentric rings behind the hero as the only decoration.
+- **Layout:** floating pill-shaped nav, one large centered headline with a short muted line under it, at most two buttons, generous whitespace, soft rounded cards. The hero's only decoration is a fine-line green funnel (`HeroFunnel`), with a slow row of dental school names (text, not logos) at its foot.
 - **Color:** D4Y green (`#1f4c43`) for primary actions and brand, ink text, warm paper background, light sage tints. Coral is a small accent only. Light theme.
-- **Less per page.** Each page leads with one idea. Prefer a short block that links to detail over a long section. The home page is: hero, the seven modules, three short blocks, footer.
+- **Less per page.** Each page leads with one idea. The public site is one landing page (hero, then the sections in `homeSections`: about, modules, how it works, portal, packages, mentors, community, outcomes, pilot) plus one page per module.
 - **One system everywhere.** Public pages and the signed-in areas use the same primitives (buttons, cards, badges, nav), so the portal feels like the same product.
-- **No ornament without content.** No ratings, trust badges, logo walls, user counts, fake activity or notification cards, floating app icons, 3D objects, stock photos, decorative glyphs, or placeholder stats — even though the references use them.
+- **No ornament without content.** No ratings, trust badges, logo walls (the school-name row is the one agreed exception; it names schools applicants target and implies no partnership), user counts, fake activity or notification cards, floating app icons, 3D objects, stock photos, decorative glyphs, or placeholder stats — even though the references use them.
 
 ## Stack
 
@@ -87,7 +87,7 @@ Imports use the `@/` alias for `src/`. Dependencies point one way: `app` → `fe
 
 ## Design decisions on record
 
-The plan and its review decisions are in `docs/designs/pilot-redesign.md`. In short: Manrope 700 for headings and DM Sans for everything else; radius by role (pill buttons and nav, 16px cards, 12px tables, 8px inputs and badges); the home page is hero, modules, three editorial rows (not cards), footer; under 900px the nav becomes a Menu panel and portal tabs become a scrolling pill row; 44px minimum touch targets and one focus ring style. Motion is one entrance on the home hero; content is never hidden behind scroll animations. Only the home hero h1 uses a muted second line; every other heading is one line in one color, and signed-in pages carry no area eyebrow (the shell already names the area).
+The plan and its review decisions are in `docs/designs/pilot-redesign.md`. In short: Manrope 700 for headings and DM Sans for everything else; radius by role (pill buttons and nav, 16px cards, 12px tables, 8px inputs and badges); the home page is hero, modules, three editorial rows (not cards), footer; under 900px the nav becomes a Menu panel and portal tabs become a scrolling pill row; 44px minimum touch targets and one focus ring style. Motion is one entrance on the home hero; content is never hidden behind scroll animations. Landing-page h2s use a two-line split heading (second line in sage, lede beside it), with sage bands on alternate sections; every other heading is one line in one color, and signed-in pages carry no area eyebrow (the shell already names the area).
 
 ## Checks before finishing
 

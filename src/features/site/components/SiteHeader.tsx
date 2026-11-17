@@ -4,10 +4,11 @@ import { ButtonLink } from '@/shared/ui/Button';
 import PillNav, { type PillNavLink } from '@/shared/ui/PillNav';
 
 const links: PillNavLink[] = [
+  { label: 'About', to: paths.aboutSection },
   { label: 'Modules', to: paths.modulesSection },
-  { label: 'How it works', to: paths.howItWorksDetail },
   { label: 'Packages', to: paths.optionsSection },
   { label: 'Mentors', to: paths.mentorsSection },
+  { label: 'Pilot', to: paths.pilotSection },
 ];
 
 export default function SiteHeader() {

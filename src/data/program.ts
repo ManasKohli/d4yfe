@@ -1,22 +1,35 @@
 // Program-level content from the D4Y Dental Pathway Program proposal.
 // Pages render these exports; they never hold program copy themselves.
 
-import type { DetailSection, TitledItem } from '@/types';
+import type { HomeSection, Package, TitledItem } from '@/types';
 
 /** Home page hero. Headline is the existing site headline; the subline condenses proposal §1 Overview. */
 export const hero = {
-  eyebrow: 'Dentistry for Youth · Dental Pathway Program',
-  modulesTitle: 'The seven modules',
-  modulesLinkLabel: 'How the modules fit together',
   headline: 'A clear path to',
   headlineMuted: 'dental school.',
   subline: 'Modular support for the dental school application: workshops, practice, and individual feedback from dental students and dentists. Take only the modules you need.',
+  schoolsCaption: 'For applicants to dental schools in Canada and the US',
 };
 
-/** Proposal §1, shown at the top of the program details page. */
-export const overview = [
-  'The Dental Pathway Program is a structured, digital program that supports aspiring dental students throughout the dental school application process. It brings practical guidance, workshops, application resources, practice opportunities, and individualized feedback into one place.',
-  'Rather than one general program every student must complete, it is modular: students access and pay for the specific areas where they need support.',
+/**
+ * Dental schools shown in the hero carousel, as plain names (no logos). Every entry has a dental school;
+ * the program covers Canadian and American applications (proposal §3, Module 1).
+ */
+export const schools = [
+  'University of Toronto',
+  'Harvard',
+  'McGill',
+  'UCLA',
+  'UBC',
+  'UCSF',
+  'Western',
+  'Columbia',
+  'University of Alberta',
+  'NYU',
+  'Dalhousie',
+  'University of Michigan',
+  'Université de Montréal',
+  'Penn',
 ];
 
 export const programGoals = [
@@ -61,28 +74,6 @@ export const howItWorks: (TitledItem & { step: string })[] = [
   },
 ];
 
-/** Home page rows under the modules. `to` is a key of `paths`. */
-export const homeRows: (TitledItem & { linkLabel: string; to: 'howItWorksDetail' | 'optionsSection' | 'mentorsSection' })[] = [
-  {
-    title: 'How it works',
-    description: 'Every module follows the same three steps: learn in a workshop, practice with assignments, then get individual feedback.',
-    linkLabel: 'See how it works',
-    to: 'howItWorksDetail',
-  },
-  {
-    title: 'Packages',
-    description: 'Choose individual modules, or the Essential, Application, or Premium package. Hardship seats are available.',
-    linkLabel: 'Compare options',
-    to: 'optionsSection',
-  },
-  {
-    title: 'Mentors',
-    description: 'Your work is reviewed by current dental students, recent graduates, dentists, and D4Y mentors.',
-    linkLabel: 'Meet the network',
-    to: 'mentorsSection',
-  },
-];
-
 export const portalFeatures: TitledItem[] = [
   {
     title: 'Everything in one view',
@@ -98,13 +89,20 @@ export const portalFeatures: TitledItem[] = [
   },
 ];
 
-export const accessOptions: TitledItem[] = [
+/** Bundled packages (proposal §9, option 2). No prices: pricing is announced before registration. */
+export const packages: Package[] = [
+  { name: 'Essential', includes: ['Educational workshops', 'Resources'] },
+  { name: 'Application', includes: ['Workshops', 'Application resources', 'Selected feedback'] },
+  { name: 'Premium', includes: ['Full program', 'Individualized reviews', 'Mentorship check-in'] },
+];
+
+/** The other two ways in, shown under the packages. */
+export const otherAccess: TitledItem[] = [
   { title: 'Individual modules', description: 'Purchase only the modules you need: Applicant Strategy, DAT, CASPer, Personal Statement, Application Entries, Interview, or Final Check-In.' },
-  { title: 'Essential package', description: 'Educational workshops and resources.' },
-  { title: 'Application package', description: 'Workshops, application resources, and selected feedback.' },
-  { title: 'Premium package', description: 'The full program, with individualized reviews and a mentorship check-in.' },
   { title: 'Hardship seats', description: 'Students facing financial hardship can apply for a seat. Two committee members review each application without seeing the applicant’s name.' },
 ];
+
+export const pricingNote = 'Pricing will be announced before registration opens.';
 
 export const mentorNetwork = [
   'Current dental students',
@@ -139,46 +137,65 @@ export const pilotFocus = [
   'Where students need more support',
 ];
 
-/** Program details page: the page heading, then its sections in order (proposal §2-§12 and the pilot phase). */
-export const detailsHeader = {
-  eyebrow: 'Program details',
-  title: 'How the program fits together',
-};
+export const pilotNote = 'Dates, pricing, and registration details will be announced.';
 
-export const detailSections = [
-  { id: 'how-it-works', label: 'How it works', title: 'Learn, practice, then get feedback' },
-  { id: 'goals', label: 'Program goals', title: 'What the program is built to do' },
-  { id: 'outcomes', label: 'Outcomes', title: 'What students leave with' },
+/**
+ * The landing page's sections in order (proposal §1-§12 and the pilot phase). `id` is the URL anchor,
+ * `label` names it in the nav, and `titleMuted` is the heading's quieter second line.
+ */
+export const homeSections = [
+  {
+    id: 'about',
+    label: 'About',
+    title: 'One place for the whole application.',
+    titleMuted: 'Modular by design.', 
+    lede: 'The Dental Pathway Program is a structured, digital program that supports aspiring dental students throughout the dental school application process. It brings practical guidance, workshops, application resources, practice opportunities, and individualized feedback into one place.',
+  },
+  {
+    id: 'modules',
+    label: 'Modules',
+    title: 'Seven modules.',
+    titleMuted: 'Pick what you need.', 
+    lede: 'Rather than one general program every student must complete, it is modular: students access and pay for the specific areas where they need support.',
+  },
+  { id: 'how-it-works', label: 'How it works', title: 'Learn, practice,', titleMuted: 'then get feedback.', lede: 'Every module follows the same three steps.' },
   {
     id: 'portal',
     label: 'Student portal',
-    title: 'Your program in one place',
+    title: 'Your program',
+    titleMuted: 'in one place.',
     lede: 'The website works as a student portal, so registration, payment, module access, assignments, resources, workshops, and feedback are managed from one location.',
   },
-  {
-    id: 'options',
-    label: 'Program options',
-    title: 'Pay only for what you need',
-    lede: 'Purchase individual modules, or choose a bundled package.',
-  },
+  { id: 'options', label: 'Packages', title: 'Pay only', titleMuted: 'for what you need.', lede: 'Purchase individual modules, or choose a bundled package.' },
   {
     id: 'mentors',
-    label: 'Mentors and reviewers',
-    title: 'Feedback from people who have been there',
+    label: 'Mentors',
+    title: 'Feedback from people',
+    titleMuted: 'who have been there.',
     lede: 'Individual reviews and check-ins come from a network of people who have successfully navigated the dental school application process.',
   },
   {
     id: 'community',
     label: 'Community',
-    title: 'Go through it with others',
+    title: 'Go through it',
+    titleMuted: 'with others.',
     lede: 'The program is primarily digital, but applicants should not have to navigate the process alone. Community activities connect students with each other and with mentors throughout the application cycle.',
   },
+  { id: 'outcomes', label: 'Outcomes', title: 'What students', titleMuted: 'leave with.' },
   {
     id: 'pilot',
-    label: 'Pilot cohort',
-    title: 'Starting with a pilot cohort',
+    label: 'Pilot',
+    title: 'Starting with',
+    titleMuted: 'a pilot cohort.',
     lede: 'Before a full launch, D4Y will run the program with a small pilot cohort. Feedback from pilot students will be used to improve the workshops, reviews, and platform before the official launch.',
   },
-] as const satisfies readonly DetailSection[];
+] as const satisfies readonly HomeSection[];
 
-export type DetailSectionId = (typeof detailSections)[number]['id'];
+export type HomeSectionId = (typeof homeSections)[number]['id'];
+
+/** Heading props for one landing-page section, so the nav and the headings never drift apart. */
+export function homeSection(id: HomeSectionId): HomeSection {
+  const section = homeSections.find(item => item.id === id);
+  if (!section) throw new Error(`Unknown home section: ${id}`);
+  return section;
+}
