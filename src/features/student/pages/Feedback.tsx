@@ -91,7 +91,7 @@ export default function Feedback() {
 
   return (
     <>
-      <PageHeader eyebrow="Student portal" title="Feedback" lede="Every review uses the same rubric: scores, strengths, your top three priorities, and one follow-up question."/>
+      <PageHeader title="Feedback" lede="Every review uses the same rubric: scores, strengths, your top three priorities, and one follow-up question."/>
       {!selected ? (
         <Card>
           <p>No feedback yet. Reviews come back within {student.mentorTurnaroundDays} days of submitting.</p>

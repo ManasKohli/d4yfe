@@ -84,7 +84,7 @@ export default function StudentHome() {
 
   return (
     <>
-      <PageHeader eyebrow="Student portal" title={`Welcome back, ${student.firstName}`} lede={`${student.package} · ${student.track} track · ${student.cycle}`}/>
+      <PageHeader title={`Welcome back, ${student.firstName}`} lede={`${student.package} · ${student.track} track · ${student.cycle}`}/>
 
       <div className="grid gap-6 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
         <div className="grid content-start gap-6">

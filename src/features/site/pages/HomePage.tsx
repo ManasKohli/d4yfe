@@ -10,8 +10,8 @@ import Icon from '@/shared/ui/Icon';
 /** Faint concentric rings behind the hero: the site's one decorative element (design doc, premise 2). */
 function Rings() {
   return (
-    <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 -z-10 hidden h-full overflow-hidden md:block">
-      {[36, 56, 76, 96].map(size => (
+    <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 -z-10 hidden h-full overflow-hidden [mask-image:linear-gradient(to_bottom,black_45%,transparent_92%)] md:block">
+      {[36, 56, 76].map(size => (
         <span
           key={size}
           className="absolute top-[45%] left-1/2 aspect-square -translate-x-1/2 -translate-y-1/2 rounded-full border border-line"
@@ -44,9 +44,14 @@ function Hero() {
 /** Seven modules: a list of rows on phones, a grid from 680px (design review D3). */
 function Modules() {
   return (
-    <section id="modules" aria-labelledby="modules-title" className="scroll-mt-24 pb-16 md:pb-20">
+    <section id="modules" aria-labelledby="modules-title" className="scroll-mt-24 pt-4 pb-16 md:pb-20">
       <div className="container-page">
-        <h2 id="modules-title" className="sr-only">The seven modules</h2>
+        <header className="mb-6 flex flex-col gap-1 md:flex-row md:items-center md:justify-between md:gap-6">
+          <h2 id="modules-title" className="text-2xl md:text-3xl">{hero.modulesTitle}</h2>
+          <Link to={paths.programDetails} className="inline-flex min-h-11 items-center gap-1.5 font-medium text-green hover:underline">
+            {hero.modulesLinkLabel} <Icon name="arrow" size={16}/>
+          </Link>
+        </header>
         <ol className="grid gap-2 md:grid-cols-2 md:gap-3 lg:grid-cols-4 xl:grid-cols-7">
           {modules.map(module => (
             <li key={module.slug}>
@@ -55,7 +60,7 @@ function Modules() {
                 className="group flex h-full min-h-14 items-center gap-4 rounded-card border border-line bg-card px-4 py-3 no-underline shadow-soft transition-colors hover:border-line-strong md:min-h-32 md:flex-col md:items-start md:justify-between md:p-4"
               >
                 <span className="font-display text-sm font-bold text-subtle">{module.number}</span>
-                <span className="flex-1 text-base leading-snug font-medium text-ink">{module.title}</span>
+                <span className="flex-1 font-display text-base leading-snug font-bold tracking-[-0.01em] text-ink">{module.title}</span>
                 <span className="text-muted transition-transform group-hover:translate-x-0.5 md:self-end"><Icon name="arrow" size={18}/></span>
               </Link>
             </li>

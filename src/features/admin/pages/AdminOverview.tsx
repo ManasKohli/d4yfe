@@ -25,7 +25,7 @@ export default function AdminOverview() {
 
   return (
     <>
-      <PageHeader eyebrow="D4Y admin" title="Program overview" lede={cohort.name}/>
+      <PageHeader title="Program overview" lede={cohort.name}/>
       <div className="grid gap-6">
         <div className="grid gap-6 lg:grid-cols-2">
           <Card title="Review pipeline" action={<Link className={panelLink} to={`${paths.admin}/reviews`}>All reviews</Link>}>

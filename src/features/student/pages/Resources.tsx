@@ -29,7 +29,7 @@ export default function Resources() {
 
   return (
     <>
-      <PageHeader eyebrow="Student portal" title="Resources" lede="Every checklist, template, workbook, and recording from your modules."/>
+      <PageHeader title="Resources" lede="Every checklist, template, workbook, and recording from your modules."/>
       <Card>
         <div className="mb-4 grid gap-3">
           <label htmlFor="resource-search" className="sr-only">Search resources</label>

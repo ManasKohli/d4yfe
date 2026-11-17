@@ -9,7 +9,7 @@ export default function AdminHardship() {
   useDocumentTitle('Hardship seats');
   return (
     <>
-      <PageHeader eyebrow="D4Y admin" title="Hardship seats" lede="Two committee members review each application. Applications are identified by number only."/>
+      <PageHeader title="Hardship seats" lede="Two committee members review each application. Applications are identified by number only."/>
       <Table
         caption="Hardship seat applications"
         rows={hardshipApplications}

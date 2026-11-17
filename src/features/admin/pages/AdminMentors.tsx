@@ -9,7 +9,7 @@ export default function AdminMentors() {
   useDocumentTitle('Mentors');
   return (
     <>
-      <PageHeader eyebrow="D4Y admin" title="Mentors and reviewers" lede={mentorRules.slice(0, 2).join(' ')}/>
+      <PageHeader title="Mentors and reviewers" lede={mentorRules.slice(0, 2).join(' ')}/>
       <Table
         caption="Mentors"
         rows={mentors}

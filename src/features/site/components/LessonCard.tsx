@@ -3,7 +3,7 @@ import type { LessonSection } from '@/types';
 /** One lesson section. Each optional field in the module data maps to one block. */
 export default function LessonCard({ section }: { section: LessonSection }) {
   return (
-    <article className="rounded-card border border-line bg-card p-5">
+    <article className="border-t border-line pt-5">
       <h3 className="mb-2 text-lg">{section.heading}</h3>
       <div className="grid gap-3 text-muted">
         {section.intro && <p>{section.intro}</p>}

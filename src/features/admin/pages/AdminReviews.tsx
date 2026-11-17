@@ -16,7 +16,7 @@ export default function AdminReviews() {
 
   return (
     <>
-      <PageHeader eyebrow="D4Y admin" title="Reviews in progress" lede={`Overdue reviews escalate automatically: ${ruleText}.`}/>
+      <PageHeader title="Reviews in progress" lede={`Overdue reviews escalate automatically: ${ruleText}.`}/>
       <Table
         caption="Open reviews, oldest first"
         rows={rows}

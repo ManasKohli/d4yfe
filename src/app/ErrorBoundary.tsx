@@ -32,7 +32,7 @@ export default class ErrorBoundary extends Component<{ children: ReactNode; rese
     if (!this.state.error) return this.props.children;
     return (
       <main id="main" className="container-page py-20">
-        <PageHeader title="Something went" muted="wrong." lede="This page could not load. Reload to try again, or go back to the program overview.">
+        <PageHeader title="Something went wrong." lede="This page could not load. Reload to try again, or go back to the program overview.">
           <Button onClick={() => window.location.reload()}>Reload</Button>
           <a className={buttonClass('outline')} href={paths.home}>Back to overview</a>
         </PageHeader>

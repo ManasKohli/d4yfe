@@ -21,7 +21,7 @@ export default function CurriculumSection({ module }: { module: ProgramModule })
         <section key={part.label} aria-label={`${part.label}: ${part.title}`}>
           <Eyebrow>{part.label}</Eyebrow>
           <h2 className="mb-5 text-2xl">{part.title}</h2>
-          <div className="grid gap-4 md:grid-cols-2">{part.sections.map(section => <LessonCard key={section.heading} section={section}/>)}</div>
+          <div className="grid gap-8 md:grid-cols-2 md:gap-10">{part.sections.map(section => <LessonCard key={section.heading} section={section}/>)}</div>
         </section>
       ))}
 

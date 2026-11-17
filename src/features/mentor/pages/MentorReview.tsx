@@ -75,7 +75,7 @@ export default function MentorReview() {
       <Link className="mb-6 inline-flex min-h-11 items-center gap-2 text-muted hover:text-ink" to={`${paths.mentor}/reviews`}>
         <span className="rotate-180"><Icon name="arrow" size={16}/></span> Review queue
       </Link>
-      <PageHeader eyebrow={`${moduleLabel(review.module)} · ${module?.title ?? ''}`} title={review.title} muted={review.student}>
+      <PageHeader eyebrow={`${moduleLabel(review.module)} · ${module?.title ?? ''}`} title={review.title} lede={review.student}>
         <Badge status={review.status}/>
         <span className="text-sm text-muted">{review.track} track · Submitted {formatDay(review.submitted)} · Due {formatDay(review.due)}</span>
       </PageHeader>

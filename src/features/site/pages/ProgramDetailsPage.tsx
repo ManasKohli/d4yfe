@@ -1,7 +1,7 @@
 import { paths } from '@/app/paths';
 import {
-  accessOptions, communityItems, howItWorks, mentorNetwork, mentorNetworkNotes, overview, pilotFocus,
-  portalFeatures, programGoals, studentOutcomes,
+  accessOptions, communityItems, detailSections, detailsHeader, howItWorks, mentorNetwork, mentorNetworkNotes, overview,
+  pilotFocus, portalFeatures, programGoals, studentOutcomes, type DetailSectionId,
 } from '@/data/program';
 import type { TitledItem } from '@/types';
 import useDocumentTitle from '@/shared/hooks/useDocumentTitle';
@@ -41,51 +41,65 @@ function CheckList({ items, columns = 1 }: { items: string[]; columns?: 1 | 2 })
   );
 }
 
+/** Heading props for one section, read from `detailSections` so the jump list and headings never drift apart. */
+function sectionHeading(id: DetailSectionId) {
+  const section = detailSections.find(item => item.id === id);
+  if (!section) throw new Error(`Unknown program details section: ${id}`);
+  return { id, eyebrow: section.label, title: section.title, lede: 'lede' in section ? section.lede : undefined };
+}
+
+/** Jump list under the page heading: one link per section, in page order. */
+function OnThisPage() {
+  return (
+    <nav aria-label="On this page" className="mt-10 border-t border-line pt-5">
+      <p className="mb-2 text-sm font-medium text-subtle">On this page</p>
+      <ul className="flex flex-wrap gap-x-6">
+        {detailSections.map(section => (
+          <li key={section.id}>
+            <a href={`#${section.id}`} className="inline-flex min-h-11 items-center text-ui text-ink-2 no-underline hover:text-green hover:underline">
+              {section.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  );
+}
+
 export default function ProgramDetailsPage() {
   useDocumentTitle('Program details');
   return (
     <>
       <div className="container-page pt-16 md:pt-20">
-        <PageHeader eyebrow="Program details" title="How the program" muted="fits together." lede={overview[0]}>
+        <PageHeader eyebrow={detailsHeader.eyebrow} title={detailsHeader.title} lede={overview[0]}>
           <ButtonLink to={paths.modulesSection} variant="outline">See the seven modules</ButtonLink>
         </PageHeader>
         <p className="max-w-3xl text-muted">{overview[1]}</p>
+        <OnThisPage/>
       </div>
 
-      <Section id="how-it-works" eyebrow="How it works" title="Learn, practice," muted="then get feedback.">
+      <Section {...sectionHeading('how-it-works')}>
         <DefinitionRows items={howItWorks} label={index => howItWorks[index]?.step ?? ''}/>
       </Section>
 
-      <Section id="goals" eyebrow="Program goals" title="What the program" muted="is built to do." className="bg-tint">
+      <Section {...sectionHeading('goals')} className="bg-tint">
         <CheckList items={programGoals} columns={2}/>
       </Section>
 
-      <Section id="outcomes" eyebrow="Outcomes" title="What students" muted="leave with.">
+      <Section {...sectionHeading('outcomes')}>
         <CheckList items={studentOutcomes} columns={2}/>
       </Section>
 
-      <Section
-        id="portal"
-        eyebrow="Student portal"
-        title="Your program," muted="in one place."
-        lede="The website works as a student portal, so registration, payment, module access, assignments, resources, workshops, and feedback are managed from one location."
-        className="bg-tint"
-      >
+      <Section {...sectionHeading('portal')} className="bg-tint">
         <DefinitionRows items={portalFeatures}/>
       </Section>
 
-      <Section id="options" eyebrow="Program options" title="Pay only for" muted="what you need." lede="Purchase individual modules, or choose a bundled package.">
+      <Section {...sectionHeading('options')}>
         <DefinitionRows items={accessOptions}/>
         <p className="mt-6 text-sm text-subtle">Pricing will be announced before registration opens.</p>
       </Section>
 
-      <Section
-        id="mentors"
-        eyebrow="Mentors and reviewers"
-        title="Feedback from people" muted="who have been there."
-        lede="Individual reviews and check-ins come from a network of people who have successfully navigated the dental school application process."
-        className="bg-tint"
-      >
+      <Section {...sectionHeading('mentors')} className="bg-tint">
         <div className="grid gap-10 md:grid-cols-2">
           <div>
             <h3 className="mb-4 text-lg">Who is in the network</h3>
@@ -98,22 +112,11 @@ export default function ProgramDetailsPage() {
         </div>
       </Section>
 
-      <Section
-        id="community"
-        eyebrow="Community"
-        title="Go through it" muted="with others."
-        lede="The program is primarily digital, but applicants should not have to navigate the process alone. Community activities connect students with each other and with mentors throughout the application cycle."
-      >
+      <Section {...sectionHeading('community')}>
         <DefinitionRows items={communityItems}/>
       </Section>
 
-      <Section
-        id="pilot"
-        eyebrow="Pilot cohort"
-        title="Starting small," muted="built to improve."
-        lede="Before a full launch, D4Y will run the program with a small pilot cohort. Feedback from pilot students will be used to improve the workshops, reviews, and platform before the official launch."
-        className="bg-tint"
-      >
+      <Section {...sectionHeading('pilot')} className="bg-tint">
         <h3 className="mb-4 text-lg">The pilot will evaluate</h3>
         <CheckList items={pilotFocus} columns={2}/>
         <p className="mt-8 rounded-card border border-line bg-card p-5">

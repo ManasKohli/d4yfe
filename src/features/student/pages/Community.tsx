@@ -17,7 +17,7 @@ export default function Community() {
 
   return (
     <>
-      <PageHeader eyebrow="Student portal" title="Community" lede="Applicants should not have to navigate the process alone. Talk with other students and mentors throughout the cycle."/>
+      <PageHeader title="Community" lede="Applicants should not have to navigate the process alone. Talk with other students and mentors throughout the cycle."/>
       <div className="grid gap-6 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)]">
         <Card label={community.moderation} title={`D4Y ${community.platform}`} action={join} className="self-start">
           <List>
