@@ -48,7 +48,7 @@ function Modules() {
       <div className="container-page">
         <header className="mb-6 flex flex-col gap-1 md:flex-row md:items-center md:justify-between md:gap-6">
           <h2 id="modules-title" className="text-2xl md:text-3xl">{hero.modulesTitle}</h2>
-          <Link to={paths.programDetails} className="inline-flex min-h-11 items-center gap-1.5 font-medium text-green hover:underline">
+          <Link to={paths.howItWorks} className="inline-flex min-h-11 items-center gap-1.5 font-medium text-green hover:underline">
             {hero.modulesLinkLabel} <Icon name="arrow" size={16}/>
           </Link>
         </header>

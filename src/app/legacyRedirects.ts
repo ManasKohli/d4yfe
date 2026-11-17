@@ -6,8 +6,8 @@ const legacyHashes: Record<string, string> = {
   home: paths.home,
   approach: paths.howItWorksSection,
   'application-support': paths.modulesSection,
-  'program-model': paths.programDetails,
-  goals: paths.goalsSection,
+  'program-model': paths.howItWorks,
+  goals: paths.howItWorks,
   community: paths.communitySection,
 };
 
@@ -23,6 +23,20 @@ export function getLegacyRedirect(pathname: string, hash: string): string | null
     return slug ? modulePath(slug) : paths.modulesSection;
   }
   return Object.hasOwn(legacyHashes, key) ? legacyHashes[key] ?? null : null;
+}
+
+// /program-details was one long page; its sections now live on three pages.
+const programDetailsAnchors: Record<string, string> = {
+  options: paths.packages,
+  pilot: paths.pilotSection,
+  mentors: paths.mentors,
+  community: paths.communitySection,
+};
+
+/** Where an old /program-details#anchor link should land now. */
+export function programDetailsRedirect(hash: string): string {
+  const key = hash.replace(/^#/, '');
+  return Object.hasOwn(programDetailsAnchors, key) ? programDetailsAnchors[key] ?? paths.howItWorks : paths.howItWorks;
 }
 
 export function redirectLegacyHashUrl() {
