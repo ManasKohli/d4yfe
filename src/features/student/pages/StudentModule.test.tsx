@@ -19,9 +19,10 @@ describe('StudentModule content', () => {
   it('lists each chapter’s published videos with their codes, and opens the player', async () => {
     renderModule('casper');
     const scenarios = chapter(/Scenario types/);
-    expect(await within(scenarios).findByText('3.5a')).toBeTruthy();
+    // The outline shows codes before the content loads, so wait for the Watch button, which only real lessons have.
+    const watch = await within(scenarios).findByRole('button', { name: /Watch 3.5a/ });
     expect(within(scenarios).getByText('5 videos', { exact: false })).toBeTruthy();
-    fireEvent.click(within(scenarios).getByRole('button', { name: /Watch 3.5a/ }));
+    fireEvent.click(watch);
     expect(within(scenarios).getByText(/Vimeo player/)).toBeTruthy();
   });
 
