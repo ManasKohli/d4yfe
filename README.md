@@ -6,7 +6,7 @@ The web frontend for Dentistry for Youth's Dental Pathway Program: a modular, di
 
 Content follows two D4Y sources: the *Dental Pathway Program — Program Development Proposal* and D4Y's portal prototype. See `CLAUDE.md` for the content and design rules.
 
-Live site: https://eduplatform-rosy.vercel.app/
+Preview (non-production, Vercel): https://eduplatform-rosy.vercel.app/. Production will run on Firebase Hosting (see [Deployment](#deployment)).
 
 ## What's built
 
@@ -42,7 +42,7 @@ Live site: https://eduplatform-rosy.vercel.app/
 - [Tailwind CSS v4](https://tailwindcss.com/): design tokens in one `@theme` block (`src/styles/app.css`), breakpoints at 680px (`md`) and 900px (`lg`)
 - [Vitest](https://vitest.dev/) and Testing Library for logic and interaction tests
 - [ESLint](https://eslint.org/) with typescript-eslint and the React Hooks and React Refresh rules
-- Deployed on [Vercel](https://vercel.com/) (see `vercel.json`)
+- Production on [Firebase Hosting](https://firebase.google.com/docs/hosting) in the same Google Cloud project as the API (to be set up); [Vercel](https://vercel.com/) for dev and previews only (see `vercel.json`)
 
 ## Getting started
 
@@ -81,7 +81,7 @@ To connect it, this repo needs:
 
 - **Sign-in:** replace `signIn` in `src/features/auth/auth.ts` with Supabase Auth, and guard `/portal`, `/mentor`, and `/admin` by role. Each area mounts through one component (`StudentRoutes`, `MentorRoutes`, `AdminRoutes`), so a role guard wraps that component's `AppShell` route.
 - **Data:** replace imports from `src/data/demo.ts` with API calls. Every per-person record (students, enrolment, assignments, feedback, sessions, reviews, availability, hours, roster, hardship applications) lives in that one file, so it doubles as a list of what the API must return.
-- **Config:** add the Supabase URL, the Supabase anon key, and the API base URL as `VITE_` environment variables, locally and in Vercel. Never put the Supabase service role key in this repo; only the API should hold it.
+- **Config:** add the Supabase URL, the Supabase publishable (anon) key, and the API base URL as `VITE_` environment variables, set at build time per environment: in `.env.local` for local work, in Vercel's project settings for dev and previews, and in the GitHub Actions deploy workflow for production. Never put the Supabase service role key in this repo; only the API should hold it.
 
 Program content (modules, rubrics, statuses, escalation rules) stays in `src/data/` and does not move to the database.
 
@@ -162,7 +162,20 @@ Program-level content (hero, home rows, goals, portal features, packages, mentor
 
 ## Deployment
 
-The repository is connected to Vercel. `vercel.json` sets the Vite build and rewrites every path to `index.html`, so deep links like `/modules/casper` and `/portal/assignments` load correctly. Hashed files in `/assets` are cached for a long time.
+Production and non-production are hosted separately (team decision, 2026-11-18; backend plan D41 in `d4ybe/docs/architecture.md`). Production moves to Firebase Hosting so it shares one Google Cloud bill with the API; Vercel keeps dev and previews.
+
+### Production: Firebase Hosting (to be set up)
+
+None of this config exists yet; these are the tasks (plan section 9, H1–H3):
+
+- **`firebase.json` and `.firebaserc`:** the Firebase project is the same GCP project as the Cloud Run API. `firebase.json` rewrites every route to `/index.html` (so `/portal/modules/casper` loads), caches hashed `/assets/**` for a year and serves `index.html` with `no-cache`.
+- **Security headers:** the production CSP and the other headers move from `vercel.json` to the `headers` block in `firebase.json`. When the API and video player arrive, the CSP adds the API and Supabase origins to `connect-src` and the video host (e.g. `https://player.vimeo.com`) to `frame-src`.
+- **Deploy:** a GitHub Actions workflow runs `npm run check`, builds with the production `VITE_*` values, and deploys to Firebase Hosting on merge to `main`. It authenticates with Workload Identity Federation like the API deploy, once that's confirmed to work for Firebase deploys (open question in the plan); no service-account key is planned.
+- **Domain:** the pilot's custom domain, with Firebase-managed SSL.
+
+### Dev and previews: Vercel (non-production)
+
+The repository is connected to Vercel for non-production builds only. `vercel.json` sets the Vite build and rewrites every path to `index.html`, so deep links like `/modules/casper` and `/portal/assignments` load correctly. Hashed files in `/assets` are cached for a long time.
 
 **Security headers** (all responses, defined once in `vercel.json`): a Content Security Policy (scripts from this origin only; styles and fonts also from Google Fonts), HSTS, `X-Frame-Options: DENY`, `Cross-Origin-Opener-Policy`, `Referrer-Policy`, `X-Content-Type-Options` and `Permissions-Policy`. `npm run build && npm run preview` serves the same headers locally, so check there before changing the CSP. When Supabase and the API arrive, add their origins to `connect-src`.
 
@@ -173,13 +186,14 @@ The repository is connected to Vercel. `vercel.json` sets the Vite build and rew
 | Type-check, lint, tests, build (`npm run check`) | `.github/workflows/ci.yml` | Every PR and push to `main` |
 | `npm audit`: high+ advisories in runtime deps (what ships to the browser) | `ci.yml` | Every PR and push to `main` |
 | Dependency and Actions updates, grouped; security fixes as published | `.github/dependabot.yml` | Monthly PRs |
-| Preview deploy per PR, production deploy from `main` | Vercel Git integration | Every push |
+| Preview deploy per PR (non-production) | Vercel Git integration | Every push |
+| Production deploy to Firebase Hosting (planned) | GitHub Actions deploy workflow | Merge to `main` |
 
-Vercel's build also runs `npm run check`, so a red build never deploys.
+Vercel's build also runs `npm run check`, so a red build never makes a preview; the planned Firebase deploy runs it too.
 
 **One-time GitHub settings (repo owner):**
 
 - Ruleset on `main`: require a pull request and the one status check *Type-check, lint, test, build*. Leave "require branches to be up to date" off so open PRs don't need rebasing every time `main` moves.
 - Settings > Code security: turn on secret scanning with push protection, and Dependabot alerts.
 
-**Later: Cloud Run.** The CI jobs stay as they are. Add a Dockerfile that builds with Node and serves `dist/` from a small static server with the same SPA rewrite and the headers from `vercel.json`, then a deploy job that pushes the image to Artifact Registry and deploys to Cloud Run, authenticating with Workload Identity Federation (no service account keys in GitHub secrets).
+~~**Later: Cloud Run.** Add a Dockerfile that builds with Node and serves `dist/` from a small static server with the same SPA rewrite and the headers from `vercel.json`, then a deploy job that pushes the image to Artifact Registry and deploys to Cloud Run.~~ *Superseded: production moves to Firebase Hosting instead (see Deployment above).*

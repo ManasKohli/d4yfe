@@ -12,6 +12,8 @@ The **front end only** for Dentistry for Youth's **Dental Pathway Program**: a m
 - **Database and auth:** Supabase (not set up yet).
 - Until both exist, every signed-in page reads sample data from `src/data/demo.ts`. Do not add an API client, Supabase client, server code, or environment secrets to this repo without being asked.
 
+**Hosting:** production runs on Firebase Hosting in the same Google Cloud project as the API (team decision, 2026-11-18); Vercel is for dev and previews only. The production CSP and security headers will live in `firebase.json` (not created yet); `vercel.json` covers previews.
+
 The site has two parts: the public pages, and three signed-in areas (student portal, mentor area, admin). Build for the **pilot cohort** first; don't add features for a later full launch.
 
 ## Content sources
