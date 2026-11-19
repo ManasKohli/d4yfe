@@ -1,14 +1,30 @@
-import { materialTypes } from '@/data/portal';
-import type { Material } from '@/types';
+import type { ReactNode } from 'react';
 
-/** Chapter materials and module-wide items: title with its type. */
-export default function MaterialList({ items }: { items: Material[] }) {
+export interface MaterialRow {
+  key: string;
+  title: ReactNode;
+  /** The item's type, e.g. "Template" or "Assignment". */
+  label: string;
+  /** Open, download or watch, for uploaded and linked materials. */
+  action?: ReactNode;
+  /** Shown under the row, e.g. a video player. */
+  detail?: ReactNode;
+}
+
+/** Chapter materials and module-wide items: title with its type, and an action for files and links. */
+export default function MaterialList({ rows }: { rows: MaterialRow[] }) {
   return (
     <ul className="divide-y divide-line">
-      {items.map(entry => (
-        <li key={`${entry.type}-${entry.title}`} className="flex min-h-11 items-center justify-between gap-4 py-2">
-          <span>{entry.title}</span>
-          <span className="shrink-0 text-sm text-muted">{materialTypes[entry.type]}</span>
+      {rows.map(row => (
+        <li key={row.key} className="py-2">
+          <div className="flex min-h-11 items-center justify-between gap-4">
+            <span>{row.title}</span>
+            <span className="flex shrink-0 items-center gap-4">
+              <span className="text-sm text-muted">{row.label}</span>
+              {row.action}
+            </span>
+          </div>
+          {row.detail}
         </li>
       ))}
     </ul>

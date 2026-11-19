@@ -81,6 +81,7 @@ To connect it, this repo needs:
 
 - **Sign-in:** replace `signIn` in `src/features/auth/auth.ts` with Supabase Auth, and guard `/portal`, `/mentor`, and `/admin` by role. Each area mounts through one component (`StudentRoutes`, `MentorRoutes`, `AdminRoutes`), so a role guard wraps that component's `AppShell` route.
 - **Data:** replace imports from `src/data/demo.ts` with API calls. Every per-person record (students, enrolment, assignments, feedback, sessions, reviews, availability, hours, roster, hardship applications) lives in that one file, so it doubles as a list of what the API must return.
+- **Content and uploads:** lesson videos, materials, the Resources library, file uploads, video-link answers and the admin Content page already go through `src/shared/api/mockApi.ts`. Each function there matches an endpoint in the backend plan (`d4ybe/docs/architecture.md`, sections 6 and 8), so connecting them means replacing that one file. Its sample content (`src/data/content.ts`) is built from `modules.ts`; delete both the file and the `videos` and file entries in `modules.ts` once the API serves `GET /student/modules/:slug`.
 - **Config:** add the Supabase URL, the Supabase publishable (anon) key, and the API base URL as `VITE_` environment variables, set at build time per environment: in `.env.local` for local work, in Vercel's project settings for dev and previews, and in the GitHub Actions deploy workflow for production. Never put the Supabase service role key in this repo; only the API should hold it.
 
 Program content (modules, rubrics, statuses, escalation rules) stays in `src/data/` and does not move to the database.
@@ -122,11 +123,13 @@ src/
     mentor/                MentorRoutes.tsx, pages/, components/
     admin/                 AdminRoutes.tsx, pages/, reviewAge.ts
   shared/
+    components/FileUpload  Signed-URL upload with progress and errors, used by students, mentors and admins
     ui/                    Design-system primitives: Button, Card, Badge, Section, PageHeader, Table,
                            List, Field, PillNav, ProgressBar, StatList, FilterPills, TagList, Icon, SkipLink
     components/            Composite pieces used by more than one feature (Brand, ModulePagination, NotFoundPage)
     layouts/AppShell.tsx   Shell for the signed-in areas
-    hooks/                 useDocumentTitle
+    hooks/                 useDocumentTitle, useAsync (loads from the mock API)
+    api/mockApi.ts         Mock of the content and upload endpoints; the one file to swap for the real API
     lib/                   format.ts (dates, numbers, plurals), cn.ts (class names)
   types/                   Data shapes; the contract the Express API will implement
   data/                    Program content and sample records
@@ -134,6 +137,7 @@ src/
     program.ts             Hero, goals, portal, access options, mentors, community, pilot, outcomes
     portal.ts              Signed-in area rules and labels: nav, statuses, rubrics, escalation
     demo.ts                Sample records until the API is connected
+    content.ts             Sample lesson videos and materials, built from modules.ts
   styles/app.css           Tailwind entry and the @theme design tokens (the only stylesheet)
 ```
 

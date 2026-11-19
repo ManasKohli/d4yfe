@@ -8,10 +8,10 @@
 //   moduleWide -> portal items that belong to the whole module, not one chapter
 // Material types are labelled in `materialTypes` (src/data/portal.js).
 
-import type { Material, MaterialType, ProgramModule, Video } from '@/types';
+import type { Chapter, ChapterItem, MaterialType, ProgramModule, Video } from '@/types';
 
 const video = (title: string, minutes: number): Video => ({ title, minutes });
-const item = (type: MaterialType, title: string): Material => ({ type, title });
+const item = (type: MaterialType, title: string): ChapterItem => ({ type, title });
 
 export const modules: ProgramModule[] = [
   {
@@ -489,4 +489,10 @@ export const findModule = (slug: string | undefined): ProgramModule | undefined 
 export const chapterCode = (module: ProgramModule, chapterIndex: number) => `${Number(module.number)}.${chapterIndex + 1}`;
 
 /** "Module 2" style short label for a slug. */
-export const moduleLabel = (slug: string) => `Module ${Number(findModule(slug)?.number)}`;
+export const moduleLabel = (slug: string) => (slug === 'start-here' ? 'Start here' : `Module ${Number(findModule(slug)?.number)}`);
+
+/**
+ * A chapter's slug, the key the API uses for lessons, materials and progress (plan D19).
+ * Derived from the title until each chapter carries a stable `slug` field (plan build step 2).
+ */
+export const chapterSlug = (chapter: Chapter) => chapter.title.toLowerCase().normalize('NFKD').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');

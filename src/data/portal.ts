@@ -56,6 +56,8 @@ export const statuses = {
   approved: { label: 'Approved', tone: 'done' },
   active: { label: 'Active', tone: 'done' },
   onboarding: { label: 'Onboarding', tone: 'warn' },
+  published: { label: 'Published', tone: 'done' },
+  draft: { label: 'Draft', tone: 'warn' },
 } satisfies Record<string, { label: string; tone: Tone }>;
 
 /** Review rubrics. Every criterion is scored out of `rubricScale`. Draft criteria: confirm with D4Y before launch. */
@@ -112,7 +114,69 @@ export const community = {
   },
 };
 
-export const resourceKinds = ['Checklists', 'Templates', 'Workbooks', 'Practice', 'Recordings', 'Partner discounts'];
+/** Resources library categories (plan D27). A material with a category also appears in the library. */
+export const libraryCategories = {
+  checklist: 'Checklists',
+  template: 'Templates',
+  workbook: 'Workbooks',
+  practice: 'Practice',
+  recording: 'Recordings',
+  partner: 'Partner discounts',
+} satisfies Record<string, string>;
+
+export const resourceKinds = Object.values(libraryCategories);
+
+/** Kinds of uploaded or linked chapter material (plan D26, D38). Labels match the chapter outline's wording. */
+export const materialKinds = {
+  pdf: 'Download',
+  template: 'Template',
+  sheet: 'Spreadsheet',
+  image: 'Visual',
+  link: 'Link',
+  quiz: 'Quiz',
+  practice: 'Practice',
+  tool: 'Tool',
+  video: 'Video',
+} satisfies Record<string, string>;
+
+/** Material kinds that are a web link rather than an uploaded file. `video` takes a video link. */
+export const linkKinds = ['link', 'quiz', 'practice', 'tool'] as const;
+
+/** Chapter outline items that point to another part of the portal, not to a file (plan section 1). */
+export const featureItemTypes = ['assignment', 'booking', 'live', 'survey'] as const;
+
+const documentTypes = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+
+/** Storage bucket limits (plan D30). The bucket enforces these; the forms show them and check them first. */
+export const uploadRules = {
+  submissions: { maxBytes: 10 * 1024 * 1024, mimeTypes: documentTypes, accept: '.pdf,.doc,.docx', hint: 'PDF or Word document, up to 10 MB.' },
+  feedback: { maxBytes: 10 * 1024 * 1024, mimeTypes: documentTypes, accept: '.pdf,.doc,.docx', hint: 'PDF or Word document, up to 10 MB.' },
+  materials: {
+    maxBytes: 25 * 1024 * 1024,
+    mimeTypes: [
+      ...documentTypes,
+      'application/vnd.ms-excel',
+      'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+      'application/vnd.ms-powerpoint',
+      'application/vnd.openxmlformats-officedocument.presentationml.presentation',
+      'text/csv',
+      'image/png',
+      'image/jpeg',
+      'image/webp',
+    ],
+    accept: '.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.csv,.png,.jpg,.jpeg,.webp',
+    hint: 'PDF, Word, Excel, PowerPoint, CSV or image, up to 25 MB.',
+  },
+} satisfies Record<string, { maxBytes: number; mimeTypes: string[]; accept: string; hint: string }>;
+
+/** Copy for answers given as a video link (plan D29). */
+export const videoAnswer = {
+  hosts: 'YouTube (unlisted), Vimeo, Loom or Google Drive',
+  hint: 'Record on your phone or laptop, upload it to YouTube (unlisted), Vimeo, Loom or Google Drive, and paste the link. Check it opens in a private window.',
+};
+
+/** Shown on chapters that have no published video yet. */
+export const writtenOnlyNote = 'Videos are added as they are recorded. Written summaries come first.';
 
 export const partnerDisclosure = 'Some codes come from program partners. Listing a code is not an endorsement.';
 
@@ -149,6 +213,7 @@ export const areas: Record<"student" | "mentor" | "admin", Area> = {
       { label: 'Mentors', to: 'mentors' },
       { label: 'Reviews', to: 'reviews' },
       { label: 'Hardship seats', to: 'hardship' },
+      { label: 'Content', to: 'content' },
     ],
   },
 };
