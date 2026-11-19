@@ -4,7 +4,7 @@
 
 import type {
   Assignment, AvailabilitySlot, Bookable, Enrollment, Feedback, HardshipApplication, Mentor, MentorSummary,
-  OpenReview, QueueItem, Resource, RosterEntry, School, Session, Student, VolunteerEntry,
+  OpenReview, QueueItem, RosterEntry, School, Session, Student, VolunteerEntry,
 } from '@/types';
 
 export const demoNotice = 'Preview with sample data. Accounts, uploads, and bookings connect when the database is set up.';
@@ -36,10 +36,14 @@ export const enrollment: Record<string, Enrollment> = {
 };
 
 export const assignments: Assignment[] = [
-  { id: 'a1', title: 'DAT study plan', module: 'dat', status: 'not-started', date: '2026-11-16', dateLabel: 'Due', instructions: 'Use the 12-week template. Include your diagnostic scores and weekly study hours.' },
-  { id: 'a2', title: 'Planning checklist and timeline', module: 'applicant-strategy', status: 'feedback-ready', date: '2026-10-20', dateLabel: 'Reviewed', feedbackId: 'f1' },
-  { id: 'a3', title: 'Personal statement draft 1', module: 'personal-statement', status: 'in-review', date: '2026-11-09', dateLabel: 'Submitted' },
-  { id: 'a4', title: 'CASPer practice set', module: 'casper', status: 'revise', date: '2026-10-18', dateLabel: 'Submitted' },
+  { id: 'a1', title: 'DAT study plan', module: 'dat', status: 'not-started', date: '2026-11-16', dateLabel: 'Due', instructions: 'Use the 12-week template. Include your diagnostic scores and weekly study hours.', answerSpec: ['file'] },
+  { id: 'a2', title: 'Planning checklist and timeline', module: 'applicant-strategy', status: 'feedback-ready', date: '2026-10-20', dateLabel: 'Reviewed', feedbackId: 'f1', answerSpec: ['file'] },
+  { id: 'a3', title: 'Personal statement draft 1', module: 'personal-statement', status: 'in-review', date: '2026-11-09', dateLabel: 'Submitted', answerSpec: ['file'] },
+  {
+    id: 'a4', title: 'CASPer practice set', module: 'casper', status: 'revise', date: '2026-10-18', dateLabel: 'Submitted',
+    instructions: 'Two video responses and three typed responses, from the scenario bank. Keep each video under 60 seconds.',
+    answerSpec: ['video_link', 'video_link', 'text', 'text', 'text'],
+  },
 ];
 
 export const feedback: Feedback[] = [
@@ -54,6 +58,7 @@ export const feedback: Feedback[] = [
     strengths: 'Clear school list with deadlines tracked for every program.',
     priorities: ['Book CASPer before McGill’s last sitting', 'Confirm letter writer types for Alberta', 'Move the DAT date three weeks earlier'],
     followUp: 'Which of your three Canadian schools is your first choice, and why?',
+    feedbackFileName: 'planning-checklist-comments.docx',
   },
 ];
 
@@ -72,14 +77,8 @@ export const bookable: Bookable[] = [
   { id: 'b4', title: 'Mock interview', minutes: 45, module: 'interview', opens: 'Opens August 2027' },
 ];
 
-export const resources: Resource[] = [
-  { id: 'r1', title: 'Application planning checklist', kind: 'Checklists', module: 'applicant-strategy', track: 'Both' },
-  { id: 'r2', title: 'DAT 12-week study plan', kind: 'Templates', module: 'dat', track: 'Both' },
-  { id: 'r3', title: 'Personal statement brainstorm workbook', kind: 'Workbooks', module: 'personal-statement', track: 'Both' },
-  { id: 'r4', title: 'CASPer scenario bank', kind: 'Practice', module: 'casper', track: 'Canada' },
-  { id: 'r5', title: 'Workshop recording: AADSAS overview', kind: 'Recordings', module: 'applicant-strategy', track: 'US' },
-  { id: 'r6', title: 'Partner discount codes for DAT and CASPer prep', kind: 'Partner discounts', module: 'dat', track: 'Both' },
-];
+/** The demo student's seat and id, used by the mock API for access checks and upload paths (plan D14, D39). */
+export const studentAccount = { id: 'student-sam', hasSeat: true };
 
 /** Sample school data for layout only. Every school must be verified before launch. */
 export const schools: School[] = [
@@ -120,17 +119,29 @@ export const reviewQueue: QueueItem[] = [
   {
     id: 'q1', student: 'Sam L.', track: 'Canada', title: 'Personal statement draft 1', module: 'personal-statement',
     submitted: '2026-11-09', due: '2026-11-16', status: 'in-review',
-    file: 'personal-statement-draft-1.docx', note: 'I’m not sure my ending connects back to the opening story.',
+    answers: [{ kind: 'file', label: 'File', fileName: 'personal-statement-draft-1.docx' }], note: 'I’m not sure my ending connects back to the opening story.',
   },
   {
     id: 'q2', student: 'Jordan K.', track: 'US', title: 'Experience log and 3 entries', module: 'application-entries',
     submitted: '2026-11-11', due: '2026-11-18', status: 'new',
-    file: 'experience-log.xlsx', note: '',
+    answers: [{ kind: 'file', label: 'File', fileName: 'experience-log.xlsx' }], note: '',
   },
   {
     id: 'q3', student: 'Ava T.', track: 'Canada', title: 'DAT study plan', module: 'dat',
     submitted: '2026-11-07', due: '2026-11-14', status: 'due-soon',
-    file: 'dat-study-plan.pdf', note: 'Diagnostic scores are on page 2.',
+    answers: [{ kind: 'file', label: 'File', fileName: 'dat-study-plan.pdf' }], note: 'Diagnostic scores are on page 2.',
+  },
+  {
+    id: 'q5', student: 'Ava T.', track: 'Canada', title: 'CASPer practice set', module: 'casper',
+    submitted: '2026-11-12', due: '2026-11-19', status: 'new',
+    answers: [
+      { kind: 'video_link', label: 'Video 1', videoUrl: 'https://youtu.be/example-casper-1' },
+      { kind: 'video_link', label: 'Video 2', videoUrl: 'https://www.loom.com/share/example-casper-2' },
+      { kind: 'text', label: 'Typed 1', body: 'I would first speak with my colleague privately to understand why the report was late, then agree on a plan before the deadline.' },
+      { kind: 'text', label: 'Typed 2', body: 'Fairness means applying the same rule to everyone, but I would ask whether the rule itself serves the patients it was written for.' },
+      { kind: 'text', label: 'Typed 3', body: 'A time I disagreed with a supervisor: I raised my concern with data, accepted the decision, and followed up a week later.' },
+    ],
+    note: 'Video 2 is on Loom because my phone ran out of space.',
   },
 ];
 
@@ -175,6 +186,7 @@ export const openReviews: OpenReview[] = [
   { id: 'q1', student: 'Sam L.', title: 'Personal statement draft 1', mentor: 'Priya R.', submitted: '2026-11-09' },
   { id: 'q2', student: 'Jordan K.', title: 'Experience log and 3 entries', mentor: 'Priya R.', submitted: '2026-11-11' },
   { id: 'q3', student: 'Ava T.', title: 'DAT study plan', mentor: 'Priya R.', submitted: '2026-11-07' },
+  { id: 'q5', student: 'Ava T.', title: 'CASPer practice set', mentor: 'Priya R.', submitted: '2026-11-12' },
   { id: 'q4', student: 'Leila S.', title: 'CASPer practice set', mentor: 'Daniel O.', submitted: '2026-11-04' },
 ];
 

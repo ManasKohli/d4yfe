@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router';
 import { paths } from '@/app/paths';
 import { adminUser } from '@/data/demo';
+import AdminContent from '@/features/admin/pages/AdminContent';
 import AdminHardship from '@/features/admin/pages/AdminHardship';
 import AdminMentors from '@/features/admin/pages/AdminMentors';
 import AdminOverview from '@/features/admin/pages/AdminOverview';
@@ -19,6 +20,7 @@ export default function AdminRoutes() {
         <Route path="mentors" element={<AdminMentors/>}/>
         <Route path="reviews" element={<AdminReviews/>}/>
         <Route path="hardship" element={<AdminHardship/>}/>
+        <Route path="content" element={<AdminContent/>}/>
         <Route path="*" element={<NotFoundPage/>}/>
       </Route>
     </Routes>

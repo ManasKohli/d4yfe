@@ -4,10 +4,12 @@ import { paths, portalFeedbackPath } from '@/app/paths';
 import { assignments, feedback, student } from '@/data/demo';
 import { moduleLabel } from '@/data/modules';
 import { rubricScale } from '@/data/portal';
+import { ApiError, getFeedbackFile } from '@/shared/api/mockApi';
 import NotFoundPage from '@/shared/components/NotFoundPage';
 import useDocumentTitle from '@/shared/hooks/useDocumentTitle';
 import { cn } from '@/shared/lib/cn';
 import { formatDay } from '@/shared/lib/format';
+import { openLink } from '@/shared/lib/openLink';
 import { Button } from '@/shared/ui/Button';
 import Card from '@/shared/ui/Card';
 import { Field, Textarea } from '@/shared/ui/Field';
@@ -59,10 +61,34 @@ function FollowUp({ question }: { question: string }) {
   );
 }
 
+function CommentedDocument({ entry }: { entry: FeedbackEntry }) {
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState('');
+  const open = async () => {
+    setBusy(true);
+    setError('');
+    try {
+      openLink(await getFeedbackFile(entry.id));
+    } catch (caught) {
+      setError(caught instanceof ApiError ? caught.message : 'Couldn’t open the document. Try again.');
+    } finally {
+      setBusy(false);
+    }
+  };
+  return (
+    <div className="mt-4 flex flex-wrap items-center gap-3">
+      <Button variant="outline" onClick={open} disabled={busy}>{busy ? 'Opening…' : 'Open commented document'}</Button>
+      <span className="text-sm text-muted">{entry.feedbackFileName}</span>
+      {error && <p className="w-full text-sm text-warn" role="alert">{error}</p>}
+    </div>
+  );
+}
+
 function FeedbackDetail({ entry }: { entry: FeedbackEntry }) {
   return (
     <Card label={`${moduleLabel(entry.module)} · ${formatDay(entry.date)}`} title={titleFor(entry)} className="self-start">
       <p className="text-sm text-muted">Reviewed by {entry.reviewer}, {entry.reviewerRole.toLowerCase()}</p>
+      {entry.feedbackFileName && <CommentedDocument entry={entry}/>}
       <h3 className={subHeading}>Rubric</h3>
       <dl className="grid gap-3">
         {Object.entries(entry.scores).map(([criterion, score]) => (

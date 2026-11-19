@@ -1,7 +1,7 @@
 // Data shapes shared by src/data and the features.
 // These are the contract the Express API will implement when it replaces the demo data.
 
-import type { materialTypes, statuses } from '@/data/portal';
+import type { libraryCategories, materialKinds, materialTypes, statuses, uploadRules } from '@/data/portal';
 
 // ---- Program content --------------------------------------------------------
 
@@ -11,13 +11,14 @@ export type Tone = 'neutral' | 'active' | 'done' | 'warn';
 export type Track = 'Canada' | 'US';
 
 export interface Video { title: string; minutes: number }
-export interface Material { type: MaterialType; title: string }
+/** One entry in a chapter's outline: a file to seed, or a link to another feature (assignment, booking, live, survey). */
+export interface ChapterItem { type: MaterialType; title: string }
 
 export interface Chapter {
   title: string;
   track?: Track;
   videos: Video[];
-  materials: Material[];
+  materials: ChapterItem[];
 }
 
 export interface LessonSection {
@@ -46,7 +47,7 @@ export interface ProgramModule {
   outcomes: string[];
   parts: ModulePart[];
   chapters: Chapter[];
-  moduleWide: Material[];
+  moduleWide: ChapterItem[];
 }
 
 export interface TitledItem { title: string; description: string }
@@ -91,6 +92,9 @@ export interface Enrollment {
   note?: string;
 }
 
+/** What one answer in a submission is: an uploaded file, a link to a video the student hosts, or typed text (plan D29, D36). */
+export type AnswerKind = 'file' | 'video_link' | 'text';
+
 export interface Assignment {
   id: string;
   title: string;
@@ -100,6 +104,18 @@ export interface Assignment {
   dateLabel: string;
   instructions?: string;
   feedbackId?: string;
+  /** The answers this assignment expects, in order. `['file']` for a single document. */
+  answerSpec: AnswerKind[];
+}
+
+/** One answer in a submission. Exactly one of `fileName` (+ confirmed `path`), `videoUrl` or `body` is set, matching `kind`. */
+export interface SubmissionItem {
+  kind: AnswerKind;
+  label: string;
+  path?: string;
+  fileName?: string;
+  videoUrl?: string;
+  body?: string;
 }
 
 export interface Feedback {
@@ -113,6 +129,8 @@ export interface Feedback {
   strengths: string;
   priorities: string[];
   followUp: string;
+  /** The mentor's commented document, if they attached one (plan D28). Opened through the API, never a direct path. */
+  feedbackFileName: string | null;
 }
 
 export interface Session {
@@ -126,7 +144,6 @@ export interface Session {
 
 export interface Bookable { id: string; title: string; minutes: number; module: string; opens?: string }
 
-export interface Resource { id: string; title: string; kind: string; module: string; track: Track | 'Both' }
 
 export interface School {
   id: string;
@@ -159,7 +176,8 @@ export interface QueueItem {
   submitted: string;
   due: string;
   status: StatusKey;
-  file: string;
+  /** The submitted answers: one file for most assignments, several links and typed answers for practice sets. */
+  answers: SubmissionItem[];
   note: string;
 }
 
@@ -192,3 +210,64 @@ export interface HardshipApplication {
 }
 
 export interface EscalationStep { day: number; action: string }
+
+// ---- Content (plan D25–D38; mock API today, generated src/types/api.ts later) ----
+
+export type MaterialKind = keyof typeof materialKinds;
+export type LibraryCategory = keyof typeof libraryCategories;
+export type VideoProvider = 'vimeo' | 'youtube' | 'mux';
+export type UploadBucket = keyof typeof uploadRules;
+
+/** A lesson video. `code` is worked out by the API from position (D37): 2.0 welcome, 2.4, or 2.5a/2.5b. */
+export interface Lesson {
+  id: string;
+  moduleSlug: string;
+  /** null for the module's welcome lesson. */
+  chapterSlug: string | null;
+  code: string;
+  title: string;
+  durationMin: number;
+  /** Both null until the video is recorded and its link pasted in. */
+  videoProvider: VideoProvider | null;
+  videoRef: string | null;
+  sortOrder: number;
+  published: boolean;
+}
+
+/** A chapter or module-wide material. Files are opened through the API; `url` is set only for links. */
+export interface Material {
+  id: string;
+  moduleSlug: string;
+  /** null for module-wide items. */
+  chapterSlug: string | null;
+  kind: MaterialKind;
+  title: string;
+  fileName: string | null;
+  sizeBytes: number | null;
+  url: string | null;
+  /** Set only for kind `video` (workshop recordings, D38). */
+  videoProvider: VideoProvider | null;
+  videoRef: string | null;
+  track: Track | 'Both';
+  /** Set when the item also appears in the Resources library (D27). */
+  libraryCategory: LibraryCategory | null;
+  sortOrder: number;
+  published: boolean;
+}
+
+export interface ChapterContent { slug: string; lessons: Lesson[]; materials: Material[] }
+
+/** GET /student/modules/:slug and one module of GET /admin/content. */
+export interface ModuleContent {
+  moduleSlug: string;
+  welcome: Lesson[];
+  chapters: ChapterContent[];
+  moduleWide: Material[];
+}
+
+/** POST …/upload-url: where the browser sends the file. The API made the path (plan section 6). */
+export interface UploadTarget { bucket: UploadBucket; path: string; signedUrl: string }
+
+/** A file that reached Storage and can now be confirmed with its owning record. */
+export interface UploadedFile { path: string; fileName: string; sizeBytes: number }
+

@@ -75,13 +75,15 @@ src/
   features/mentor/    MentorRoutes.tsx, pages/, components/
   features/admin/     AdminRoutes.tsx, pages/, reviewAge.ts
   shared/ui/          Design-system primitives used by every feature
-  shared/components/  Composite pieces used by more than one feature (Brand, ModulePagination, NotFoundPage)
-  shared/             layouts/AppShell, hooks/, lib/ (format, cn): used by more than one feature
+  shared/components/  Composite pieces used by more than one feature (Brand, ModulePagination, NotFoundPage, FileUpload)
+  shared/api/         mockApi.ts: mock of the planned content and upload endpoints; the one file to swap for the real API
+  shared/             layouts/AppShell, hooks/ (useDocumentTitle, useAsync), lib/ (format, cn, openLink, videoLinks): used by more than one feature
   types/              Data shapes shared by data/ and features/ (the future API contract)
   data/modules.ts     The seven modules: public content plus portal chapters
   data/program.ts     Goals, portal, access options, mentors, community, pilot, outcomes
   data/portal.ts      Signed-in area rules and labels: nav, statuses, rubrics, escalation
   data/demo.ts        Sample records standing in for the database
+  data/content.ts     Sample lesson videos and materials, built from modules.ts (delete when the API serves content)
   styles/app.css      Tailwind entry and the @theme tokens
 ```
 

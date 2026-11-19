@@ -2,7 +2,7 @@ import { upNext } from '@/features/student/upNext';
 import type { Assignment } from '@/types';
 
 const item = (id: string, status: Assignment['status'], date: string): Assignment =>
-  ({ id, title: id, module: 'dat', status, date, dateLabel: 'Due' });
+  ({ id, title: id, module: 'dat', status, date, dateLabel: 'Due', answerSpec: ['file'] });
 
 describe('upNext', () => {
   it('puts feedback-ready first, then soonest date first', () => {
