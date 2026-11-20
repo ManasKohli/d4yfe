@@ -16,7 +16,7 @@ export default function ProgressBar({ value, max, label }: ProgressBarProps) {
       aria-valuenow={value}
       aria-valuetext={`${value} of ${max}`}
     >
-      <span className="block h-full rounded-full bg-green transition-[width] duration-300" style={{ width: `${percent}%` }}/>
+      <span className="block h-full rounded-full bg-blue transition-[width] duration-300" style={{ width: `${percent}%` }}/>
     </div>
   );
 }

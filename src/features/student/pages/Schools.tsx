@@ -40,7 +40,7 @@ export default function Schools() {
               </dl>
               <div className="mt-4 flex flex-wrap items-center justify-between gap-2 border-t border-line pt-4 text-sm">
                 <span className="text-muted">Last verified {formatMonth(school.verified)}</span>
-                <a href={school.url} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center gap-1.5 font-medium text-green hover:underline">
+                <a href={school.url} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center gap-1.5 font-medium text-blue hover:underline">
                   Official page <Icon name="external" size={16}/><span className="sr-only"> for {school.name} (opens in a new tab)</span>
                 </a>
               </div>

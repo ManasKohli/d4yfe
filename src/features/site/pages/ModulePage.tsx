@@ -22,7 +22,7 @@ function ModuleTabs() {
               to={modulePath(module.slug)}
               className={({ isActive }) => cn(
                 'inline-flex min-h-11 items-center gap-2 rounded-full border px-4 text-ui whitespace-nowrap no-underline',
-                isActive ? 'border-green bg-green text-white' : 'border-line bg-card text-ink hover:border-line-strong',
+                isActive ? 'border-blue bg-blue text-white' : 'border-line bg-card text-ink hover:border-line-strong',
               )}
             >
               <span className="font-display text-sm font-bold opacity-70">{module.number}</span>

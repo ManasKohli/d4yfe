@@ -12,7 +12,7 @@ export default function MaterialAction({ material, playing, onTogglePlay }: { ma
 
   if (material.kind === 'video') {
     return (
-      <button type="button" aria-expanded={playing} aria-label={`${playing ? 'Close' : 'Watch'} ${material.title}`} onClick={onTogglePlay} className="min-h-11 text-sm font-medium text-green hover:underline">
+      <button type="button" aria-expanded={playing} aria-label={`${playing ? 'Close' : 'Watch'} ${material.title}`} onClick={onTogglePlay} className="min-h-11 text-sm font-medium text-blue hover:underline">
         {playing ? 'Close' : 'Watch'}
       </button>
     );
@@ -21,7 +21,7 @@ export default function MaterialAction({ material, playing, onTogglePlay }: { ma
   // Links are already in the payload, so they open as a real link (no await, so no popup blocker).
   if (material.url && !material.fileName) {
     return (
-      <a href={material.url} target="_blank" rel="noopener noreferrer" aria-label={`Open ${material.title}`} className="inline-flex min-h-11 items-center text-sm font-medium text-green hover:underline">
+      <a href={material.url} target="_blank" rel="noopener noreferrer" aria-label={`Open ${material.title}`} className="inline-flex min-h-11 items-center text-sm font-medium text-blue hover:underline">
         Open
       </a>
     );
@@ -42,7 +42,7 @@ export default function MaterialAction({ material, playing, onTogglePlay }: { ma
   return (
     <span className="flex items-center gap-3">
       {error && <span className="text-sm text-warn" role="alert">{error}</span>}
-      <button type="button" onClick={open} disabled={busy} aria-label={`${busy ? 'Opening' : 'Download'} ${material.title}`} className="min-h-11 text-sm font-medium text-green hover:underline disabled:opacity-50">
+      <button type="button" onClick={open} disabled={busy} aria-label={`${busy ? 'Opening' : 'Download'} ${material.title}`} className="min-h-11 text-sm font-medium text-blue hover:underline disabled:opacity-50">
         {busy ? 'Opening…' : 'Download'}
       </button>
     </span>

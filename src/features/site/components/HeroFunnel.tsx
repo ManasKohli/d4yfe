@@ -36,11 +36,11 @@ export default function HeroFunnel() {
       aria-hidden
       className="pointer-events-none absolute inset-0 -z-10 overflow-hidden [mask-image:linear-gradient(to_bottom,transparent,black_12%,black_70%,transparent)]"
     >
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_55%_at_50%_42%,var(--color-green-soft),transparent_70%)] motion-safe:animate-breathe"/>
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_55%_at_50%_42%,var(--color-blue-soft),transparent_70%)] motion-safe:animate-breathe"/>
       <svg
         viewBox="0 0 1200 900"
         preserveAspectRatio="xMidYMid slice"
-        className="absolute inset-0 size-full text-green"
+        className="absolute inset-0 size-full text-blue"
         fill="none"
         stroke="currentColor"
       >

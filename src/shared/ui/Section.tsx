@@ -5,7 +5,7 @@ import { cn } from '@/shared/lib/cn';
 interface SectionProps extends Omit<ComponentProps<'section'>, 'title'> {
   eyebrow?: string;
   title?: ReactNode;
-  /** A quieter second line under the title, in sage. */
+  /** A quieter second line under the title, in steel blue. */
   titleMuted?: ReactNode;
   lede?: ReactNode;
   /** `stack` puts the lede under the heading; `split` sets it beside the heading from 900px. */
@@ -29,7 +29,7 @@ export default function Section({
               {title && (
                 <h2 className="text-3xl leading-[1.1] tracking-[-0.03em] md:text-5xl">
                   {title}
-                  {titleMuted && <><br/><span className="text-sage">{titleMuted}</span></>}
+                  {titleMuted && <><br/><span className="text-steel">{titleMuted}</span></>}
                 </h2>
               )}
             </div>

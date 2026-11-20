@@ -8,7 +8,7 @@ import Icon from '@/shared/ui/Icon';
 export default function Brand({ className, ...linkProps }: Omit<ComponentProps<typeof Link>, 'to'>) {
   return (
     <Link className={cn('inline-flex min-h-11 items-center gap-2.5 text-ink no-underline', className)} to={paths.home} {...linkProps}>
-      <span className="grid size-8 place-items-center rounded-full bg-green text-white"><Icon name="tooth" size={18}/></span>
+      <span className="grid size-8 place-items-center rounded-full bg-blue text-white"><Icon name="tooth" size={18}/></span>
       <span className="leading-tight">
         <strong className="block font-display text-ui">D4Y Dental Pathway</strong>
         <small className="block text-xs text-muted">Dentistry for Youth</small>

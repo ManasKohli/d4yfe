@@ -19,7 +19,7 @@ export default function LessonList({ lessons }: { lessons: Lesson[] }) {
                 aria-expanded={playing === lesson.id}
                 aria-label={`${playing === lesson.id ? 'Close' : 'Watch'} ${lesson.code} ${lesson.title}`}
                 onClick={() => setPlaying(current => (current === lesson.id ? null : lesson.id))}
-                className="min-h-11 text-sm font-medium text-green hover:underline"
+                className="min-h-11 text-sm font-medium text-blue hover:underline"
               >
                 {playing === lesson.id ? 'Close' : 'Watch'}
               </button>

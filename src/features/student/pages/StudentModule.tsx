@@ -179,7 +179,7 @@ export default function StudentModule() {
             : <LessonList lessons={outlineLessons(`${number}.0`, [welcomeLesson])}/>}
           <p className="mb-2 font-medium">By the end of this module, you will be able to:</p>
           <ul className="grid gap-2">
-            {module.outcomes.map(outcome => <li key={outcome} className="flex gap-3"><span className="mt-0.5 text-green"><Icon name="check"/></span>{outcome}</li>)}
+            {module.outcomes.map(outcome => <li key={outcome} className="flex gap-3"><span className="mt-0.5 text-blue"><Icon name="check"/></span>{outcome}</li>)}
           </ul>
         </section>
 

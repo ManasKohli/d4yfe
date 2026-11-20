@@ -19,7 +19,7 @@ export default function MentorDashboard() {
     <>
       <PageHeader title={`Welcome back, ${firstName}`} lede={mentor.role}/>
       <div className="grid gap-6">
-        <Card title="Review queue" action={<Link className="text-sm font-medium text-green hover:underline" to={`${paths.mentor}/reviews`}>Open queue</Link>}>
+        <Card title="Review queue" action={<Link className="text-sm font-medium text-blue hover:underline" to={`${paths.mentor}/reviews`}>Open queue</Link>}>
           <ReviewQueueTable items={reviewQueue}/>
         </Card>
         <StatList label="This month" stats={[
