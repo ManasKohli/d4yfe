@@ -107,6 +107,9 @@ export const otherAccess: TitledItem[] = [
 
 export const pricingNote = 'Pricing will be announced before registration opens.';
 
+/** Small label above each package name. */
+export const packageLabel = 'Package';
+
 export const mentorNetwork = [
   'Current dental students',
   'Recent dental graduates',

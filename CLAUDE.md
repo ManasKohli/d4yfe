@@ -40,11 +40,18 @@ Do **not** publish internal planning material from the doc: budgets, revenue pro
 
 Clean, simple, professional education product. The reference is a modern light SaaS landing page, applied to D4Y:
 
-- **Layout:** floating pill-shaped nav, one large centered headline with a short muted line under it, at most two buttons, generous whitespace, soft rounded cards. The hero's only decoration is a fine-line blue funnel (`HeroFunnel`), with a slow row of dental school logos (in their own colors) at its foot.
+- **Layout:** floating pill-shaped nav, one large centered headline with a short muted line under it, at most two buttons, generous whitespace, soft rounded cards. The hero has a fine-line blue funnel (`HeroFunnel`), dotted 3D dental objects in its side gutters (`HeroDental`: molar, toothbrush, dental mirror, toothpaste), and a slow row of dental school logos (in their own colors) at its foot. Further down, a toothbrush scrubs along the "how it works" steps on scroll (`BrushSweep`), module cards tilt toward the pointer, package cards lift gently on hover, foam bubbles rise in the pilot panel, and the footer has a row of teeth that lift toward the pointer (`SmileLine`) and links whose underline sweeps in. Packages carry no prices, billing toggle or "most popular" badge until D4Y publishes them.
 - **Color:** D4Y navy blue (`#2a3b8f`) for primary actions and brand, navy ink text, cool paper background, light blue tints. Coral is a small accent only. Light theme.
 - **Less per page.** Each page leads with one idea. The public site is one landing page (hero, then the sections in `homeSections`: about, modules, how it works, portal, packages, mentors, community, outcomes, pilot) plus one page per module.
 - **One system everywhere.** Public pages and the signed-in areas use the same primitives (buttons, cards, badges, nav), so the portal feels like the same product.
-- **No ornament without content.** No ratings, trust badges, logo walls (the school logo row in the hero is the one agreed exception), user counts, fake activity or notification cards, floating app icons, 3D objects, stock photos, decorative glyphs, or placeholder stats — even though the references use them.
+- **3D and motion are wanted (owners' request, 2026-11-26).** The site owners want it more interactive: 3D objects and animation are welcome on public and signed-in pages. The school globe on School requirements is the first example. Rules that still hold:
+  - Tie each 3D object to real content where you can (the globe shows where each school is), and make it interactive rather than a looping backdrop.
+  - Draw it in the brand palette from the `@theme` tokens, light theme, so it looks like part of the same product.
+  - Every animation respects `prefers-reduced-motion`: hold still or jump to the end state. Pause offscreen and in hidden tabs.
+  - Anything you can do on a canvas or 3D object must also be possible with plain buttons or links, so keyboard and screen-reader users lose nothing.
+  - Never hide content behind an animation, and keep pages free of horizontal scroll at 390px.
+  - Prefer canvas, SVG or CSS. Add a 3D library (such as three.js) only when a scene needs one, and lazy-load it with the page that uses it.
+- **No ornament without content.** No ratings, trust badges, logo walls (the school logo row in the hero is the one agreed exception), user counts, fake activity or notification cards, floating app icons, stock photos, decorative glyphs, or placeholder stats — even though the references use them.
 
 ## Stack
 
@@ -91,7 +98,7 @@ Imports use the `@/` alias for `src/`. Dependencies point one way: `app` → `fe
 
 ## Design decisions on record
 
-The plan and its review decisions are in `docs/designs/pilot-redesign.md`. In short: Manrope 700 for headings and DM Sans for everything else; radius by role (pill buttons and nav, 16px cards, 12px tables, 8px inputs and badges); the home page is hero, modules, three editorial rows (not cards), footer; under 900px the nav becomes a Menu panel and portal tabs become a scrolling pill row; 44px minimum touch targets and one focus ring style. Motion is one entrance on the home hero; content is never hidden behind scroll animations. Landing-page h2s use a two-line split heading (second line in steel blue, lede beside it), with light blue bands on alternate sections; every other heading is one line in one color, and signed-in pages carry no area eyebrow (the shell already names the area).
+The plan and its review decisions are in `docs/designs/pilot-redesign.md`. In short: Manrope 700 for headings and DM Sans for everything else; radius by role (pill buttons and nav, 16px cards, 12px tables, 8px inputs and badges); the home page is hero, modules, three editorial rows (not cards), footer; under 900px the nav becomes a Menu panel and portal tabs become a scrolling pill row; 44px minimum touch targets and one focus ring style. Motion was originally one entrance on the home hero; the owners have since asked for more 3D and animation (see Design direction, which overrides the plan where they differ). Content is never hidden behind scroll animations. Landing-page h2s use a two-line split heading (second line in steel blue, lede beside it), with light blue bands on alternate sections; every other heading is one line in one color, and signed-in pages carry no area eyebrow (the shell already names the area).
 
 ## Checks before finishing
 

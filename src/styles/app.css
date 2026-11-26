@@ -56,6 +56,11 @@
   --animate-strand: strand 9s linear infinite;
   --animate-ripple: ripple 7s var(--ease-out-soft) infinite;
   --animate-breathe: breathe 8s ease-in-out infinite alternate;
+  --animate-scrub: scrub 140ms ease-in-out infinite alternate;
+  --animate-foam: foam 900ms var(--ease-out-soft) infinite;
+  --animate-rise: rise 9s linear infinite;
+  --animate-wave: wave 700ms var(--ease-out-soft) backwards;
+  --animate-wiggle: wiggle 600ms var(--ease-out-soft);
 
   @keyframes reveal {
     from { opacity: 0; transform: translateY(12px); }
@@ -80,6 +85,42 @@
   @keyframes breathe {
     from { opacity: 0.7; }
     to { opacity: 1; }
+  }
+
+  /* The landing-page toothbrush scrubbing back and forth as it moves. */
+  @keyframes scrub {
+    from { transform: translateX(-2px) rotate(-1.5deg); }
+    to { transform: translateX(2px) rotate(1.5deg); }
+  }
+
+  /* Foam behind the toothbrush: a bubble swells, lifts and pops. */
+  @keyframes foam {
+    from { transform: translateY(0) scale(0.4); opacity: 0; }
+    30% { opacity: 1; }
+    to { transform: translateY(-10px) scale(1.15); opacity: 0; }
+  }
+
+  /* The footer's row of teeth: each one hops in turn as the row comes into view. */
+  @keyframes wave {
+    from { translate: 0 0; }
+    40% { translate: 0 -0.5rem; }
+    to { translate: 0 0; }
+  }
+
+  /* The brand tooth giving a little wiggle. */
+  @keyframes wiggle {
+    0%, 100% { rotate: 0deg; }
+    25% { rotate: -12deg; }
+    50% { rotate: 10deg; }
+    75% { rotate: -5deg; }
+  }
+
+  /* Toothpaste foam drifting up a blue panel. */
+  @keyframes rise {
+    from { transform: translateY(0) translateX(0); opacity: 0; }
+    15% { opacity: 1; }
+    50% { transform: translateY(-10rem) translateX(6px); }
+    to { transform: translateY(-22rem) translateX(-4px); opacity: 0; }
   }
 }
 
@@ -123,4 +164,25 @@
 
 @utility container-page {
   @apply mx-auto w-full max-w-6xl px-4 md:px-6 lg:px-8;
+}
+
+/* Leans toward the pointer in 3D; driven by `tiltHandlers` (features/site/components/motion.ts). */
+@utility tilt-card {
+  transform: perspective(56rem) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg));
+  transition-property: transform, border-color, box-shadow;
+  transition-duration: 200ms;
+  transition-timing-function: var(--ease-out-soft);
+}
+
+/* A link underline that sweeps in from the left, like a brush stroke, on hover and keyboard focus. */
+@utility link-sweep {
+  text-decoration: none;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-position: 0 calc(100% - 0.6rem);
+  background-size: 0% 1.5px;
+  transition: background-size 350ms var(--ease-out-soft), color 200ms;
+  &:hover, &:focus-visible {
+    background-size: 100% 1.5px;
+  }
 }
