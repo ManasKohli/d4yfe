@@ -10,7 +10,7 @@ import { List, ListRow } from '@/shared/ui/List';
 import PageHeader from '@/shared/ui/PageHeader';
 import StatList from '@/shared/ui/StatList';
 
-const panelLink = 'text-sm font-medium text-green hover:underline';
+const panelLink = 'text-sm font-medium text-blue hover:underline';
 
 export default function AdminOverview() {
   useDocumentTitle('Admin');

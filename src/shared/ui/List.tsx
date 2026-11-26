@@ -31,7 +31,7 @@ export function ListRow({ title, meta, trailing, to, onSelect, selected }: ListR
     </>
   );
   const rowClass = 'flex min-h-14 w-full items-center justify-between gap-4 py-3 text-left';
-  const interactive = cn(rowClass, '-mx-3 w-[calc(100%+1.5rem)] rounded-field px-3 no-underline transition-colors hover:bg-surface', selected && 'bg-green-soft hover:bg-green-soft');
+  const interactive = cn(rowClass, '-mx-3 w-[calc(100%+1.5rem)] rounded-field px-3 no-underline transition-colors hover:bg-surface', selected && 'bg-blue-soft hover:bg-blue-soft');
 
   if (to) return <li><Link to={to} aria-current={selected ? 'page' : undefined} className={interactive}>{body}</Link></li>;
   if (onSelect) return <li><button type="button" aria-current={selected ? 'true' : undefined} onClick={onSelect} className={interactive}>{body}</button></li>;

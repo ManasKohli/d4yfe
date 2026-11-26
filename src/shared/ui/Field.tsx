@@ -2,7 +2,7 @@ import type { ComponentProps, ReactNode } from 'react';
 import { cn } from '@/shared/lib/cn';
 
 /** Shared look for text inputs, selects and textareas. Labels always sit outside the control. */
-export const controlClass = 'block w-full min-h-11 rounded-field border border-line-strong bg-card px-3 py-2 text-base text-ink placeholder:text-subtle focus-visible:border-green';
+export const controlClass = 'block w-full min-h-11 rounded-field border border-line-strong bg-card px-3 py-2 text-base text-ink placeholder:text-subtle focus-visible:border-blue';
 
 interface FieldProps {
   label: string;

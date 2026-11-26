@@ -84,22 +84,22 @@ export const studentAccount = { id: 'student-sam', hasSeat: true };
 export const schools: School[] = [
   {
     id: 'toronto', name: 'University of Toronto', place: 'Toronto, ON', degree: 'DDS', country: 'Canada', casper: true, interview: 'Panel', verified: '2026-10',
-    url: 'https://www.dentistry.utoronto.ca/',
+    url: 'https://www.dentistry.utoronto.ca/', coordinates: { lat: 43.66, lon: -79.39 },
     facts: [['DAT', 'Canadian or US'], ['CASPer', 'Required'], ['Essays', 'Statement, accomplishment'], ['Interview', 'Panel, 20 min'], ['Deadline', 'Nov 1']],
   },
   {
     id: 'alberta', name: 'University of Alberta', place: 'Edmonton, AB', degree: 'DDS', country: 'Canada', casper: true, interview: 'MMI', verified: '2026-10',
-    url: 'https://www.ualberta.ca/en/medicine-dentistry/',
+    url: 'https://www.ualberta.ca/en/medicine-dentistry/', coordinates: { lat: 53.52, lon: -113.53 },
     facts: [['DAT', 'Canadian'], ['CASPer', 'Required'], ['Minimum GPA', '3.3'], ['Interview', 'MMI'], ['Deadline', 'Nov 1']],
   },
   {
     id: 'mcgill', name: 'McGill University', place: 'Montréal, QC', degree: 'DMD', country: 'Canada', casper: true, interview: null, verified: '2026-10',
-    url: 'https://www.mcgill.ca/dentistry/',
+    url: 'https://www.mcgill.ca/dentistry/', coordinates: { lat: 45.50, lon: -73.58 },
     facts: [['CASPer', 'English or French'], ['Documents', 'CV, verifier list'], ['Deadline', 'Nov 1']],
   },
   {
     id: 'nyu', name: 'NYU College of Dentistry', place: 'New York, NY', degree: 'DDS', country: 'US', casper: false, interview: 'Kira', verified: '2026-10',
-    url: 'https://dental.nyu.edu/',
+    url: 'https://dental.nyu.edu/', coordinates: { lat: 40.74, lon: -73.98 },
     facts: [['Application', 'AADSAS'], ['Video', 'Kira assessment'], ['Deadline', 'See program page']],
   },
 ];

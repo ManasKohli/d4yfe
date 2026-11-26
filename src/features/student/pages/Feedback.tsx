@@ -29,8 +29,8 @@ function HelpfulnessRating() {
       <div className="flex gap-2">
         {[1, 2, 3, 4, 5].map(value => (
           <label key={value} className={cn(
-            'grid size-11 cursor-pointer place-items-center rounded-full border text-ui has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-green',
-            rating === value ? 'border-green bg-green text-white' : 'border-line-strong bg-card',
+            'grid size-11 cursor-pointer place-items-center rounded-full border text-ui has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-blue',
+            rating === value ? 'border-blue bg-blue text-white' : 'border-line-strong bg-card',
           )}>
             <input type="radio" name="helpful" value={value} checked={rating === value} onChange={() => setRating(value)} className="sr-only"/>
             {value}
@@ -121,7 +121,7 @@ export default function Feedback() {
       {!selected ? (
         <Card>
           <p>No feedback yet. Reviews come back within {student.mentorTurnaroundDays} days of submitting.</p>
-          <Link to={`${paths.student}/assignments`} className="mt-3 inline-flex min-h-11 items-center font-medium text-green hover:underline">Go to assignments</Link>
+          <Link to={`${paths.student}/assignments`} className="mt-3 inline-flex min-h-11 items-center font-medium text-blue hover:underline">Go to assignments</Link>
         </Card>
       ) : (
         <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)]">

@@ -9,29 +9,29 @@
   --breakpoint-md: 42.5rem;
   --breakpoint-lg: 56.25rem;
 
-  /* Color */
-  --color-ink: #18352f;          /* primary text */
-  --color-ink-2: #2f4a40;        /* strong secondary text, links */
-  --color-muted: #5c6b64;        /* secondary text, AA on every surface */
-  --color-subtle: #66736c;       /* fine print, AA */
-  --color-heading-muted: #6f7c74;/* muted second line of display headings, AA */
+  /* Color: D4Y navy blue (#2a3b8f), a deeper take on the logo blue. */
+  --color-ink: #1a2a44;          /* primary text */
+  --color-ink-2: #2e3f5c;        /* strong secondary text, links */
+  --color-muted: #586377;        /* secondary text, AA on every surface */
+  --color-subtle: #5e687a;       /* fine print, AA */
+  --color-heading-muted: #5f697c;/* muted second line of display headings, AA */
   --color-accent: #8f5742;       /* small uppercase labels, AA */
   --color-coral: #d2775e;        /* decorative accent only */
-  --color-green: #1f4c43;        /* brand and primary actions */
-  --color-green-hover: #2d6156;
-  --color-green-soft: #e3ebe6;   /* active nav pill, selected rows */
-  --color-sage: #3f7466;         /* second line of landing headings, school names; AA on paper, tint and band */
-  --color-band: #e9f0eb;         /* alternating landing-page sections */
-  --color-on-green: #cfe3d9;     /* secondary text on green panels, AA */
-  --color-paper: #f7f6f2;        /* page background */
-  --color-card: #fdfcf9;         /* cards and panels */
-  --color-surface: #f4f5f0;      /* nested surfaces */
-  --color-tint: #eef0ea;         /* tinted sections */
-  --color-line: #d9ded6;
-  --color-line-strong: #c5cdc3;
+  --color-blue: #2a3b8f;         /* brand and primary actions; AA as text on every surface */
+  --color-blue-hover: #1f2d70;
+  --color-blue-soft: #e6ebfd;    /* active nav pill, selected rows */
+  --color-steel: #4256b8;        /* second line of landing headings, school names; AA on paper, tint and band */
+  --color-band: #ebeffb;         /* alternating landing-page sections */
+  --color-on-blue: #d6defa;      /* secondary text on blue panels, AA */
+  --color-paper: #f6f7f9;        /* page background */
+  --color-card: #fdfdfe;         /* cards and panels */
+  --color-surface: #f2f4f8;      /* nested surfaces */
+  --color-tint: #edf0f5;         /* tinted sections */
+  --color-line: #d7dde6;
+  --color-line-strong: #c3cbd8;
   --color-warn: #8a5a12;
   --color-warn-soft: #f6ecd9;
-  --color-done-soft: #e1eee6;
+  --color-done-soft: #e1e8f3;
 
   /* Type: Manrope for headings only, DM Sans for everything else. */
   --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
@@ -46,8 +46,8 @@
   --radius-field: 0.5rem;        /* inputs, badges */
 
   /* Depth: offset plus soft blur, never a halo. */
-  --shadow-soft: 0 1px 2px rgb(24 53 47 / 0.05), 0 4px 12px rgb(24 53 47 / 0.06);
-  --shadow-lift: 0 8px 24px rgb(24 53 47 / 0.1);
+  --shadow-soft: 0 1px 2px rgb(26 42 68 / 0.05), 0 4px 12px rgb(26 42 68 / 0.06);
+  --shadow-lift: 0 8px 24px rgb(26 42 68 / 0.1);
 
   /* Motion */
   --ease-out-soft: cubic-bezier(0.2, 0, 0, 1);
@@ -56,6 +56,11 @@
   --animate-strand: strand 9s linear infinite;
   --animate-ripple: ripple 7s var(--ease-out-soft) infinite;
   --animate-breathe: breathe 8s ease-in-out infinite alternate;
+  --animate-scrub: scrub 140ms ease-in-out infinite alternate;
+  --animate-foam: foam 900ms var(--ease-out-soft) infinite;
+  --animate-rise: rise 9s linear infinite;
+  --animate-wave: wave 700ms var(--ease-out-soft) backwards;
+  --animate-wiggle: wiggle 600ms var(--ease-out-soft);
 
   @keyframes reveal {
     from { opacity: 0; transform: translateY(12px); }
@@ -81,6 +86,42 @@
     from { opacity: 0.7; }
     to { opacity: 1; }
   }
+
+  /* The landing-page toothbrush scrubbing back and forth as it moves. */
+  @keyframes scrub {
+    from { transform: translateX(-2px) rotate(-1.5deg); }
+    to { transform: translateX(2px) rotate(1.5deg); }
+  }
+
+  /* Foam behind the toothbrush: a bubble swells, lifts and pops. */
+  @keyframes foam {
+    from { transform: translateY(0) scale(0.4); opacity: 0; }
+    30% { opacity: 1; }
+    to { transform: translateY(-10px) scale(1.15); opacity: 0; }
+  }
+
+  /* The footer's row of teeth: each one hops in turn as the row comes into view. */
+  @keyframes wave {
+    from { translate: 0 0; }
+    40% { translate: 0 -0.5rem; }
+    to { translate: 0 0; }
+  }
+
+  /* The brand tooth giving a little wiggle. */
+  @keyframes wiggle {
+    0%, 100% { rotate: 0deg; }
+    25% { rotate: -12deg; }
+    50% { rotate: 10deg; }
+    75% { rotate: -5deg; }
+  }
+
+  /* Toothpaste foam drifting up a blue panel. */
+  @keyframes rise {
+    from { transform: translateY(0) translateX(0); opacity: 0; }
+    15% { opacity: 1; }
+    50% { transform: translateY(-10rem) translateX(6px); }
+    to { transform: translateY(-22rem) translateX(-4px); opacity: 0; }
+  }
 }
 
 @layer base {
@@ -104,11 +145,11 @@
 
   a { @apply underline-offset-4; }
 
-  ::selection { @apply bg-green-soft text-ink; }
+  ::selection { @apply bg-blue-soft text-ink; }
 
   /* One focus ring everywhere (design review D3). */
   :focus-visible {
-    @apply outline-2 outline-offset-2 outline-green;
+    @apply outline-2 outline-offset-2 outline-blue;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -123,4 +164,25 @@
 
 @utility container-page {
   @apply mx-auto w-full max-w-6xl px-4 md:px-6 lg:px-8;
+}
+
+/* Leans toward the pointer in 3D; driven by `tiltHandlers` (features/site/components/motion.ts). */
+@utility tilt-card {
+  transform: perspective(56rem) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg));
+  transition-property: transform, border-color, box-shadow;
+  transition-duration: 200ms;
+  transition-timing-function: var(--ease-out-soft);
+}
+
+/* A link underline that sweeps in from the left, like a brush stroke, on hover and keyboard focus. */
+@utility link-sweep {
+  text-decoration: none;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-position: 0 calc(100% - 0.6rem);
+  background-size: 0% 1.5px;
+  transition: background-size 350ms var(--ease-out-soft), color 200ms;
+  &:hover, &:focus-visible {
+    background-size: 100% 1.5px;
+  }
 }

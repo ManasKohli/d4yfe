@@ -12,7 +12,7 @@ export default function CurriculumSection({ module }: { module: ProgramModule })
         <h2 id="outcomes-title" className="mb-4 text-lg">By the end of this module, you will be able to</h2>
         <ul className="grid gap-3 md:grid-cols-2">
           {module.outcomes.map(item => (
-            <li key={item} className="flex gap-3"><span className="mt-0.5 text-green"><Icon name="check"/></span>{item}</li>
+            <li key={item} className="flex gap-3"><span className="mt-0.5 text-blue"><Icon name="check"/></span>{item}</li>
           ))}
         </ul>
       </section>

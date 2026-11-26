@@ -19,7 +19,7 @@ export default function FilterPills<T extends string>({ label, options, value, o
           onClick={() => onChange(option)}
           className={cn(
             'min-h-11 rounded-full border px-4 text-ui transition-colors',
-            option === value ? 'border-green bg-green text-white' : 'border-line bg-card text-ink hover:border-line-strong',
+            option === value ? 'border-blue bg-blue text-white' : 'border-line bg-card text-ink hover:border-line-strong',
           )}
         >
           {option}

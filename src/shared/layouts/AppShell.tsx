@@ -17,7 +17,7 @@ interface AppShellProps {
 
 const navClass = ({ isActive }: { isActive: boolean }) => cn(
   'flex min-h-11 shrink-0 items-center rounded-full px-4 text-ui whitespace-nowrap no-underline transition-colors',
-  isActive ? 'bg-green-soft font-medium text-green' : 'text-ink-2 hover:bg-tint',
+  isActive ? 'bg-blue-soft font-medium text-blue' : 'text-ink-2 hover:bg-tint',
 );
 
 /**

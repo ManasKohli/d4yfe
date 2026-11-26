@@ -99,7 +99,7 @@ function Answers({ answers }: { answers: SubmissionItem[] }) {
         if (answer.kind === 'video_link') {
           return (
             <ListRow key={answer.label} title={answer.label} meta={<span className="break-all">{answer.videoUrl}</span>} trailing={
-              <a href={answer.videoUrl} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-1 text-sm font-medium text-green hover:underline">
+              <a href={answer.videoUrl} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-1 text-sm font-medium text-blue hover:underline">
                 Open video <Icon name="external" size={16}/>
               </a>
             }/>

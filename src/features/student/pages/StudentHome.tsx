@@ -13,7 +13,7 @@ import PageHeader from '@/shared/ui/PageHeader';
 import ProgressBar from '@/shared/ui/ProgressBar';
 import type { Enrollment, ProgramModule } from '@/types';
 
-const panelLink = 'text-sm font-medium text-green hover:underline';
+const panelLink = 'text-sm font-medium text-blue hover:underline';
 
 /** Where the student picks up: the in-progress module's current chapter. */
 function findResume() {
@@ -34,7 +34,7 @@ function UpNext({ resumeLink }: { resumeLink: string | null }) {
       {items.length === 0 ? (
         <p className="text-muted">
           Nothing due right now.{' '}
-          {resumeLink && <Link to={resumeLink} className="font-medium text-green hover:underline">Continue your next chapter</Link>}
+          {resumeLink && <Link to={resumeLink} className="font-medium text-blue hover:underline">Continue your next chapter</Link>}
         </p>
       ) : (
         <ul className="divide-y divide-line">

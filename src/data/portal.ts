@@ -182,6 +182,15 @@ export const partnerDisclosure = 'Some codes come from program partners. Listing
 
 export const schoolsNote = 'Requirements change each cycle. Confirm every detail on the school’s official page.';
 
+/** Labels for the school globe on the requirements page. */
+export const schoolGlobe = {
+  title: 'Where the schools are',
+  hint: 'Drag the globe to turn it. Select a school to zoom in on it.',
+  listLabel: 'Schools on the globe',
+  jump: 'See requirements',
+  imageLabel: (count: number) => `A globe with ${count} school ${count === 1 ? 'location' : 'locations'}`,
+};
+
 /** Navigation for each signed-in area. Paths are relative to the area's base path. */
 export const areas: Record<"student" | "mentor" | "admin", Area> = {
   student: {

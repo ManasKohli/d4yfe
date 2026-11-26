@@ -4,7 +4,7 @@ import type { StatusKey, Tone } from '@/types';
 
 const tones: Record<Tone, string> = {
   neutral: 'bg-surface text-muted',
-  active: 'bg-green-soft text-green',
+  active: 'bg-blue-soft text-blue',
   done: 'bg-done-soft text-ink-2',
   warn: 'bg-warn-soft text-warn',
 };
