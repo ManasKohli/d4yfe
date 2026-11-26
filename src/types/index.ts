@@ -155,6 +155,8 @@ export interface School {
   interview: string | null;
   verified: string;
   url: string;
+  /** Campus location in degrees, for the globe on the requirements page. */
+  coordinates: { lat: number; lon: number };
   facts: [string, string][];
 }
 
