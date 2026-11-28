@@ -273,3 +273,28 @@ export interface UploadTarget { bucket: UploadBucket; path: string; signedUrl: s
 /** A file that reached Storage and can now be confirmed with its owning record. */
 export interface UploadedFile { path: string; fileName: string; sizeBytes: number }
 
+
+// ---- Signed-in user (Supabase Auth + GET /me) --------------------------------
+
+export type Role = 'student' | 'mentor' | 'admin';
+
+/**
+ * GET /me, as the API returns it (d4ybe src/modules/me/me.schemas.ts).
+ * Hand-copied until the generated API types replace it (backend plan D13, task T7).
+ */
+export interface Me {
+  id: string;
+  email: string;
+  fullName: string | null;
+  role: Role;
+  student: {
+    track: Track | null;
+    cycle: string | null;
+    cohortId: string | null;
+    hasSeat: boolean;
+    primaryMentorId: string | null;
+    enrolledModules: string[];
+    credits: { review: number; oneOnOne: number };
+  } | null;
+  mentor: { title: string | null; status: 'onboarding' | 'active' | 'paused'; schedulingUrl: string | null } | null;
+}

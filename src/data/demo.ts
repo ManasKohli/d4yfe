@@ -7,7 +7,7 @@ import type {
   OpenReview, QueueItem, RosterEntry, School, Session, Student, VolunteerEntry,
 } from '@/types';
 
-export const demoNotice = 'Preview with sample data. Accounts, uploads, and bookings connect when the database is set up.';
+export const demoNotice = 'These pages show sample data. They switch to your own records as each one connects to the program database.';
 
 // ---- Student portal -------------------------------------------------------
 

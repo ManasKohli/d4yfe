@@ -8,9 +8,9 @@ You are a staff engineer with decades of experience designing elegant, beautiful
 
 The **front end only** for Dentistry for Youth's **Dental Pathway Program**: a modular, digital program that supports students through the dental school application process. It is the pilot website.
 
-- **Backend:** a small Node.js + Express API in a separate repo (not built yet).
-- **Database and auth:** Supabase (not set up yet).
-- Until both exist, every signed-in page reads sample data from `src/data/demo.ts`. Do not add an API client, Supabase client, server code, or environment secrets to this repo without being asked.
+- **Backend:** a small Node.js + Express API in a separate repo (`d4ybe`).
+- **Database and auth:** Supabase. The browser uses Supabase only for sign-in and the session (`src/shared/api/supabase.ts`); app data always comes from the API (`src/shared/api/client.ts`), which reads the role from the database (`GET /me`).
+- Sign-in is real when `.env.local` sets `VITE_SUPABASE_URL`, `VITE_SUPABASE_PUBLISHABLE_KEY` and `VITE_API_URL` (see `.env.example`); without them the site runs in preview mode with open preview links. Pages still read sample data from `src/data/demo.ts` until each one is wired to the API. Never put a secret in a `VITE_` variable: they ship in the bundle.
 
 **Hosting:** production runs on Firebase Hosting in the same Google Cloud project as the API (team decision, 2026-11-18); Vercel is for dev and previews only. The production CSP and security headers will live in `firebase.json` (not created yet); `vercel.json` covers previews.
 
@@ -75,15 +75,16 @@ Clean, simple, professional education product. The reference is a modern light S
 ```
 src/
   main.tsx            Entry: router, styles, legacy hash redirect
-  app/                App.tsx (route table, lazy areas), paths.ts (all URL paths), ErrorBoundary, ScrollManager, legacyRedirects
+  app/                App.tsx (route table, lazy areas), paths.ts (all URL paths), RequireRole + access.ts (who opens which area), authLinks.ts, ErrorBoundary, ScrollManager, legacyRedirects
   features/site/      Public site: PublicLayout, pages/, components/
-  features/auth/      LoginPage, auth.ts (sign-in stub until Supabase)
+  features/auth/      LoginPage, SetPasswordPage (invite and reset links land here), auth.ts (roles, password rule, safe post-login redirect)
   features/student/   StudentRoutes.tsx, pages/, components/
   features/mentor/    MentorRoutes.tsx, pages/, components/
   features/admin/     AdminRoutes.tsx, pages/, reviewAge.ts
   shared/ui/          Design-system primitives used by every feature
   shared/components/  Composite pieces used by more than one feature (Brand, ModulePagination, NotFoundPage, FileUpload)
-  shared/api/         mockApi.ts: mock of the planned content and upload endpoints; the one file to swap for the real API
+  shared/api/         client.ts (API calls with the access token), supabase.ts (Auth only), config.ts (env), mockApi.ts (mock of the content and upload endpoints until they exist)
+  shared/auth/        AuthProvider + useAuth: session and the GET /me profile
   shared/             layouts/AppShell, hooks/ (useDocumentTitle, useAsync), lib/ (format, cn, openLink, videoLinks): used by more than one feature
   types/              Data shapes shared by data/ and features/ (the future API contract)
   data/modules.ts     The seven modules: public content plus portal chapters

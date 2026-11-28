@@ -5,3 +5,8 @@ dist/
 
 # Playwright MCP screenshots and snapshots
 .playwright-mcp/
+
+# Local env (backend URLs and the publishable key)
+.env
+.env.local
+.env.*.local

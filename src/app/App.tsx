@@ -1,9 +1,11 @@
 import { lazy, Suspense } from 'react';
 import { Navigate, Route, Routes, useLocation } from 'react-router';
 import ErrorBoundary from '@/app/ErrorBoundary';
+import RequireRole from '@/app/RequireRole';
 import { paths } from '@/app/paths';
 import ScrollManager from '@/app/ScrollManager';
 import LoginPage from '@/features/auth/LoginPage';
+import SetPasswordPage from '@/features/auth/SetPasswordPage';
 import HomePage from '@/features/site/pages/HomePage';
 import ModulePage from '@/features/site/pages/ModulePage';
 import PublicLayout from '@/features/site/PublicLayout';
@@ -36,13 +38,14 @@ export default function App() {
             <Route path="/modules/:slug" element={<ModulePage/>}/>
             <Route path="/program-details" element={<ProgramDetailsRedirect/>}/>
             <Route path={paths.login} element={<LoginPage/>}/>
+            <Route path={paths.setPassword} element={<SetPasswordPage/>}/>
             <Route path="/application-support" element={<Navigate to={paths.modulesSection} replace/>}/>
             <Route path="*" element={<NotFoundPage/>}/>
           </Route>
 
-          <Route path={`${paths.student}/*`} element={<StudentRoutes/>}/>
-          <Route path={`${paths.mentor}/*`} element={<MentorRoutes/>}/>
-          <Route path={`${paths.admin}/*`} element={<AdminRoutes/>}/>
+          <Route path={`${paths.student}/*`} element={<RequireRole area="student"><StudentRoutes/></RequireRole>}/>
+          <Route path={`${paths.mentor}/*`} element={<RequireRole area="mentor"><MentorRoutes/></RequireRole>}/>
+          <Route path={`${paths.admin}/*`} element={<RequireRole area="admin"><AdminRoutes/></RequireRole>}/>
         </Routes>
       </Suspense>
     </ErrorBoundary>
