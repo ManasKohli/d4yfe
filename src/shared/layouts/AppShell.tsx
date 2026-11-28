@@ -1,9 +1,10 @@
 import { useEffect, useRef } from 'react';
-import { Link, NavLink, Outlet, useLocation } from 'react-router';
+import { Link, NavLink, Outlet, useLocation, useNavigate } from 'react-router';
 import { paths } from '@/app/paths';
 import { demoNotice } from '@/data/demo';
 import { areas } from '@/data/portal';
 import Brand from '@/shared/components/Brand';
+import { useAuth } from '@/shared/auth/authContext';
 import { cn } from '@/shared/lib/cn';
 import ScrollManager from '@/app/ScrollManager';
 import SkipLink from '@/shared/ui/SkipLink';
@@ -11,8 +12,25 @@ import SkipLink from '@/shared/ui/SkipLink';
 interface AppShellProps {
   area: keyof typeof areas;
   basePath: string;
-  /** Comes from the Supabase session once auth is connected. */
+  /** Sample person shown in preview mode; a signed-in user's own name replaces it. */
   user: { name: string; initials: string };
+}
+
+function initialsOf(name: string): string {
+  const parts = name.replace(/@.*/, '').split(/[\s._-]+/).filter(Boolean);
+  return (parts.length > 1 ? `${parts[0]![0]}${parts.at(-1)![0]}` : (parts[0] ?? '?').slice(0, 2)).toUpperCase();
+}
+
+/** "Sign out" for a real session; a plain link back to sign-in in preview mode. */
+function SignOut({ className }: { className: string }) {
+  const { state, signOut } = useAuth();
+  const navigate = useNavigate();
+  if (state.status !== 'signed-in') return <Link to={paths.login} className={className}>Sign out</Link>;
+  return (
+    <button type="button" className={className} onClick={() => { void signOut().then(() => navigate(paths.login, { replace: true })); }}>
+      Sign out
+    </button>
+  );
 }
 
 const navClass = ({ isActive }: { isActive: boolean }) => cn(
@@ -24,8 +42,11 @@ const navClass = ({ isActive }: { isActive: boolean }) => cn(
  * Layout for a signed-in area. From 900px: a sidebar with pill-highlighted items.
  * Below that: a top bar with a sideways-scrolling pill row that keeps the current item in view (design review D3).
  */
-export default function AppShell({ area, basePath, user }: AppShellProps) {
+export default function AppShell({ area, basePath, user: sample }: AppShellProps) {
   const { label, nav } = areas[area];
+  const { state } = useAuth();
+  const name = state.status === 'signed-in' ? state.me.fullName ?? state.me.email : null;
+  const user = name ? { name, initials: initialsOf(name) } : sample;
   const navRef = useRef<HTMLElement>(null);
   const { pathname } = useLocation();
 
@@ -57,7 +78,7 @@ export default function AppShell({ area, basePath, user }: AppShellProps) {
             <span aria-hidden className="grid size-9 place-items-center rounded-full bg-tint text-sm font-semibold text-ink-2">{user.initials}</span>
             <div className="min-w-0">
               <p className="truncate font-medium">{user.name}</p>
-              <Link to={paths.login} className="inline-flex min-h-11 items-center text-sm text-muted hover:text-ink">Sign out</Link>
+              <SignOut className="inline-flex min-h-11 items-center text-sm text-muted hover:text-ink"/>
             </div>
           </div>
         </div>
@@ -68,7 +89,7 @@ export default function AppShell({ area, basePath, user }: AppShellProps) {
         <main id="main" tabIndex={-1} className="mx-auto max-w-6xl px-4 py-8 outline-none md:px-8 md:py-10">
           <Outlet/>
           <p className="mt-12 text-sm text-muted lg:hidden">
-            Signed in as {user.name} · <Link to={paths.login} className="text-muted hover:text-ink">Sign out</Link>
+            Signed in as {user.name} · <SignOut className="text-muted hover:text-ink"/>
           </p>
         </main>
       </div>

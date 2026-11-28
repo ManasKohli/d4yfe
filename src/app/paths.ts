@@ -1,3 +1,5 @@
+import type { Role } from '@/types';
+
 /** Central list of URLs so links and <Route> definitions never drift apart. */
 export const paths = {
   home: '/',
@@ -10,10 +12,14 @@ export const paths = {
   communitySection: '/#community',
   pilotSection: '/#pilot',
   login: '/login',
+  setPassword: '/account/password',
   student: '/portal',
   mentor: '/mentor',
   admin: '/admin',
 } as const;
+
+/** Where each role lands after signing in. */
+export const roleHome = { student: '/portal', mentor: '/mentor', admin: '/admin' } as const satisfies Record<Role, string>;
 
 export const modulePath = (slug: string) => `/modules/${slug}`;
 
